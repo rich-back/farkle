@@ -26,38 +26,13 @@ const GameLogic = () => {
   //   });
   //   setDice(newDice);
   // };
+  
 
   return (
-    <View style={styles.container}>
-      <FlatList data={dice} renderItem={({item})=>{
-        <Text>{item}</Text>
-      }}/>
+    <View>
+      <FlatList data={dice} renderItem={({item}) => <Text>{item.key}</Text>}></FlatList>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  text: {
-    fontSize: 30,
-    color: "white",
-    backgroundColor: "grey",
-    borderRadius: 5,
-    width: 80,
-    height: 80,
-    padding: 20,
-    textAlign: "center",
-    fontWeight: "700",
-    margin: 10,
-  },
-  buttonContainer: {},
-  button: {},
-});
 
 export default GameLogic;
