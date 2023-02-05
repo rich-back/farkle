@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, View, StyleSheet, Text } from "react-native";
+import { Button, FlatList, View, StyleSheet, Text } from "react-native";
 
 const GameLogic = () => {
   const [dice, setDice] = useState([
@@ -11,26 +11,29 @@ const GameLogic = () => {
     { key: "dice6", value: 6 },
   ]);
 
-  // const getRandomNumber = () => {
-  //   const randomNumber = Math.floor(Math.random() * 6) + 1;
-  //   return randomNumber;
-  // };
+  const getRandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    return randomNumber;
+  };
 
-  // updateDice = () => {
-  //   const tempDice = dice;
-  //   const newDice = tempDice.map((di) => {
-  //     const diKey = di.key;
-  //     let diValue = di.value;
-  //     diValue = getRandomNumber();
-  //     return { key: diKey, value: diValue };
-  //   });
-  //   setDice(newDice);
-  // };
-  
+  const updateDice = () => {
+    const tempDice = dice;
+    const newDice = tempDice.map((di) => {
+      const diKey = di.key;
+      let diValue = di.value;
+      diValue = getRandomNumber();
+      return { key: diKey, value: diValue };
+    });
+    setDice(newDice);
+  };
 
   return (
     <View>
-      <FlatList data={dice} renderItem={({item}) => <Text>{item.key}</Text>}></FlatList>
+      <FlatList
+        data={dice}
+        renderItem={({ item }) => <Text>{item.value}</Text>}
+      ></FlatList>
+      <Button title="Roll the dice" onPress={updateDice}></Button>
     </View>
   );
 };
