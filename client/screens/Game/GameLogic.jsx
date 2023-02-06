@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { Button, FlatList, View, StyleSheet, Text, Image } from "react-native";
 
 const GameLogic = ({
   counted,
@@ -18,6 +19,8 @@ const GameLogic = ({
   setFarkleAlertVis,
   setKeptDice,
   setLiveDice,
+
+  diceImages,
 }) => {
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
@@ -64,16 +67,32 @@ const GameLogic = ({
       <FlatList
         data={liveDice}
         renderItem={({ item }) => (
-          <>
+          <View style={styles.diceContainer}>
             <TouchableOpacity onPress={() => dicePressHandler(item.key)}>
-              <Text>{item.value}</Text>
+            <Image 
+              source={diceImages[item.value -1]}
+              style={styles.image}
+             />
             </TouchableOpacity>
-          </>
+          </View>
         )}
       />
       <Button title="Roll the dice" onPress={rollDice} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  diceContainer:{
+    flex: 1,
+    alignItems: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+    margin: 5,
+  }
+})
 
 export default GameLogic;
