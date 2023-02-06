@@ -5,15 +5,13 @@ const ScoringLogic = ({
   dice,
   keptDice,
   liveDice,
-  roundScore,
-  score,
   turnCounter,
   setCounted,
-  setRoundScore,
-  setScore,
   setTurnCounter,
 }) => {
   const [rollScore, setRollScore] = useState(0);
+	const [roundScore, setRoundScore] = useState(0);
+	const [score, setScore] = useState(10000);
 
 	const endTurn = () => {
 		let tempScore = score;
@@ -47,6 +45,8 @@ const ScoringLogic = ({
       <Button title="count score" onPress={countScore}/>
       <Button title="end round" onPress={endTurn}/>
 			<Text>Turn: {turnCounter}</Text>
+			<Text>Score: {score}</Text>
+      <Text>Round Score: {roundScore}</Text>
     </View>
   );
 };
