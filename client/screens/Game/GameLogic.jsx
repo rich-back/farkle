@@ -1,22 +1,41 @@
 import React, { useState } from "react";
 import { Button, FlatList, View, StyleSheet, Text } from "react-native";
 
-const GameLogic = ({ dice, setDice, setCounted, keepDi }) => {
+const GameLogic = ({
+  counted,
+  dice,
+  setDice,
+  setCounted,
+  keepDi,
+  setFarkleAlertVis,
+}) => {
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
     return randomNumber;
   };
 
-  const rollDice = () => {
-    const tempDice = dice;
-    const newDice = tempDice.map((di) => {
-      const diKey = di.key;
-      let diValue = di.value;
-      diValue = getRandomNumber();
-      return { key: diKey, value: diValue };
+  const checkForFarkle = (dice) => {
+    let filteredDice = dice.filter((di) => {
+      return di.value === 1 || di.value === 5;
     });
-    setDice(newDice);
-    setCounted(false);
+    if (filteredDice.length === 0) {
+      setFarkleAlertVis(true);
+    }
+  };
+
+  const rollDice = () => {
+    if (counted) {
+      const tempDice = dice;
+      const newDice = tempDice.map((di) => {
+        const diKey = di.key;
+        let diValue = di.value;
+        diValue = getRandomNumber();
+        return { key: diKey, value: diValue };
+      });
+      setDice(newDice);
+      checkForFarkle(newDice);
+      setCounted(false);
+    }
   };
 
   return (
@@ -26,11 +45,11 @@ const GameLogic = ({ dice, setDice, setCounted, keepDi }) => {
         renderItem={({ item }) => (
           <>
             <Text>{item.value}</Text>
-            <Button title={item.key} onPress={keepDi}/>
+            <Button title={item.key} onPress={keepDi} />
           </>
         )}
       />
-      <Button title="Roll the dice" onPress={rollDice}/>
+      <Button title="Roll the dice" onPress={rollDice} />
     </View>
   );
 };
