@@ -6,7 +6,7 @@ import ScoringLogic from './ScoringLogic';
 const Game = () => {
 
   const [score, setScore] = useState(10000)
-  const [rollingScore, setRollingScore] = useState(0)
+  const [roundScore, setRoundScore] = useState(0)
   const [liveDice, setLiveDice] = useState()
   const [keptDice, setKeptDice] = useState()
 
@@ -22,9 +22,9 @@ const Game = () => {
   return (
     <View>
       <GameLogic dice={dice} setDice={setDice} liveDice={liveDice} keptDice={keptDice}/>
-      <ScoringLogic dice={dice} setDice={setDice} liveDice={liveDice} setLiveDice={setLiveDice} keptDice={keptDice} setKeptDice={setKeptDice} score={score} setScore={setScore} rollingScore={rollingScore} setRollingScore={setRollingScore}/>
+      <ScoringLogic dice={dice} setDice={setDice} liveDice={liveDice} setLiveDice={setLiveDice} keptDice={keptDice} setKeptDice={setKeptDice} score={score} setScore={setScore} roundScore={roundScore} setRoundScore={setRoundScore}/>
       <Text>Score {score}</Text>
-      <Text>Rolling Score {rollingScore}</Text>
+      <Text>Rolling Score {roundScore}</Text>
     </View>
   );
 };

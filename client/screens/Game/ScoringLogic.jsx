@@ -4,35 +4,34 @@ const ScoringLogic = ({
   dice,
   liveDice,
   keptDice,
-  rollingScore,
-  setRollingScore,
+  roundScore,
+  setRoundScore,
   score,
   setScore,
 }) => {
-  const [counter, setCounter] = useState(0);
-
-  const scores = [
-    { value: 1, score: 100 },
-    { value: 5, score: 50 },
-  ];
+  const [rollScore, setRollScore] = useState(0);
 
   const countScore = () => {
-    let tempRollingScore = rollingScore;
+    setRollScore(0);
+    let tempRoundScore = roundScore;
+    let tempRollScore = rollScore;
+    let tempScore = score;
     dice.forEach((di) => {
-      if (di.value == 1) {
-        tempRollingScore += 100;
-      } else if (di.value == 5) {
-        tempRollingScore += 50;
+      if (di.value === 1) {
+        tempRollScore += 100;
+      } else if (di.value === 5) {
+        tempRollScore += 50;
       }
     });
-    setRollingScore(tempRollingScore);
-    let tempScore = score;
-    setScore(tempScore - tempRollingScore);
+    setRoundScore((roundScore += tempRollScore));
+    setRollScore(tempRollScore);
+    setScore(tempScore - tempRollScore);
   };
 
   return (
     <View>
       <Button title="count score" onPress={countScore}></Button>
+      {rollScore === 0 ? <Button title="next round"></Button> : null}
     </View>
   );
 };
