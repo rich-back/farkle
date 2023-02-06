@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FlatList, View, StyleSheet, Text } from "react-native";
+import { Button, FlatList, View, StyleSheet, Text, Image } from "react-native";
 
 const GameLogic = ({
   counted,
@@ -8,6 +8,7 @@ const GameLogic = ({
   setCounted,
   keepDi,
   setFarkleAlertVis,
+  diceImages,
 }) => {
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
@@ -43,15 +44,30 @@ const GameLogic = ({
       <FlatList
         data={dice}
         renderItem={({ item }) => (
-          <>
-            <Text>{item.value}</Text>
-            <Button title={item.key} onPress={keepDi} />
-          </>
+          <View style={styles.diceContainer}>
+            <Image 
+              source={diceImages[item.value -1]}
+              style={styles.image}
+             />
+          </View>
         )}
       />
       <Button title="Roll the dice" onPress={rollDice} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  diceContainer:{
+    flex: 1,
+    alignItems: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+    margin: 5,
+  }
+})
 
 export default GameLogic;
