@@ -14,6 +14,7 @@ const Game = () => {
   const [liveDice, setLiveDice] = useState();
   const [keptDice, setKeptDice] = useState();
   const [counted, setCounted] = useState(false);
+  const [roundScore, setRoundScore] = useState(0);
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
@@ -76,27 +77,31 @@ const Game = () => {
       <GameLogic
         counted={counted}
         dice={dice}
+        diceImages={diceImages}
         keptDice={keptDice}
         liveDice={liveDice}
+        roundScore={roundScore}
         setCounted={setCounted}
         setDice={setDice}
-        setLiveDice={setLiveDice}
-        setKeptDice={setKeptDice}
         setFarkleAlertVis={setFarkleAlertVis}
-        diceImages={diceImages}
+        setKeptDice={setKeptDice}
+        setLiveDice={setLiveDice}
+        setRoundScore={setRoundScore}
       />
       <ScoringLogic
         counted={counted}
         dice={dice}
         keptDice={keptDice}
         liveDice={liveDice}
+        roundScore={roundScore}
         turnCounter={turnCounter}
         setCounted={setCounted}
         setDice={setDice}
+        setEndGameAlertVis={setEndGameAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setRoundScore={setRoundScore}
         setTurnCounter={setTurnCounter}
-        setEndGameAlertVis={setEndGameAlertVis}
       />
     </View>
   );
