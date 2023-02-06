@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import GameLogic from "./GameLogic";
-import ScoringLogic from './ScoringLogic';
+import ScoringLogic from "./ScoringLogic";
 
 const Game = () => {
-
-  const [score, setScore] = useState(10000)
-  const [roundScore, setRoundScore] = useState(0)
-  const [liveDice, setLiveDice] = useState()
-  const [keptDice, setKeptDice] = useState()
-
+  const [score, setScore] = useState(10000);
+  const [roundScore, setRoundScore] = useState(0);
+  const [liveDice, setLiveDice] = useState();
+  const [keptDice, setKeptDice] = useState();
+  const [counted, setCounted] = useState(false);
+  const [turnCounter, setTurnCounter] = useState(1);
   const [dice, setDice] = useState([
     { key: "dice1", value: 1 },
     { key: "dice2", value: 2 },
@@ -19,12 +19,39 @@ const Game = () => {
     { key: "dice6", value: 6 },
   ]);
 
+  const keepDi = () => {
+    setKeptDice();
+  }
+
+
   return (
     <View>
-      <GameLogic dice={dice} setDice={setDice} liveDice={liveDice} keptDice={keptDice}/>
-      <ScoringLogic dice={dice} setDice={setDice} liveDice={liveDice} setLiveDice={setLiveDice} keptDice={keptDice} setKeptDice={setKeptDice} score={score} setScore={setScore} roundScore={roundScore} setRoundScore={setRoundScore}/>
-      <Text>Score {score}</Text>
-      <Text>Rolling Score {roundScore}</Text>
+      <GameLogic
+        dice={dice}
+        keepDi = {keepDi}
+        keptDice={keptDice}
+        liveDice={liveDice}
+        setCounted={setCounted}
+        setDice={setDice}
+      />
+      <ScoringLogic
+        counted={counted}
+        dice={dice}
+        keptDice={keptDice}
+        liveDice={liveDice}
+        roundScore={roundScore}
+        score={score}
+        turnCounter={turnCounter}
+        setCounted={setCounted}
+        setDice={setDice}
+        setKeptDice={setKeptDice}
+        setLiveDice={setLiveDice}
+        setRoundScore={setRoundScore}
+        setScore={setScore}
+        setTurnCounter={setTurnCounter}
+      />
+      <Text>Score: {score}</Text>
+      <Text>Round Score: {roundScore}</Text>
     </View>
   );
 };
