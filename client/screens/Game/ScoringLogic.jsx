@@ -8,6 +8,7 @@ const ScoringLogic = ({
   roundScore,
   turnCounter,
   setCounted,
+  setLiveDice,
   setTurnCounter,
   setEndGameAlertVis,
   setRoundScore
