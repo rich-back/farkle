@@ -19,7 +19,7 @@ const GameLogic = ({
   setFarkleAlertVis,
   setKeptDice,
   setLiveDice,
-
+  setRoundScore,
   diceImages,
 }) => {
   const getRandomNumber = () => {
@@ -28,11 +28,14 @@ const GameLogic = ({
   };
 
   const checkForFarkle = (liveDice) => {
+    let tempDice = dice;
     let filteredDice = liveDice.filter((di) => {
       return di.value === 1 || di.value === 5;
     });
     if (filteredDice.length === 0) {
       setFarkleAlertVis(true);
+      setRoundScore(0);
+      setLiveDice(tempDice);
     }
   };
 

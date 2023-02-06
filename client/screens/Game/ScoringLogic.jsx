@@ -5,13 +5,14 @@ const ScoringLogic = ({
   dice,
   keptDice,
   liveDice,
+  roundScore,
   turnCounter,
   setCounted,
   setTurnCounter,
   setEndGameAlertVis,
+  setRoundScore
 }) => {
   const [rollScore, setRollScore] = useState(0);
-	const [roundScore, setRoundScore] = useState(0);
 	const [score, setScore] = useState(40);
 
   useEffect(() => {
@@ -26,9 +27,11 @@ const ScoringLogic = ({
 		let tempScore = score;
 		let tempRoundScore = roundScore;
 		let tempTurnCounter = turnCounter += 1;
+    let tempDice = dice;
 		setScore(tempScore - tempRoundScore);
 		setTurnCounter(tempTurnCounter);
 		setRoundScore(0);
+    setLiveDice(tempDice);
 	}
 
 
