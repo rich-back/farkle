@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import { Button, FlatList, View, StyleSheet, Text } from "react-native";
+import {
+  Button,
+  FlatList,
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
 const GameLogic = ({
   counted,
   dice,
-  setDice,
+  keptDice,
+  liveDice,
   setCounted,
-  keepDi,
+  setDice,
   setFarkleAlertVis,
+  setKeptDice,
+  setLiveDice,
 }) => {
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
     return randomNumber;
   };
 
-  const checkForFarkle = (dice) => {
-    let filteredDice = dice.filter((di) => {
+  const checkForFarkle = (liveDice) => {
+    let filteredDice = liveDice.filter((di) => {
       return di.value === 1 || di.value === 5;
     });
     if (filteredDice.length === 0) {
@@ -25,27 +35,39 @@ const GameLogic = ({
 
   const rollDice = () => {
     if (counted) {
-      const tempDice = dice;
+      const tempDice = liveDice;
       const newDice = tempDice.map((di) => {
         const diKey = di.key;
         let diValue = di.value;
         diValue = getRandomNumber();
         return { key: diKey, value: diValue };
       });
-      setDice(newDice);
+      setLiveDice(newDice);
       checkForFarkle(newDice);
       setCounted(false);
     }
   };
 
+  const dicePressHandler = (itemKey) => {
+    const tempLiveDice = liveDice.filter((di) => {
+      return di.key !== itemKey;
+    });
+    const tempKeptDice = dice.filter((di) => {
+      return di.key === itemKey;
+    });
+    setLiveDice(tempLiveDice);
+    setKeptDice(tempKeptDice);
+  };
+
   return (
     <View>
       <FlatList
-        data={dice}
+        data={liveDice}
         renderItem={({ item }) => (
           <>
-            <Text>{item.value}</Text>
-            <Button title={item.key} onPress={keepDi} />
+            <TouchableOpacity onPress={() => dicePressHandler(item.key)}>
+              <Text>{item.value}</Text>
+            </TouchableOpacity>
           </>
         )}
       />
