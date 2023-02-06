@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Image
 } from "react-native";
-import { Button, FlatList, View, StyleSheet, Text, Image } from "react-native";
 
 const GameLogic = ({
   counted,
