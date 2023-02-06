@@ -9,6 +9,7 @@ const Game = () => {
   const [counted, setCounted] = useState(false);
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
+  const [endGameAlertVis, setEndGameAlertVis] = useState(false);
   const [dice, setDice] = useState([
     { key: "dice1", value: 1 },
     { key: "dice2", value: 2 },
@@ -37,6 +38,19 @@ const Game = () => {
           </Pressable>
         </View>
       </Modal>
+      <Modal
+        animationType="fade"
+        presentationStyle="overFullScreen"
+        transparent={true}
+        visible={endGameAlertVis}
+      >
+        <View>
+          <Text>Winner!</Text>
+          <Pressable onPress={() => setEndGameAlertVis(false)}>
+            <Text>Close modal</Text>
+          </Pressable>
+        </View>
+      </Modal>
       <GameLogic
         counted={counted}
         dice={dice}
@@ -58,6 +72,8 @@ const Game = () => {
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
         setTurnCounter={setTurnCounter}
+        setEndGameAlertVis={setEndGameAlertVis}
+
       />
     </View>
   );
