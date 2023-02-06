@@ -56,7 +56,9 @@ const ScoringLogic = ({
 
   return (
     <View>
+      <Text></Text>
       <Button title="count score" onPress={countScore}/>
+      <Text></Text>
       <Button title="end round" onPress={endTurn}/>
 			<Text>Turn: {turnCounter}</Text>
 			<Text>Score: {score}</Text>
