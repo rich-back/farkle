@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, View, Text } from "react-native";
 const ScoringLogic = ({
   counted,
@@ -8,19 +8,29 @@ const ScoringLogic = ({
   turnCounter,
   setCounted,
   setTurnCounter,
+  setEndGameAlertVis,
 }) => {
   const [rollScore, setRollScore] = useState(0);
 	const [roundScore, setRoundScore] = useState(0);
-	const [score, setScore] = useState(10000);
+	const [score, setScore] = useState(40);
+
+  useEffect(() => {
+    completeGame()
+  }, [score])
+  
+  const completeGame = () => {
+    if(score <= 0) {setEndGameAlertVis(true)}
+  }
 
 	const endTurn = () => {
 		let tempScore = score;
 		let tempRoundScore = roundScore;
-		setScore(tempScore - tempRoundScore);
 		let tempTurnCounter = turnCounter += 1;
+		setScore(tempScore - tempRoundScore);
 		setTurnCounter(tempTurnCounter);
 		setRoundScore(0);
 	}
+
 
   const countScore = () => {
     if (!counted) {
