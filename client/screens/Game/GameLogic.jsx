@@ -39,9 +39,9 @@ const GameLogic = ({
     }
   };
 
-  const rollDice = () => {
+  const rollDice = (liveDice) => {
     if (counted) {
-      const tempDice = liveDice;
+      const tempDice = [...liveDice];
       const newDice = tempDice.map((di) => {
         const diKey = di.key;
         let diValue = di.value;
