@@ -13,7 +13,7 @@ import diceImage6 from "../../assets/diceImage6.png";
 
 const Game = () => {
   const [liveDice, setLiveDice] = useState();
-  const [keptDice, setKeptDice] = useState();
+  const [keptDice, setKeptDice] = useState([]);
   const [counted, setCounted] = useState(false);
   const [roundScore, setRoundScore] = useState(0);
   const [turnCounter, setTurnCounter] = useState(1);
