@@ -6,16 +6,18 @@ import Game from "./screens/Game/Game";
 import Home from "./screens/Home/Home";
 import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
 import Instructions from "./screens/Instructions/Instructions";
+import SplashScreen from "./screens/SplashScreen/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{title: '', headerStyle: {backgroundColor: 'black'}}}/>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Game" component={Game} />
-        <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+        <Stack.Screen name="LeaderBoard" component={LeaderBoard}  />
         <Stack.Screen name="Instructions" component={Instructions} />
       </Stack.Navigator>
     </NavigationContainer>
