@@ -41,15 +41,27 @@ const GameLogicScreen = ({
   };
 
   const dicePressed = (itemKey) => {
-    const dicePressHandler = dicePress();
-    setLiveDice(dicePessHandler.tempLiveDice);
-    setKeptDice(dicePressHandler.tempKeptDice);
+    const dicePressHandler = dicePress({ itemKey, liveDice });
+    setLiveDice(dicePressHandler.tempLiveDice);
+    setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
   };
 
   return (
     <View>
+      <Text>Live Dice</Text>
       <FlatList
         data={liveDice}
+        renderItem={({ item }) => (
+          <View style={styles.diceContainer}>
+            <TouchableOpacity onPress={() => dicePressed(item.key)}>
+              <Image source={diceImages[item.value - 1]} style={styles.image} />
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+      <Text>Kept Dice</Text>
+      <FlatList
+        data={keptDice}
         renderItem={({ item }) => (
           <View style={styles.diceContainer}>
             <TouchableOpacity onPress={() => dicePressed(item.key)}>
