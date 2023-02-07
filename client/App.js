@@ -14,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
-        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{title: '', headerStyle: {backgroundColor: 'black'}}}/>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Game" component={Game} />
         <Stack.Screen name="LeaderBoard" component={LeaderBoard}  />
