@@ -1,25 +1,25 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import Game from "./screens/Game/Game";
 import Home from "./screens/Home/Home";
-import { useState } from "react";
 import SignIn from "./screens/signIn/SignIn";
 import SignUp from "./screens/signUp/SignUp";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {isSignedIn ? (
           <>
-            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Game" component={Game} />
+            <Stack.Screen name="Home" component={Home} />
           </>
         ) : (
           <>
