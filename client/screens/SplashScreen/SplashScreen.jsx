@@ -15,7 +15,11 @@ export default function SplashScreen({ navigation }) {
 
   setTimeout(() => {
     setLogoModal(true);
-  }, 2000);
+  }, 1500);
+  
+  setTimeout(() => {
+    setLogoModal(false);
+  }, 5000);
 
   return (
     <View style={styles.container}>
