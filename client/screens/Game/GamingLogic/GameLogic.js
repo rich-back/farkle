@@ -19,14 +19,14 @@ export const rollDice = ({ liveDice }) => {
     return { key: diKey, value: diValue };
   });
 
-  return {newDice:newDice};
+  return { newDice: newDice };
 };
 
-export const dicePress = () => {
+export const dicePress = ({ itemKey, liveDice }) => {
   const tempLiveDice = liveDice.filter((di) => {
     return di.key !== itemKey;
   });
-  const tempKeptDice = dice.filter((di) => {
+  const tempKeptDice = liveDice.filter((di) => {
     return di.key === itemKey;
   });
   return { tempLiveDice: tempLiveDice, tempKeptDice: tempKeptDice };
