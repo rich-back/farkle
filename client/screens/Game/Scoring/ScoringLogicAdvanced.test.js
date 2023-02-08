@@ -94,5 +94,5 @@ it('checks for straight', () => {
 
 it('checks for three doubles', () => {
     let expected = checkMultiples(diceThreeDoubles, 2)
-    expect(expected).toStrictEqual(['2','6'])
+    expect(expected).toStrictEqual(['2','3','6'])
 })
