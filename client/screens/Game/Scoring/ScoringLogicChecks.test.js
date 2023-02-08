@@ -1,4 +1,4 @@
-import { checkFive, checkOne, checkMultiples, checkQuadPair } from "./ScoringLogicAdvanced";
+import { checkFive, checkOne, checkMultiples, checkQuadPair } from "./ScoringLogicChecks";
 
 
 const dice = [
