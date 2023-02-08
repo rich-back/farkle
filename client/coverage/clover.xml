@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675869362220" clover="3.2.0">
-  <project timestamp="1675869362220" name="All files">
+<coverage generated="1675870562669" clover="3.2.0">
+  <project timestamp="1675870562669" name="All files">
     <metrics statements="27" coveredstatements="27" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7" elements="40" coveredelements="40" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
     <file name="ScoringLogicChecks.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogicChecks.js">
       <metrics statements="27" coveredstatements="27" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
