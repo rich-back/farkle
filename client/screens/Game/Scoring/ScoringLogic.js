@@ -1,5 +1,9 @@
-import { checkFive, checkOne, checkMultiples, checkQuadPair } from "./ScoringLogicChecks";
-
+import {
+  checkFive,
+  checkOne,
+  checkMultiples,
+  checkQuadPair,
+} from "./ScoringLogicChecks";
 
 // export const countScore = ({ roundScore, rollScore, keptDice }) => {
 //   let tempRoundScore = roundScore;
@@ -14,8 +18,23 @@ import { checkFive, checkOne, checkMultiples, checkQuadPair } from "./ScoringLog
 //   return { roundScore: tempRoundScore + tempRollScore };
 // };
 
+const countScore = ( {roundScore, rollScore, keptDice} ) => {
+  let tempRoundScore = roundScore;
+  let tempRollScore = rollScore;
+  if (checkMultiples(keptDice, 6).length != 0) {
+    tempRollScore += 3000;
+  }
+
+
+
+
+
+
+  return { roundScore: tempRoundScore + tempRollScore };
+};
+
 const endTurn = ({ score, roundScore, turnCounter }) => {
   return { score: score - roundScore, turnCounter: turnCounter + 1 };
 };
 
-module.exports={ countScore, endTurn }
+module.exports = { countScore, endTurn };
