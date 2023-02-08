@@ -38,8 +38,14 @@ const checkMultiples = (keptDice, multiple) => {
     return matched;
 }
 
+const checkQuadPair = (keptDice) => {
+    let quad = checkMultiples(keptDice, 4)
+    let double = checkMultiples(keptDice, 2)
+    const result = quad.concat(double)
+    return result;
+}
 
 // console.log(checkMultiples(diceThreeOfAKind, 3))
 
 
-module.exports = { checkOne, checkFive, checkMultiples }
+module.exports = { checkOne, checkFive, checkMultiples, checkQuadPair }

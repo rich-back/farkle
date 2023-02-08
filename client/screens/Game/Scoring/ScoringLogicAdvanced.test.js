@@ -1,4 +1,4 @@
-import { checkFive, checkOne, checkMultiples } from "./ScoringLogicAdvanced";
+import { checkFive, checkOne, checkMultiples, checkQuadPair } from "./ScoringLogicAdvanced";
 
 
 const dice = [
@@ -59,6 +59,14 @@ const diceThreeOfAKind = [
     { key: "dice5", value: 3 },
     { key: "dice6", value: 3 },
   ];
+  const diceQuadPair = [
+    { key: "dice1", value: 1 },
+    { key: "dice2", value: 1 },
+    { key: "dice3", value: 1 },
+    { key: "dice4", value: 1 },
+    { key: "dice5", value: 2 },
+    { key: "dice6", value: 2 },
+  ];
 
 
 
@@ -98,6 +106,6 @@ it('checks for three doubles', () => {
 })
 
 it('checks for Quad plus a Pair', () => {
-    let expected = checkQuadPair(dice)
+    let expected = checkQuadPair(diceQuadPair)
     expect(expected).toStrictEqual(['1','2'])
 })
