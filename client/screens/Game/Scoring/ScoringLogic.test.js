@@ -85,3 +85,8 @@ const diceThreeOfAKind = [
     let expected = countScore({roundScore:0,rollScore:0, keptDice: diceTwoTriples})
     expect(expected.roundScore).toBe(2500)
   })
+
+  it('scores five of a kind', () => {
+    let expected = countScore({roundScore:0,rollScore:0, keptDice: diceFiveOfAKind})
+    expect(expected.roundScore).toBe(2000)
+  })
