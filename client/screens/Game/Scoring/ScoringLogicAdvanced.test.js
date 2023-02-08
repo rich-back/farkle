@@ -96,3 +96,8 @@ it('checks for three doubles', () => {
     let expected = checkMultiples(diceThreeDoubles, 2)
     expect(expected).toStrictEqual(['2','3','6'])
 })
+
+it('checks for Quad plus a Pair', () => {
+    let expected = checkQuadPair(dice)
+    expect(expected).toStrictEqual(['1','2'])
+})
