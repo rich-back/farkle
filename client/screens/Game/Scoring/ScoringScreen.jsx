@@ -33,7 +33,7 @@ const ScoringScreen = ({
       const newCountState = countScore({
         roundScore,
         rollScore,
-        liveDice,
+        keptDice,
       });
       setRoundScore(newCountState.roundScore);
       setCounted(true);

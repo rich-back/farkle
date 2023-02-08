@@ -1,7 +1,7 @@
-export const countScore = ({ roundScore, rollScore, liveDice }) => {
+export const countScore = ({ roundScore, rollScore, keptDice }) => {
   let tempRoundScore = roundScore;
   let tempRollScore = rollScore;
-  liveDice.forEach((di) => {
+  keptDice.forEach((di) => {
     if (di.value === 1) {
       tempRollScore += 10;
     } else if (di.value === 5) {
