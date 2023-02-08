@@ -53,6 +53,7 @@ const diceThreeOfAKind = [
   ];
 
 
+
 it('checks for 1s', () => {
     let expected = checkOne(dice).length
     expect(expected).toBe(1)
@@ -79,6 +80,6 @@ it('checks for multiples', () => {
 })
 
 it('checks for straight', () => {
-    let expected = checkMultiples(diceStraight, 1)
+    let expected = checkMultiples(dice, 1)
     expect(expected).toStrictEqual(['1','2','3','4','5','6'])
 })
