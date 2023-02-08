@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675867462788" clover="3.2.0">
-  <project timestamp="1675867462788" name="All files">
+<coverage generated="1675867797353" clover="3.2.0">
+  <project timestamp="1675867797353" name="All files">
     <metrics statements="22" coveredstatements="22" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6" elements="34" coveredelements="34" complexity="0" loc="22" ncloc="22" packages="1" files="1" classes="1"/>
     <file name="ScoringLogicAdvanced.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogicAdvanced.js">
       <metrics statements="22" coveredstatements="22" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
@@ -18,14 +18,14 @@
       <line num="16" count="1" type="stmt"/>
       <line num="19" count="1" type="stmt"/>
       <line num="28" count="1" type="stmt"/>
-      <line num="29" count="7" type="stmt"/>
-      <line num="30" count="7" type="stmt"/>
-      <line num="31" count="42" type="cond" truecount="2" falsecount="0"/>
-      <line num="32" count="18" type="stmt"/>
-      <line num="34" count="24" type="stmt"/>
-      <line num="37" count="24" type="stmt"/>
-      <line num="38" count="7" type="stmt"/>
-      <line num="44" count="1" type="stmt"/>
+      <line num="29" count="8" type="stmt"/>
+      <line num="30" count="8" type="stmt"/>
+      <line num="31" count="48" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="21" type="stmt"/>
+      <line num="34" count="27" type="stmt"/>
+      <line num="37" count="27" type="stmt"/>
+      <line num="38" count="8" type="stmt"/>
+      <line num="45" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -38,6 +38,7 @@ const checkMultiples = (keptDice, multiple) => {
     return matched;
 }
 
+
 // console.log(checkMultiples(diceThreeOfAKind, 3))
 
 

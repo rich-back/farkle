@@ -51,6 +51,14 @@ const diceThreeOfAKind = [
     { key: "dice5", value: 2 },
     { key: "dice6", value: 2 },
   ];
+  const diceThreeDoubles = [
+    { key: "dice1", value: 6 },
+    { key: "dice2", value: 6 },
+    { key: "dice3", value: 2 },
+    { key: "dice4", value: 2 },
+    { key: "dice5", value: 3 },
+    { key: "dice6", value: 3 },
+  ];
 
 
 
@@ -82,4 +90,9 @@ it('checks for multiples', () => {
 it('checks for straight', () => {
     let expected = checkMultiples(dice, 1)
     expect(expected).toStrictEqual(['1','2','3','4','5','6'])
+})
+
+it('checks for three doubles', () => {
+    let expected = checkMultiples(diceThreeDoubles, 2)
+    expect(expected).toStrictEqual(['2','6'])
 })
