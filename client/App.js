@@ -8,6 +8,10 @@ import Home from "./screens/Home/Home";
 import SignIn from "./screens/signIn/SignIn";
 import SignUp from "./screens/signUp/SignUp";
 
+import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
+import Instructions from "./screens/Instructions/Instructions";
+import SplashScreen from "./screens/SplashScreen/SplashScreen";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -15,18 +19,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {isSignedIn ? (
-          <>
-            <Stack.Screen name="Game" component={Game} />
-            <Stack.Screen name="Home" component={Home} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="SignIn" component={SignIn} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-          </>
-        )}
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Game" component={Game} />
+        <Stack.Screen name="LeaderBoard" component={LeaderBoard}  />
+        <Stack.Screen name="Instructions" component={Instructions} />
       </Stack.Navigator>
     </NavigationContainer>
   );
