@@ -77,3 +77,8 @@ it('checks for multiples', () => {
     expect(expected5).toStrictEqual(['6'])
     expect(expected6).toStrictEqual(['2','6'])
 })
+
+it('checks for straight', () => {
+    let expected = checkMultiples(diceStraight, 1)
+    expect(expected).toStrictEqual(['1','2','3','4','5','6'])
+})
