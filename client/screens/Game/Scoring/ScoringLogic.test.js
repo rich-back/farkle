@@ -79,5 +79,9 @@ const diceThreeOfAKind = [
     expect(expected1.roundScore).toBe(1500)
     expect(expected2.roundScore).toBe(1500)
     expect(expected3.roundScore).toBe(1500)
+  })
 
+  it('scores two triples', () => {
+    let expected = countScore({roundScore:0,rollScore:0, keptDice: diceTwoTriples})
+    expect(expected.roundScore).toBe(2500)
   })
