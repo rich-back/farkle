@@ -7,7 +7,7 @@ import {dice} from "./Dice";
 const Game = () => {
   const [liveDice, setLiveDice] = useState();
   const [keptDice, setKeptDice] = useState([]);
-  const [counted, setCounted] = useState(false);
+  const [counted, setCounted] = useState(true);
   const [roundScore, setRoundScore] = useState(0);
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
