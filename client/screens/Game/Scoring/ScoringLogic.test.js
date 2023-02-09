@@ -59,15 +59,15 @@ const diceThreeOfAKind6 = [
   ];
 
   const diceFourOfAKind = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 5 },
     { key: "dice2", value: 6 },
     { key: "dice3", value: 6 },
     { key: "dice4", value: 6 },
-    { key: "dice5", value: 5 },
+    { key: "dice5", value: 4 },
     { key: "dice6", value: 6 },
   ];
   const diceFiveOfAKind = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 5 },
     { key: "dice2", value: 6 },
     { key: "dice3", value: 6 },
     { key: "dice4", value: 6 },
@@ -176,12 +176,12 @@ const diceThreeOfAKind6 = [
 
   it('scores five of a kind', () => {
     let expected = countScore({roundScore:0,rollScore:0, keptDice: diceFiveOfAKind})
-    expect(expected.roundScore).toBe(2000)
+    expect(expected.roundScore).toBe(2050)
   })
 
   it('scores four of a kind', () => {
     let expected = countScore({roundScore:0,rollScore:0, keptDice: diceFourOfAKind})
-    expect(expected.roundScore).toBe(1000)
+    expect(expected.roundScore).toBe(1050)
   })
 
   it('scores all variants of three of a kind', () => {
