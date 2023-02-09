@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import dice from "../Dice";
+import {dice, diceImages} from "../Dice";
 import GameLogic, { checkForFarkle, dicePress, rollDice } from "./GameLogic";
 
 const GameLogicScreen = ({
@@ -20,7 +20,6 @@ const GameLogicScreen = ({
   setKeptDice,
   setLiveDice,
   setRoundScore,
-  diceImages,
 }) => {
   const runCheckForFarkle = () => {
     const isFarkle = checkForFarkle(liveDice);
