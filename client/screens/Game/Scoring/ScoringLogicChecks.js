@@ -30,7 +30,7 @@ const checkMultiples = (keptDice, multiple) => {
   var matched = Object.keys(counter).filter((value) => {
     return counter[value] === multiple;
   });
-  return {matched, counter};
+  return { matched, counter };
 };
 
 const checkQuadPair = (keptDice) => {
@@ -45,14 +45,24 @@ const checkQuadPair = (keptDice) => {
 
 module.exports = { checkOne, checkFive, checkMultiples, checkQuadPair };
 
-// ! trial functions
-// const keys = (Object.keys(checkMultiples(diceFiveOfAKind, 4).counter).filter(key => (checkMultiples(diceFiveOfAKind, 4).counter)[key] !== 4))
-// const values = (Object.values(checkMultiples(diceFiveOfAKind, 4).counter).filter(item => item !== 4))
 
-// const newObject = (keys, values) => {
-//   const newArray = []
-//   for (let i = 0; i < keys.length; i++) {
-//   newArray.push({key: keys[i], value: values[i]})
-// }
-// return newArray;
-// }
+
+const extraScoringDiceChecker = (keptDice, multiple) => {
+  const keys = Object.keys(checkMultiples(keptDice, multiple).counter).filter(
+    (key) => checkMultiples(keptDice, multiple).counter[key] !== multiple
+  );
+  const values = Object.values(checkMultiples(keptDice, multiple).counter).filter(
+    (item) => item !== multiple
+  );
+  const newArray = [];
+  for (let i = 0; i < keys.length; i++) {
+    newArray.push({ key: keys[i], value: values[i] });
+  }
+  let total = 0;
+  const ones = newArray.find(element => element.key == 1) || { key: 0, value: 0}
+  const fives = newArray.find(element => element.key == 5) || { key: 0, value: 0}
+  total += (ones.value * 100) + (fives.value * 50)
+  return total;
+};
+
+
