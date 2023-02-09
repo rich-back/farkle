@@ -3,8 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Game from "./screens/Game/Game";
-import Home from "./screens/Home/Home";
+import Game from "./screens/Game/GameScreen";
+import Home from "./screens/Home/HomeScreen";
 import SignIn from "./screens/signIn/SignIn";
 import SignUp from "./screens/signUp/SignUp";
 
