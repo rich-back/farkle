@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import {dice, diceImages} from "../Dice";
-import GameLogic, { checkForFarkle, dicePress, rollDice } from "./GameLogic";
+import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
 
 const GameLogicScreen = ({
   counted,
