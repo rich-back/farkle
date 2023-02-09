@@ -36,7 +36,10 @@ const checkMultiples = (keptDice, multiple) => {
 const checkQuadPair = (keptDice) => {
   let quad = checkMultiples(keptDice, 4);
   let double = checkMultiples(keptDice, 2);
-  const result = quad.concat(double);
+  let result = false;
+  if (quad.length === 1 && double.length === 1) {
+    result = true;
+  }
   return result;
 };
 

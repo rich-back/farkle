@@ -30,7 +30,7 @@ const countScore = ({ roundScore, rollScore, keptDice }) => {
     checkMultiples(keptDice, 5).length === 1) {
       tempRollScore += 2000;
   } else if (
-    checkQuadPair(keptDice).length === 2 ||
+    checkQuadPair(keptDice) === true ||
     checkMultiples(keptDice, 2).length === 3 ||
     checkMultiples(keptDice, 1).length === 6
   ) {
@@ -41,7 +41,10 @@ const countScore = ({ roundScore, rollScore, keptDice }) => {
   } else if (
     checkMultiples(keptDice, 3).length === 1) {
       tempRollScore += checkMultiples(keptDice, 3) * 100
-  } 
+  } else if (
+    checkOne(keptDice).length >= 1 || checkFive(keptDice).length >= 1 || checkOne(keptDice).length >= 1 && checkFive(keptDice).length >= 1) {
+      tempRollScore += (checkOne(keptDice).length *100) + (checkFive(keptDice).length *50)
+    }
 
 
   return { roundScore: tempRoundScore + tempRollScore };
