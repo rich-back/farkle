@@ -30,14 +30,29 @@ const checkMultiples = (keptDice, multiple) => {
   var matched = Object.keys(counter).filter((value) => {
     return counter[value] === multiple;
   });
-  return matched;
+  return {matched, counter};
 };
 
 const checkQuadPair = (keptDice) => {
-  let quad = checkMultiples(keptDice, 4);
-  let double = checkMultiples(keptDice, 2);
-  const result = quad.concat(double);
+  let quad = checkMultiples(keptDice, 4).matched;
+  let double = checkMultiples(keptDice, 2).matched;
+  let result = false;
+  if (quad.length === 1 && double.length === 1) {
+    result = true;
+  }
   return result;
 };
 
 module.exports = { checkOne, checkFive, checkMultiples, checkQuadPair };
+
+// ! trial functions
+// const keys = (Object.keys(checkMultiples(diceFiveOfAKind, 4).counter).filter(key => (checkMultiples(diceFiveOfAKind, 4).counter)[key] !== 4))
+// const values = (Object.values(checkMultiples(diceFiveOfAKind, 4).counter).filter(item => item !== 4))
+
+// const newObject = (keys, values) => {
+//   const newArray = []
+//   for (let i = 0; i < keys.length; i++) {
+//   newArray.push({key: keys[i], value: values[i]})
+// }
+// return newArray;
+// }

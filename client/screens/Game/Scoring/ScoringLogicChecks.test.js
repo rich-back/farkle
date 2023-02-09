@@ -28,7 +28,7 @@ const diceThreeOfAKind = [
     { key: "dice6", value: 6 },
   ];
   const diceFiveOfAKind = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 5 },
     { key: "dice2", value: 6 },
     { key: "dice3", value: 6 },
     { key: "dice4", value: 6 },
@@ -87,25 +87,25 @@ it('checks for multiples', () => {
     let expected4 = checkMultiples(diceFiveOfAKind, 5)
     let expected5 = checkMultiples(diceSixOfAKind, 6)
     let expected6 = checkMultiples(diceTwoTriples, 3)
-    expect(expected1).toStrictEqual([])
-    expect(expected2).toStrictEqual(['5'])
-    expect(expected3).toStrictEqual(['6'])
-    expect(expected4).toStrictEqual(['6'])
-    expect(expected5).toStrictEqual(['6'])
-    expect(expected6).toStrictEqual(['2','6'])
+    expect(expected1.matched).toStrictEqual([])
+    expect(expected2.matched).toStrictEqual(['5'])
+    expect(expected3.matched).toStrictEqual(['6'])
+    expect(expected4.matched).toStrictEqual(['6'])
+    expect(expected5.matched).toStrictEqual(['6'])
+    expect(expected6.matched).toStrictEqual(['2','6'])
 })
 
 it('checks for straight', () => {
     let expected = checkMultiples(dice, 1)
-    expect(expected).toStrictEqual(['1','2','3','4','5','6'])
+    expect(expected.matched).toStrictEqual(['1','2','3','4','5','6'])
 })
 
 it('checks for three doubles', () => {
     let expected = checkMultiples(diceThreeDoubles, 2)
-    expect(expected).toStrictEqual(['2','3','6'])
+    expect(expected.matched).toStrictEqual(['2','3','6'])
 })
 
 it('checks for Quad plus a Pair', () => {
     let expected = checkQuadPair(diceQuadPair)
-    expect(expected).toStrictEqual(['1','2'])
+    expect(expected).toBeTruthy()
 })
