@@ -13,20 +13,20 @@ const diceThreeOfAKind = [
     { key: "dice1", value: 1 },
     { key: "dice2", value: 1 },
     { key: "dice3", value: 1 },
-    { key: "dice4", value: 5 },
+    { key: "dice4", value: 3 },
     { key: "dice5", value: 5 },
     { key: "dice6", value: 6 },
   ];
 const diceThreeOfAKind2 = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 4 },
     { key: "dice2", value: 2 },
     { key: "dice3", value: 2 },
     { key: "dice4", value: 2 },
-    { key: "dice5", value: 5 },
+    { key: "dice5", value: 6 },
     { key: "dice6", value: 6 },
   ];
 const diceThreeOfAKind3 = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 4 },
     { key: "dice2", value: 2 },
     { key: "dice3", value: 3 },
     { key: "dice4", value: 3 },
@@ -34,7 +34,7 @@ const diceThreeOfAKind3 = [
     { key: "dice6", value: 6 },
   ];
 const diceThreeOfAKind4 = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 6 },
     { key: "dice2", value: 2 },
     { key: "dice3", value: 4 },
     { key: "dice4", value: 4 },
@@ -42,7 +42,7 @@ const diceThreeOfAKind4 = [
     { key: "dice6", value: 6 },
   ];
 const diceThreeOfAKind5 = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 3 },
     { key: "dice2", value: 2 },
     { key: "dice3", value: 5 },
     { key: "dice4", value: 5 },
@@ -50,9 +50,9 @@ const diceThreeOfAKind5 = [
     { key: "dice6", value: 6 },
   ];
 const diceThreeOfAKind6 = [
-    { key: "dice1", value: 1 },
+    { key: "dice1", value: 3 },
     { key: "dice2", value: 2 },
-    { key: "dice3", value: 5 },
+    { key: "dice3", value: 4 },
     { key: "dice4", value: 6 },
     { key: "dice5", value: 6 },
     { key: "dice6", value: 6 },
@@ -191,7 +191,7 @@ const diceThreeOfAKind6 = [
     let expected4 = countScore({roundScore:0,rollScore:0, keptDice: diceThreeOfAKind4})
     let expected5 = countScore({roundScore:0,rollScore:0, keptDice: diceThreeOfAKind5})
     let expected6 = countScore({roundScore:0,rollScore:0, keptDice: diceThreeOfAKind6})
-    expect(expected1.roundScore).toBe(100)
+    expect(expected1.roundScore).toBe(150)
     expect(expected2.roundScore).toBe(200)
     expect(expected3.roundScore).toBe(300)
     expect(expected4.roundScore).toBe(400)
