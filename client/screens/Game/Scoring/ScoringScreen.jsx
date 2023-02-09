@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, View, Text } from "react-native";
 import { countScore, endTurn } from "./ScoringLogic";
-import dice from "../Dice";
+import { dice } from "../Dice";
 
 const ScoringScreen = ({
   counted,
   keptDice,
-  liveDice,
   roundScore,
   turnCounter,
   setCounted,
@@ -14,6 +13,7 @@ const ScoringScreen = ({
   setTurnCounter,
   setEndGameAlertVis,
   setRoundScore,
+  setKeptDice,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
@@ -47,6 +47,7 @@ const ScoringScreen = ({
     setTurnCounter(endTurnState.turnCounter);
     setRoundScore(0);
     setLiveDice(dice);
+    setKeptDice([]);
   };
 
   return (
