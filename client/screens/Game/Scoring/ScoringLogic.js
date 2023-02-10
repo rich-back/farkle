@@ -32,7 +32,6 @@ const countScore = ({ roundScore, rollScore, keptDice }) => {
   return { roundScore: tempRoundScore + tempRollScore };
 };
 
-
 const onesFivesOutcome = (keptDice) => {
   return checkOne(keptDice).length * 100 + checkFive(keptDice).length * 50;
 };

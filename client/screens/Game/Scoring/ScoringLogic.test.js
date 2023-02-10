@@ -155,6 +155,13 @@ const diceThreeOfAKind6 = [
     { key: "dice6", value: 2 },
   ];
 
+  const fourDiceFourOfAKind = [
+    { key: "dice2", value: 6 },
+    { key: "dice3", value: 6 },
+    { key: "dice4", value: 6 },
+    { key: "dice6", value: 6 },
+  ];
+
   it('scores six of a kind', () => {
     let expected = countScore({roundScore:0,rollScore:0, keptDice: diceSixOfAKind})
     expect(expected.roundScore).toBe(3000)
@@ -213,3 +220,30 @@ const diceThreeOfAKind6 = [
     expect(expected5.roundScore).toBe(300)
     expect(expected6.roundScore).toBe(150)
 })
+
+it('scores with less than six dice provided', () => {
+  let expected = countScore({roundScore:0,rollScore:0, keptDice: fourDiceFourOfAKind})
+  expect(expected.roundScore).toBe(1000)
+})
+
+const singleOne = [
+  { key: "dice2", value: 1 }
+];
+it('scores with just a single dice', () => {
+  let expected = countScore({roundScore:0,rollScore:0, keptDice: singleOne})
+  expect(expected.roundScore).toBe(100)
+})
+
+const sixDiceFarkle = [
+  { key: "dice1", value: 2 },
+  { key: "dice2", value: 2 },
+  { key: "dice3", value: 3 },
+  { key: "dice4", value: 4 },
+  { key: "dice5", value: 4 },
+  { key: "dice6", value: 6 },
+];
+it('scores 0 for a Farkle', () => {
+  let expected = countScore({roundScore:0,rollScore:0, keptDice: sixDiceFarkle})
+  expect(expected.roundScore).toBe(0)
+})
+
