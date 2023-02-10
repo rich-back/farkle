@@ -26,7 +26,7 @@ const GameLogicScreen = ({
     if (isFarkle) {
       setFarkleAlertVis(true);
       setRoundScore(0);
-      setLiveDice(dice);
+      setKeptDice([]);
     }
   };
 

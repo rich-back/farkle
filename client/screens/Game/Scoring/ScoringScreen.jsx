@@ -46,6 +46,7 @@ const ScoringScreen = ({
       setCounted(true);
       setRollScore(0);
     }
+    setHasSelectedDice(true);
     setEndable(true);
   };
 
