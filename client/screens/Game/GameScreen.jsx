@@ -1,24 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Modal, Pressable, Text, View, StyleSheet } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
-import {dice} from "./Dice";
+import { dice } from "./Dice";
 
 const Game = () => {
-  const [liveDice, setLiveDice] = useState();
+  const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
   const [counted, setCounted] = useState(true);
+  const [rollScore, setRollScore] = useState(0);
   const [roundScore, setRoundScore] = useState(0);
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
+  const [endable, setEndable] = useState(false);
+  const [firstRoll, setFirstRoll] = useState(true);
+  const [disabled, setDisabled] = useState(false);
+  const [hasSelectedDice, setHasSelectedDice] = useState(true);
 
-  useEffect(() => {
+  const firstRollHandler = () => {
+    setFirstRoll(false);
     setLiveDice(dice);
-  }, []);
-
-  const keepDi = () => {
-    setKeptDice();
   };
 
   return (
@@ -57,29 +59,47 @@ const Game = () => {
         </Modal>
       </View>
 
+      {firstRoll ? (
+        <Button title="Click to play" onPress={firstRollHandler} />
+      ) : null}
+
       <GameLogicScreen
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        rollScore={rollScore}
         roundScore={roundScore}
         setCounted={setCounted}
         setFarkleAlertVis={setFarkleAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setRollScore={setRollScore}
         setRoundScore={setRoundScore}
+        disabled={disabled}
+        setDisabled={setDisabled}
+        setHasSelectedDice={setHasSelectedDice}
+        hasSelectedDice={hasSelectedDice}
       />
       <ScoringScreen
+        setHasSelectedDice={setHasSelectedDice}
+        hasSelectedDice={hasSelectedDice}
+        endable={endable}
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        rollScore={rollScore}
         roundScore={roundScore}
         turnCounter={turnCounter}
+        setEndable={setEndable}
         setCounted={setCounted}
         setEndGameAlertVis={setEndGameAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setRollScore={setRollScore}
         setRoundScore={setRoundScore}
         setTurnCounter={setTurnCounter}
+        disabled={disabled}
+        setDisabled={setDisabled}
       />
 
       <Button

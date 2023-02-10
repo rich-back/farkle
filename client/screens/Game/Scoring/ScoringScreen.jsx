@@ -5,6 +5,7 @@ import { dice } from "../Dice";
 
 const ScoringScreen = ({
   counted,
+  endable,
   keptDice,
   roundScore,
   turnCounter,
@@ -14,6 +15,10 @@ const ScoringScreen = ({
   setEndGameAlertVis,
   setRoundScore,
   setKeptDice,
+  setEndable,
+  setDisabled,
+  hasSelectedDice,
+  setHasSelectedDice,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
@@ -25,6 +30,7 @@ const ScoringScreen = ({
   const completeGame = () => {
     if (score <= 0) {
       setEndGameAlertVis(true);
+      clickEndTurn();
     }
   };
 
@@ -38,22 +44,32 @@ const ScoringScreen = ({
       setRoundScore(newCountState.roundScore);
       setCounted(true);
       setRollScore(0);
+      setDisabled(true);
     }
+    setHasSelectedDice(true);
+    setEndable(true);
   };
 
   const clickEndTurn = () => {
-    const endTurnState = endTurn({ score, roundScore, turnCounter });
-    setScore(endTurnState.score);
-    setTurnCounter(endTurnState.turnCounter);
-    setRoundScore(0);
-    setLiveDice(dice);
-    setKeptDice([]);
+    if (endable == true) {
+      const endTurnState = endTurn({ score, roundScore, turnCounter });
+      setScore(endTurnState.score);
+      setTurnCounter(endTurnState.turnCounter);
+      setRoundScore(0);
+      setLiveDice(dice);
+      setKeptDice([]);
+      setHasSelectedDice(true);
+      setCounted(true);
+    }
+    setEndable(false);
   };
 
   return (
     <View>
       <Text></Text>
-      <Button title="count score" onPress={clickCountScore} />
+      {!hasSelectedDice ? (
+        <Button title="count score" onPress={clickCountScore} />
+      ) : null}
       <Text></Text>
       <Button title="end round" onPress={clickEndTurn} />
       <Text>Turn: {turnCounter}</Text>

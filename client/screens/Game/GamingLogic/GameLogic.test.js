@@ -49,6 +49,14 @@ const sixDiceFarkle = [
   { key: "dice6", value: 6 },
 ];
 
+const fiveDiceFarkle = [
+  { key: "dice1", value: 2 },
+  { key: "dice2", value: 2 },
+  { key: "dice3", value: 3 },
+  { key: "dice4", value: 4 },
+  { key: "dice5", value: 4 },
+];
+
 const dice1 = [{ key: "dice1", value: 1 }];
 
 it("should return a random number in range 1-6", () => {
@@ -78,9 +86,16 @@ it("should return 2 altered arrays of dice(one decrement, one increment)", () =>
   expect(expected1.tempKeptDice.length).toBe(1);
 });
 
-it("should return true if farkle and false if not", () => {
-  expected1 = checkForFarkle({ liveDice: sixDiceFarkle });
-  expected2 = checkForFarkle({ liveDice: dice6 });
+it("should return true if farkle and false if not 6 dice", () => {
+  expected1 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: sixDiceFarkle });
+  expected2 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: dice6 });
+  expect(expected1).toBeTruthy();
+  expect(expected2).toBeFalsy();
+});
+
+it("should return true if farkle and false if not 5 dice", () => {
+  expected1 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: fiveDiceFarkle });
+  expected2 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: dice5 });
   expect(expected1).toBeTruthy();
   expect(expected2).toBeFalsy();
 });

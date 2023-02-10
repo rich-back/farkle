@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Button,
   FlatList,
@@ -8,8 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {dice, diceImages} from "../Dice";
+import { diceImages } from "../Dice";
 import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
+import { useEffect, useState } from "react";
 
 const GameLogicScreen = ({
   counted,
@@ -20,22 +20,33 @@ const GameLogicScreen = ({
   setKeptDice,
   setLiveDice,
   setRoundScore,
+  setDisabled,
+  disabled,
+  setHasSelectedDice,
 }) => {
-  const runCheckForFarkle = () => {
-    const isFarkle = checkForFarkle(liveDice);
-    if (isFarkle) {
-      setFarkleAlertVis(true);
-      setRoundScore(0);
-      setLiveDice(dice);
-    }
-  };
+  const [clickCounter, setClickCounter] = useState(0);
+
+  useEffect(() => {
+    console.log(liveDice);
+    runCheckForFarkle();
+  }, [clickCounter]);
 
   const clickRollDice = () => {
     if (counted) {
       const rolledDice = rollDice({ liveDice });
       setLiveDice(rolledDice.newDice);
-      runCheckForFarkle(rolledDice.newDice);
       setCounted(false);
+      setDisabled(false);
+      setClickCounter(clickCounter + 1);
+    }
+  };
+
+  const runCheckForFarkle = () => {
+    const isFarkle = checkForFarkle({ liveDice });
+    if (isFarkle) {
+      setFarkleAlertVis(true);
+      setRoundScore(0);
+      setKeptDice([]);
     }
   };
 
@@ -43,6 +54,7 @@ const GameLogicScreen = ({
     const dicePressHandler = dicePress({ itemKey, liveDice });
     setLiveDice(dicePressHandler.tempLiveDice);
     setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
+    setHasSelectedDice(false)
   };
 
   return (
@@ -52,7 +64,10 @@ const GameLogicScreen = ({
         data={liveDice}
         renderItem={({ item }) => (
           <View style={styles.diceContainer}>
-            <TouchableOpacity onPress={() => dicePressed(item.key)}>
+            <TouchableOpacity
+              disabled={disabled}
+              onPress={() => dicePressed(item.key)}
+            >
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
           </View>
