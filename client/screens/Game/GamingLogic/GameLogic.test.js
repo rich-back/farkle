@@ -44,16 +44,16 @@ it("should return a random number in range 1-6", () => {
 });
 
 it("should return an array of dice of the same length as is input", () => {
-  let expected1 = rollDice(dice1);
-  let expected2 = rollDice(dice2);
-  let expected3 = rollDice(dice3);
-  let expected4 = rollDice(dice4);
-  let expected5 = rollDice(dice5);
-  let expected6 = rollDice(dice6);
-  expect(expected6.length).toBe(6);
-  expect(expected5.length).toBe(5);
-  expect(expected4.length).toBe(4);
-  expect(expected3.length).toBe(3);
-  expect(expected2.length).toBe(2);
-  expect(expected1.length).toBe(6);
+  let expected1 = rollDice({ liveDice: dice1 });
+  let expected2 = rollDice({ liveDice: dice2 });
+  let expected3 = rollDice({ liveDice: dice3 });
+  let expected4 = rollDice({ liveDice: dice4 });
+  let expected5 = rollDice({ liveDice: dice5 });
+  let expected6 = rollDice({ liveDice: dice6 });
+  expect(expected6.newDice.length).toBe(6);
+  expect(expected5.newDice.length).toBe(5);
+  expect(expected4.newDice.length).toBe(4);
+  expect(expected3.newDice.length).toBe(3);
+  expect(expected2.newDice.length).toBe(2);
+  expect(expected1.newDice.length).toBe(1);
 });
