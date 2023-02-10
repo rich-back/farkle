@@ -5,7 +5,7 @@ import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
 
 const Game = () => {
-  const [liveDice, setLiveDice] = useState();
+  const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
   const [counted, setCounted] = useState(true);
   const [rollScore, setRollScore] = useState(0);

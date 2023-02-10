@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Button,
   FlatList,
@@ -8,13 +7,17 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { dice, diceImages } from "../Dice";
+import { diceImages } from "../Dice";
 import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
+import { countScore } from "../Scoring/ScoringLogic";
+import { useEffect, useState } from "react";
 
 const GameLogicScreen = ({
   counted,
   keptDice,
   liveDice,
+  rollScore,
+  roundScore,
   setCounted,
   setFarkleAlertVis,
   setKeptDice,
@@ -22,23 +25,31 @@ const GameLogicScreen = ({
   setRoundScore,
   setDisabled,
   disabled,
+  setRollScore,
 }) => {
+  const [clickCounter, setClickCounter] = useState(0);
+
+  useEffect(() => {
+    console.log(liveDice);
+    runCheckForFarkle();
+  }, [clickCounter]);
+
+  const clickRollDice = () => {
+    if (counted) {
+      const rolledDice = rollDice({ liveDice });
+      setLiveDice(rolledDice.newDice);
+      setCounted(false);
+      setDisabled(false);
+      setClickCounter(clickCounter + 1);
+    }
+  };
+
   const runCheckForFarkle = () => {
     const isFarkle = checkForFarkle({ liveDice });
     if (isFarkle) {
       setFarkleAlertVis(true);
       setRoundScore(0);
       setKeptDice([]);
-    }
-  };
-
-  const clickRollDice = () => {
-    if (counted) {
-      const rolledDice = rollDice({ liveDice });
-      setLiveDice(rolledDice.newDice);
-      runCheckForFarkle(rolledDice.newDice);
-      setCounted(false);
-      setDisabled(false);
     }
   };
 
@@ -55,7 +66,10 @@ const GameLogicScreen = ({
         data={liveDice}
         renderItem={({ item }) => (
           <View style={styles.diceContainer}>
-            <TouchableOpacity disabled={disabled} onPress={() => dicePressed(item.key)}>
+            <TouchableOpacity
+              disabled={disabled}
+              onPress={() => dicePressed(item.key)}
+            >
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
           </View>
