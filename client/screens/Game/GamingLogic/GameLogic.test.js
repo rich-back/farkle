@@ -81,6 +81,6 @@ it("should return 2 altered arrays of dice(one decrement, one increment)", () =>
 it("should return true if farkle and false if not", () => {
   expected1 = checkForFarkle({ liveDice: sixDiceFarkle });
   expected2 = checkForFarkle({ liveDice: dice6 });
-  expect(expected1).toBeTruthy;
-  expect(expected1).toBeFalsey;
+  expect(expected1).toBeTruthy();
+  expect(expected2).toBeFalsy();
 });
