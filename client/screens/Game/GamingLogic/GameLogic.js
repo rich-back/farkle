@@ -18,7 +18,6 @@ export const rollDice = ({ liveDice }) => {
     diValue = getRandomNumber();
     return { key: diKey, value: diValue };
   });
-
   return { newDice: newDice };
 };
 

@@ -29,7 +29,7 @@ const countScore = ({ roundScore, rollScore, keptDice }) => {
   } else {
     tempRollScore += onesFivesOutcome(keptDice);
   }
-  return { roundScore: tempRoundScore + tempRollScore };
+  return { roundScore: tempRoundScore + tempRollScore, rollScore: tempRollScore };
 };
 
 const onesFivesOutcome = (keptDice) => {

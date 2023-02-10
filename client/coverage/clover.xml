@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675985704820" clover="3.2.0">
-  <project timestamp="1675985704820" name="All files">
-    <metrics statements="64" coveredstatements="63" conditionals="29" coveredconditionals="29" methods="15" coveredmethods="14" elements="108" coveredelements="106" complexity="0" loc="64" ncloc="64" packages="1" files="2" classes="2"/>
-    <file name="ScoringLogic.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogic.js">
-      <metrics statements="35" coveredstatements="34" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="7"/>
+<coverage generated="1676021796189" clover="3.2.0">
+  <project timestamp="1676021796190" name="All files">
+    <metrics statements="64" coveredstatements="64" conditionals="29" coveredconditionals="29" methods="15" coveredmethods="15" elements="108" coveredelements="108" complexity="0" loc="64" ncloc="64" packages="1" files="2" classes="2"/>
+    <file name="ScoringLogic.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/Scoring/ScoringLogic.js">
+      <metrics statements="35" coveredstatements="35" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="8"/>
       <line num="8" count="1" type="stmt"/>
       <line num="9" count="22" type="stmt"/>
       <line num="10" count="22" type="stmt"/>
@@ -24,7 +24,7 @@
       <line num="35" count="1" type="stmt"/>
       <line num="36" count="8" type="stmt"/>
       <line num="39" count="1" type="stmt"/>
-      <line num="40" count="0" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
       <line num="43" count="1" type="stmt"/>
       <line num="44" count="9" type="stmt"/>
       <line num="45" count="28" type="stmt"/>
@@ -40,7 +40,7 @@
       <line num="64" count="9" type="stmt"/>
       <line num="67" count="1" type="stmt"/>
     </file>
-    <file name="ScoringLogicChecks.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogicChecks.js">
+    <file name="ScoringLogicChecks.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/Scoring/ScoringLogicChecks.js">
       <metrics statements="29" coveredstatements="29" conditionals="10" coveredconditionals="10" methods="7" coveredmethods="7"/>
       <line num="1" count="2" type="stmt"/>
       <line num="2" count="9" type="stmt"/>
