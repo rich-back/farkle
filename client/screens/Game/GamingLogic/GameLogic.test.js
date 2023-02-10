@@ -61,5 +61,5 @@ it("should return an array of dice of the same length as is input", () => {
 it("should return 2 altered arrays of dice(one decrement, one increment)", () => {
   expected1 = dicePress({ itemKey: "dice1", liveDice: dice6 });
   expect(expected1.tempLiveDice.length).toBe(5);
-  expect(expected1.tempKeptDice.length).toBe(0);
+  expect(expected1.tempKeptDice.length).toBe(1);
 });

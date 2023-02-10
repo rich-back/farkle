@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676023662907" clover="3.2.0">
-  <project timestamp="1676023662907" name="All files">
+<coverage generated="1676023748795" clover="3.2.0">
+  <project timestamp="1676023748795" name="All files">
     <metrics statements="85" coveredstatements="82" conditionals="31" coveredconditionals="29" methods="23" coveredmethods="21" elements="139" coveredelements="132" complexity="0" loc="85" ncloc="85" packages="2" files="3" classes="3"/>
     <package name="GamingLogic">
       <metrics statements="21" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="6"/>
