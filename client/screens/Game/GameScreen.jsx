@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Modal, Pressable, Text, View, StyleSheet } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
-import {dice} from "./Dice";
+import { dice } from "./Dice";
 
 const Game = () => {
   const [liveDice, setLiveDice] = useState();
@@ -12,14 +12,11 @@ const Game = () => {
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
+  const [endable, setEndable] = useState(false);
 
   useEffect(() => {
     setLiveDice(dice);
   }, []);
-
-  const keepDi = () => {
-    setKeptDice();
-  };
 
   return (
     <View>
@@ -69,11 +66,13 @@ const Game = () => {
         setRoundScore={setRoundScore}
       />
       <ScoringScreen
+        endable={endable}
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
         roundScore={roundScore}
         turnCounter={turnCounter}
+        setEndable={setEndable}
         setCounted={setCounted}
         setEndGameAlertVis={setEndGameAlertVis}
         setKeptDice={setKeptDice}

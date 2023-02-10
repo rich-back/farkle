@@ -6,7 +6,11 @@ export const getRandomNumber = () => {
 };
 
 export const checkForFarkle = ({ liveDice }) => {
-  const runCheckScore = countScore({ roundScore: 0, rollScore: 0, keptDice: liveDice })
+  const runCheckScore = countScore({
+    roundScore: 0,
+    rollScore: 0,
+    keptDice: liveDice,
+  });
   return runCheckScore.rollScore === 0;
 };
 

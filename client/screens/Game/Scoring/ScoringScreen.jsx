@@ -5,6 +5,7 @@ import { dice } from "../Dice";
 
 const ScoringScreen = ({
   counted,
+  endable,
   keptDice,
   roundScore,
   turnCounter,
@@ -14,6 +15,7 @@ const ScoringScreen = ({
   setEndGameAlertVis,
   setRoundScore,
   setKeptDice,
+  setEndable,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
@@ -39,15 +41,21 @@ const ScoringScreen = ({
       setCounted(true);
       setRollScore(0);
     }
+    setEndable(true);
   };
 
   const clickEndTurn = () => {
-    const endTurnState = endTurn({ score, roundScore, turnCounter });
-    setScore(endTurnState.score);
-    setTurnCounter(endTurnState.turnCounter);
-    setRoundScore(0);
-    setLiveDice(dice);
-    setKeptDice([]);
+    if (endable == true) {
+      const endTurnState = endTurn({ score, roundScore, turnCounter });
+      setScore(endTurnState.score);
+      setTurnCounter(endTurnState.turnCounter);
+      setRoundScore(0);
+      setLiveDice(dice);
+      setKeptDice([]);
+      console.log("endable");
+    }
+    setEndable(false);
+    console.log("not endable");
   };
 
   return (
