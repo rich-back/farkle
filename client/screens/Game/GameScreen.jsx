@@ -14,6 +14,7 @@ const Game = () => {
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
   const [endable, setEndable] = useState(false);
   const [firstRoll, setFirstRoll] = useState(true);
+  const [disabled,setDisabled]=useState(false)
 
   const firstRollHandler = () => {
     setFirstRoll(false);
@@ -70,6 +71,8 @@ const Game = () => {
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
         setRoundScore={setRoundScore}
+        disabled={disabled}
+        setDisabled={setDisabled}
       />
       <ScoringScreen
         endable={endable}
@@ -85,6 +88,8 @@ const Game = () => {
         setLiveDice={setLiveDice}
         setRoundScore={setRoundScore}
         setTurnCounter={setTurnCounter}
+        disabled={disabled}
+        setDisabled={setDisabled}
       />
 
       <Button

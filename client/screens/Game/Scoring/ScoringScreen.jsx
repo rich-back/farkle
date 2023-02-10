@@ -16,10 +16,13 @@ const ScoringScreen = ({
   setRoundScore,
   setKeptDice,
   setEndable,
+  diabled, 
+  setDisabled,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
   const [hasSelectedDice, setHasSelectedDice] = useState(false);
+  
 
   useEffect(() => {
     completeGame();
@@ -45,6 +48,7 @@ const ScoringScreen = ({
       setRoundScore(newCountState.roundScore);
       setCounted(true);
       setRollScore(0);
+      setDisabled(true)
     }
     setHasSelectedDice(true);
     setEndable(true);

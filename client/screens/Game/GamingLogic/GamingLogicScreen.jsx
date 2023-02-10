@@ -20,6 +20,8 @@ const GameLogicScreen = ({
   setKeptDice,
   setLiveDice,
   setRoundScore,
+  setDisabled,
+  disabled,
 }) => {
   const runCheckForFarkle = () => {
     const isFarkle = checkForFarkle({ liveDice });
@@ -36,6 +38,7 @@ const GameLogicScreen = ({
       setLiveDice(rolledDice.newDice);
       runCheckForFarkle(rolledDice.newDice);
       setCounted(false);
+      setDisabled(false);
     }
   };
 
@@ -52,7 +55,7 @@ const GameLogicScreen = ({
         data={liveDice}
         renderItem={({ item }) => (
           <View style={styles.diceContainer}>
-            <TouchableOpacity onPress={() => dicePressed(item.key)}>
+            <TouchableOpacity disabled={disabled} onPress={() => dicePressed(item.key)}>
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
           </View>
