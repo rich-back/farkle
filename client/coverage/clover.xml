@@ -1,76 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675985704820" clover="3.2.0">
-  <project timestamp="1675985704820" name="All files">
-    <metrics statements="64" coveredstatements="63" conditionals="29" coveredconditionals="29" methods="15" coveredmethods="14" elements="108" coveredelements="106" complexity="0" loc="64" ncloc="64" packages="1" files="2" classes="2"/>
-    <file name="ScoringLogic.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogic.js">
-      <metrics statements="35" coveredstatements="34" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="7"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="9" count="22" type="stmt"/>
-      <line num="10" count="22" type="stmt"/>
-      <line num="11" count="22" type="cond" truecount="2" falsecount="0"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="13" count="21" type="cond" truecount="2" falsecount="0"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="15" count="20" type="cond" truecount="2" falsecount="0"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="17" count="19" type="cond" truecount="2" falsecount="0"/>
-      <line num="22" count="3" type="stmt"/>
-      <line num="23" count="16" type="cond" truecount="2" falsecount="0"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="25" count="14" type="cond" truecount="2" falsecount="0"/>
-      <line num="26" count="6" type="stmt"/>
-      <line num="30" count="8" type="stmt"/>
-      <line num="32" count="22" type="stmt"/>
-      <line num="35" count="1" type="stmt"/>
-      <line num="36" count="8" type="stmt"/>
-      <line num="39" count="1" type="stmt"/>
-      <line num="40" count="0" type="stmt"/>
-      <line num="43" count="1" type="stmt"/>
-      <line num="44" count="9" type="stmt"/>
-      <line num="45" count="28" type="stmt"/>
-      <line num="47" count="9" type="stmt"/>
-      <line num="49" count="28" type="stmt"/>
-      <line num="50" count="9" type="stmt"/>
-      <line num="51" count="9" type="stmt"/>
-      <line num="52" count="19" type="stmt"/>
-      <line num="54" count="9" type="stmt"/>
-      <line num="55" count="19" type="cond" truecount="2" falsecount="0"/>
-      <line num="59" count="18" type="cond" truecount="2" falsecount="0"/>
-      <line num="63" count="9" type="stmt"/>
-      <line num="64" count="9" type="stmt"/>
-      <line num="67" count="1" type="stmt"/>
-    </file>
-    <file name="ScoringLogicChecks.js" path="/Users/richard/codeclan_work/Farkle App/Farkle/client/screens/Game/Scoring/ScoringLogicChecks.js">
-      <metrics statements="29" coveredstatements="29" conditionals="10" coveredconditionals="10" methods="7" coveredmethods="7"/>
-      <line num="1" count="2" type="stmt"/>
-      <line num="2" count="9" type="stmt"/>
-      <line num="3" count="9" type="stmt"/>
-      <line num="4" count="49" type="cond" truecount="2" falsecount="0"/>
-      <line num="5" count="8" type="stmt"/>
-      <line num="8" count="9" type="stmt"/>
-      <line num="11" count="2" type="stmt"/>
-      <line num="12" count="9" type="stmt"/>
-      <line num="13" count="9" type="stmt"/>
-      <line num="14" count="49" type="cond" truecount="2" falsecount="0"/>
-      <line num="15" count="7" type="stmt"/>
-      <line num="18" count="9" type="stmt"/>
-      <line num="21" count="2" type="stmt"/>
-      <line num="22" count="228" type="stmt"/>
-      <line num="23" count="228" type="stmt"/>
-      <line num="24" count="1301" type="cond" truecount="2" falsecount="0"/>
-      <line num="25" count="506" type="stmt"/>
-      <line num="27" count="795" type="stmt"/>
-      <line num="30" count="228" type="stmt"/>
-      <line num="31" count="795" type="stmt"/>
-      <line num="33" count="228" type="stmt"/>
-      <line num="36" count="2" type="stmt"/>
-      <line num="37" count="20" type="stmt"/>
-      <line num="38" count="20" type="stmt"/>
-      <line num="39" count="20" type="stmt"/>
-      <line num="40" count="20" type="cond" truecount="4" falsecount="0"/>
-      <line num="41" count="2" type="stmt"/>
-      <line num="43" count="20" type="stmt"/>
-      <line num="46" count="2" type="stmt"/>
-    </file>
+<coverage generated="1676025088945" clover="3.2.0">
+  <project timestamp="1676025088945" name="All files">
+    <metrics statements="84" coveredstatements="84" conditionals="29" coveredconditionals="29" methods="22" coveredmethods="22" elements="135" coveredelements="135" complexity="0" loc="84" ncloc="84" packages="2" files="3" classes="3"/>
+    <package name="GamingLogic">
+      <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+      <file name="GameLogic.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/GamingLogic/GameLogic.js">
+        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="21" type="stmt"/>
+        <line num="17" count="21" type="stmt"/>
+        <line num="18" count="21" type="stmt"/>
+        <line num="19" count="21" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="Scoring">
+      <metrics statements="64" coveredstatements="64" conditionals="29" coveredconditionals="29" methods="15" coveredmethods="15"/>
+      <file name="ScoringLogic.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/Scoring/ScoringLogic.js">
+        <metrics statements="35" coveredstatements="35" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="8"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="24" type="stmt"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="11" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="30" count="9" type="stmt"/>
+        <line num="32" count="24" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="9" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="9" type="stmt"/>
+        <line num="45" count="28" type="stmt"/>
+        <line num="47" count="9" type="stmt"/>
+        <line num="49" count="28" type="stmt"/>
+        <line num="50" count="9" type="stmt"/>
+        <line num="51" count="9" type="stmt"/>
+        <line num="52" count="19" type="stmt"/>
+        <line num="54" count="9" type="stmt"/>
+        <line num="55" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="63" count="9" type="stmt"/>
+        <line num="64" count="9" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+      </file>
+      <file name="ScoringLogicChecks.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/Scoring/ScoringLogicChecks.js">
+        <metrics statements="29" coveredstatements="29" conditionals="10" coveredconditionals="10" methods="7" coveredmethods="7"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="10" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="55" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="55" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="244" type="stmt"/>
+        <line num="23" count="244" type="stmt"/>
+        <line num="24" count="1397" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="524" type="stmt"/>
+        <line num="27" count="873" type="stmt"/>
+        <line num="30" count="244" type="stmt"/>
+        <line num="31" count="873" type="stmt"/>
+        <line num="33" count="244" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="37" count="22" type="stmt"/>
+        <line num="38" count="22" type="stmt"/>
+        <line num="39" count="22" type="stmt"/>
+        <line num="40" count="22" type="cond" truecount="4" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="43" count="22" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
