@@ -19,10 +19,15 @@ const ScoringScreen = ({
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
+  const [hasSelectedDice, setHasSelectedDice] = useState(false);
 
   useEffect(() => {
     completeGame();
   }, [score]);
+
+  useEffect(() => {
+    setHasSelectedDice(!hasSelectedDice);
+  }, [keptDice]);
 
   const completeGame = () => {
     if (score <= 0) {
@@ -61,7 +66,9 @@ const ScoringScreen = ({
   return (
     <View>
       <Text></Text>
-      <Button title="count score" onPress={clickCountScore} />
+      {!hasSelectedDice ? (
+        <Button title="count score" onPress={clickCountScore} />
+      ) : null}
       <Text></Text>
       <Button title="end round" onPress={clickEndTurn} />
       <Text>Turn: {turnCounter}</Text>
