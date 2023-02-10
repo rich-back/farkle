@@ -8,6 +8,7 @@ const Game = () => {
   const [liveDice, setLiveDice] = useState();
   const [keptDice, setKeptDice] = useState([]);
   const [counted, setCounted] = useState(true);
+  const [rollScore, setRollScore] = useState(0);
   const [roundScore, setRoundScore] = useState(0);
   const [turnCounter, setTurnCounter] = useState(1);
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
@@ -15,6 +16,7 @@ const Game = () => {
   const [endable, setEndable] = useState(false);
   const [firstRoll, setFirstRoll] = useState(true);
   const [disabled,setDisabled]=useState(false)
+
 
   const firstRollHandler = () => {
     setFirstRoll(false);
@@ -65,11 +67,13 @@ const Game = () => {
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        rollScore={rollScore}
         roundScore={roundScore}
         setCounted={setCounted}
         setFarkleAlertVis={setFarkleAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setRollScore={setRollScore}
         setRoundScore={setRoundScore}
         disabled={disabled}
         setDisabled={setDisabled}
@@ -79,6 +83,7 @@ const Game = () => {
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        rollScore={rollScore}
         roundScore={roundScore}
         turnCounter={turnCounter}
         setEndable={setEndable}
@@ -86,6 +91,7 @@ const Game = () => {
         setEndGameAlertVis={setEndGameAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setRollScore={setRollScore}
         setRoundScore={setRoundScore}
         setTurnCounter={setTurnCounter}
         disabled={disabled}
