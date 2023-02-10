@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676023748795" clover="3.2.0">
-  <project timestamp="1676023748795" name="All files">
-    <metrics statements="85" coveredstatements="82" conditionals="31" coveredconditionals="29" methods="23" coveredmethods="21" elements="139" coveredelements="132" complexity="0" loc="85" ncloc="85" packages="2" files="3" classes="3"/>
+<coverage generated="1676024034581" clover="3.2.0">
+  <project timestamp="1676024034581" name="All files">
+    <metrics statements="85" coveredstatements="83" conditionals="31" coveredconditionals="29" methods="23" coveredmethods="22" elements="139" coveredelements="134" complexity="0" loc="85" ncloc="85" packages="2" files="3" classes="3"/>
     <package name="GamingLogic">
-      <metrics statements="21" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="6"/>
+      <metrics statements="21" coveredstatements="19" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="7"/>
       <file name="GameLogic.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/GamingLogic/GameLogic.js">
-        <metrics statements="21" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="6"/>
+        <metrics statements="21" coveredstatements="19" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="22" type="stmt"/>
         <line num="3" count="22" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="10" count="0" type="stmt"/>
         <line num="13" count="1" type="stmt"/>

@@ -1,4 +1,9 @@
-import { dicePress, getRandomNumber, rollDice } from "./GameLogic";
+import {
+  checkForFarkle,
+  dicePress,
+  getRandomNumber,
+  rollDice,
+} from "./GameLogic";
 
 const dice6 = [
   { key: "dice1", value: 1 },
@@ -35,6 +40,15 @@ const dice2 = [
   { key: "dice2", value: 2 },
 ];
 
+const sixDiceFarkle = [
+  { key: "dice1", value: 2 },
+  { key: "dice2", value: 2 },
+  { key: "dice3", value: 3 },
+  { key: "dice4", value: 4 },
+  { key: "dice5", value: 4 },
+  { key: "dice6", value: 6 },
+];
+
 const dice1 = [{ key: "dice1", value: 1 }];
 
 it("should return a random number in range 1-6", () => {
@@ -62,4 +76,11 @@ it("should return 2 altered arrays of dice(one decrement, one increment)", () =>
   expected1 = dicePress({ itemKey: "dice1", liveDice: dice6 });
   expect(expected1.tempLiveDice.length).toBe(5);
   expect(expected1.tempKeptDice.length).toBe(1);
+});
+
+it("should return true if farkle and false if not", () => {
+  expected1 = checkForFarkle({ liveDice: sixDiceFarkle });
+  expected2 = checkForFarkle({ liveDice: dice6 });
+  expect(expected1).toBeTruthy;
+  expect(expected1).toBeFalsey;
 });
