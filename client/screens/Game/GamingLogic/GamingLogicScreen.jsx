@@ -9,15 +9,12 @@ import {
 } from "react-native";
 import { diceImages } from "../Dice";
 import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
-import { countScore } from "../Scoring/ScoringLogic";
 import { useEffect, useState } from "react";
 
 const GameLogicScreen = ({
   counted,
   keptDice,
   liveDice,
-  rollScore,
-  roundScore,
   setCounted,
   setFarkleAlertVis,
   setKeptDice,
@@ -25,7 +22,7 @@ const GameLogicScreen = ({
   setRoundScore,
   setDisabled,
   disabled,
-  setRollScore,
+  setHasSelectedDice,
 }) => {
   const [clickCounter, setClickCounter] = useState(0);
 
@@ -57,6 +54,7 @@ const GameLogicScreen = ({
     const dicePressHandler = dicePress({ itemKey, liveDice });
     setLiveDice(dicePressHandler.tempLiveDice);
     setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
+    setHasSelectedDice(false)
   };
 
   return (

@@ -16,25 +16,21 @@ const ScoringScreen = ({
   setRoundScore,
   setKeptDice,
   setEndable,
-  diabled, 
   setDisabled,
+  hasSelectedDice,
+  setHasSelectedDice,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [score, setScore] = useState(40);
-  const [hasSelectedDice, setHasSelectedDice] = useState(false);
-  
 
   useEffect(() => {
     completeGame();
   }, [score]);
 
-  useEffect(() => {
-    setHasSelectedDice(!hasSelectedDice);
-  }, [keptDice]);
-
   const completeGame = () => {
     if (score <= 0) {
       setEndGameAlertVis(true);
+      clickEndTurn();
     }
   };
 
@@ -48,7 +44,7 @@ const ScoringScreen = ({
       setRoundScore(newCountState.roundScore);
       setCounted(true);
       setRollScore(0);
-      setDisabled(true)
+      setDisabled(true);
     }
     setHasSelectedDice(true);
     setEndable(true);
@@ -62,11 +58,10 @@ const ScoringScreen = ({
       setRoundScore(0);
       setLiveDice(dice);
       setKeptDice([]);
-      setHasSelectedDice(!hasSelectedDice);
-      console.log("endable");
+      setHasSelectedDice(true);
+      setCounted(true);
     }
     setEndable(false);
-    console.log("not endable");
   };
 
   return (
