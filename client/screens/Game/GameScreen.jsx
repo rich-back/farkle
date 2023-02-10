@@ -13,10 +13,12 @@ const Game = () => {
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
   const [endable, setEndable] = useState(false);
+  const [firstRoll, setFirstRoll] = useState(true);
 
-  useEffect(() => {
+  const firstRollHandler = () => {
+    setFirstRoll(false);
     setLiveDice(dice);
-  }, []);
+  };
 
   return (
     <View>
@@ -53,6 +55,10 @@ const Game = () => {
           </View>
         </Modal>
       </View>
+
+      {firstRoll ? (
+        <Button title="Click to play" onPress={firstRollHandler} />
+      ) : null}
 
       <GameLogicScreen
         counted={counted}
