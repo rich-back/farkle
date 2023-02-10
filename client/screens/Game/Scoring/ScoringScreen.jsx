@@ -58,6 +58,7 @@ const ScoringScreen = ({
       setRoundScore(0);
       setLiveDice(dice);
       setKeptDice([]);
+      setHasSelectedDice(!hasSelectedDice);
       console.log("endable");
     }
     setEndable(false);
