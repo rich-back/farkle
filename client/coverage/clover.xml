@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676023330530" clover="3.2.0">
-  <project timestamp="1676023330530" name="All files">
-    <metrics statements="85" coveredstatements="77" conditionals="31" coveredconditionals="29" methods="23" coveredmethods="18" elements="139" coveredelements="124" complexity="0" loc="85" ncloc="85" packages="2" files="3" classes="3"/>
+<coverage generated="1676023662907" clover="3.2.0">
+  <project timestamp="1676023662907" name="All files">
+    <metrics statements="85" coveredstatements="82" conditionals="31" coveredconditionals="29" methods="23" coveredmethods="21" elements="139" coveredelements="132" complexity="0" loc="85" ncloc="85" packages="2" files="3" classes="3"/>
     <package name="GamingLogic">
-      <metrics statements="21" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="3"/>
+      <metrics statements="21" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="6"/>
       <file name="GameLogic.js" path="/Users/sfbs/codeclan_work/projects/farkle/client/screens/Game/GamingLogic/GameLogic.js">
-        <metrics statements="21" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="3"/>
+        <metrics statements="21" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="22" type="stmt"/>
         <line num="3" count="22" type="stmt"/>
@@ -22,11 +22,11 @@
         <line num="19" count="21" type="stmt"/>
         <line num="21" count="6" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
     </package>
     <package name="Scoring">

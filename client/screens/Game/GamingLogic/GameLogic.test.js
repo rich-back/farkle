@@ -1,4 +1,4 @@
-import { getRandomNumber, rollDice } from "./GameLogic";
+import { dicePress, getRandomNumber, rollDice } from "./GameLogic";
 
 const dice6 = [
   { key: "dice1", value: 1 },
@@ -56,4 +56,10 @@ it("should return an array of dice of the same length as is input", () => {
   expect(expected3.newDice.length).toBe(3);
   expect(expected2.newDice.length).toBe(2);
   expect(expected1.newDice.length).toBe(1);
+});
+
+it("should return 2 altered arrays of dice(one decrement, one increment)", () => {
+  expected1 = dicePress({ itemKey: "dice1", liveDice: dice6 });
+  expect(expected1.tempLiveDice.length).toBe(5);
+  expect(expected1.tempKeptDice.length).toBe(0);
 });
