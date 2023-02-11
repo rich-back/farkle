@@ -21,7 +21,7 @@ const ScoringScreen = ({
   setHasSelectedDice,
 }) => {
   const [rollScore, setRollScore] = useState(0);
-  const [score, setScore] = useState(40);
+  const [score, setScore] = useState(5000);
 
   useEffect(() => {
     completeGame();
