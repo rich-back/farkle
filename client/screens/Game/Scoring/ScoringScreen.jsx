@@ -37,7 +37,7 @@ const ScoringScreen = ({
 
   useEffect(() => {
     completeGame();
-  }, [score]);
+  }, [score, roundScore]);
 
   useEffect(() => {
     if (bankedDice.length === 6) {
@@ -55,7 +55,7 @@ const ScoringScreen = ({
   }, [turnCounter]);
 
   const completeGame = () => {
-    if (score <= 0) {
+    if (roundScore >= currentPlayer.score) {
       setEndGameAlertVis(true);
       clickEndTurn();
     }
@@ -74,7 +74,6 @@ const ScoringScreen = ({
       setDisabled(true);
       setHasSelectedDice(true);
       setEndable(true);
-      // setBankedDice(liveDice.concat(dicePressHandler.tempLiveDice));
       setBankedDice(bankedDice.concat(keptDice));
       setKeptDice([]);
     }
@@ -83,13 +82,11 @@ const ScoringScreen = ({
   const clickEndTurn = () => {
     if (endable == true) {
       const endTurnState = endTurn({ score, roundScore, turnCounter });
-      // !trial
       if (currentPlayer.name === player1.name) {
         setPlayer1({ ...player1, score: endTurnState.score });
       } else {
         setPlayer2({ ...player2, score: endTurnState.score });
       }
-      // setScore(endTurnState.score);
       setTurnCounter(endTurnState.turnCounter);
       setRoundScore(0);
       setLiveDice(dice);
@@ -97,8 +94,8 @@ const ScoringScreen = ({
       setBankedDice([]);
       setHasSelectedDice(true);
       setCounted(true);
+      setEndable(false);
     }
-    setEndable(false);
   };
 
   const clickRollAgain = () => {
