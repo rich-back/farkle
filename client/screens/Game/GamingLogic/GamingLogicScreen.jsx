@@ -10,7 +10,10 @@ import {
 } from "react-native";
 import { diceImages } from "../Dice";
 import { checkForFarkle, liveDicePress, keptDicePress, rollDice } from "./GameLogic";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { Audio } from "expo-av";
+
+import shakeSound from "../../../assets/RATTLE.wav";
 
 
 const GameLogicScreen = ({
@@ -30,6 +33,23 @@ const GameLogicScreen = ({
 }) => {
   const [clickCounter, setClickCounter] = useState(0);
 
+  const [sound, setSound] = useState();
+
+  const playSound = useCallback(async() => {
+    const { sound } = await Audio.Sound.createAsync(shakeSound);
+    setSound(sound);
+    await sound.playAsync();
+    console.warn('Sound!')
+  }, [])
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   useEffect(() => {
     console.log(liveDice);
     runCheckForFarkle();
@@ -42,6 +62,7 @@ const GameLogicScreen = ({
       setCounted(false);
       setDisabled(false);
       setClickCounter(clickCounter + 1);
+      playSound();
     }
   };
 
@@ -109,7 +130,7 @@ const GameLogicScreen = ({
           </View>
         )}
       />
-      <Button title="Roll the dice" onPress={clickRollDice} />
+      <Button title="Roll the dice" onPress={clickRollDice}/>
     </View>
   );
 };
