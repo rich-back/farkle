@@ -4,6 +4,7 @@ import diceImage3 from "../../assets/diceImage3.png";
 import diceImage4 from "../../assets/diceImage4.png";
 import diceImage5 from "../../assets/diceImage5.png";
 import diceImage6 from "../../assets/diceImage6.png";
+import redDice1 from "../../assets/redDice01.png";
 
 const dice = [
   { key: "dice1", value: 1 },
