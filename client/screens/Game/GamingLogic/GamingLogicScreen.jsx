@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { diceImages } from "../Dice";
-import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
+import { checkForFarkle, liveDicePress, keptDicePress, rollDice } from "./GameLogic";
 import { useEffect, useState } from "react";
 
 
@@ -17,10 +17,12 @@ const GameLogicScreen = ({
   counted,
   keptDice,
   liveDice,
+  bankedDice,
   setCounted,
   setFarkleAlertVis,
   setKeptDice,
   setLiveDice,
+  setBankedDice,
   setRoundScore,
   setDisabled,
   disabled,
@@ -52,10 +54,16 @@ const GameLogicScreen = ({
     }
   };
 
-  const dicePressed = (itemKey) => {
-    const dicePressHandler = dicePress({ itemKey, liveDice });
+  const dicePressedLive = (itemKey) => {
+    const dicePressHandler = liveDicePress({ itemKey, liveDice });
     setLiveDice(dicePressHandler.tempLiveDice);
     setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
+    setHasSelectedDice(false)
+  };
+  const dicePressedKept = (itemKey) => {
+    const dicePressHandler = keptDicePress({ itemKey, keptDice });
+    setKeptDice(dicePressHandler.tempKeptDice);
+    setLiveDice(liveDice.concat(dicePressHandler.tempLiveDice));
     setHasSelectedDice(false)
   };
 
@@ -70,7 +78,7 @@ const GameLogicScreen = ({
           <View style={styles.liveDiceContainer}>
             <TouchableOpacity
               disabled={disabled}
-              onPress={() => dicePressed(item.key)}
+              onPress={() => dicePressedLive(item.key)}
             >
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
@@ -84,9 +92,20 @@ const GameLogicScreen = ({
         data={keptDice}
         renderItem={({ item }) => (
           <View style={styles.keptDiceContainer}>
-            <TouchableOpacity onPress={() => dicePressed(item.key)}>
+            <TouchableOpacity onPress={() => dicePressedKept(item.key)}>
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
+          </View>
+        )}
+      />
+      <Text>Banked Dice</Text>
+      <FlatList
+        contentContainerStyle={styles.keptFlatList}
+        horizontal={true}
+        data={bankedDice}
+        renderItem={({ item }) => (
+          <View style={styles.keptDiceContainer}>
+              <Image source={diceImages[item.value - 1]} style={styles.image} />
           </View>
         )}
       />
