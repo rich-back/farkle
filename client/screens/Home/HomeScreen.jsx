@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Button, StyleSheet, TextInput, View, Modal, Text } from "react-native";
 import { GameTypeContext } from "../../global/GameContext";
+import { Player } from "../Game/Player";
 
 const Home = ({ navigation }) => {
-  const { typeOfGame, setTypeOfGame } = useContext(GameTypeContext);
+  const { setTypeOfGame, player1, setPlayer1, setPlayer2, setCurrentPlayer } =
+    useContext(GameTypeContext);
   const [singleModal, setSingleModal] = useState(false);
   const [doubleModal, setDoubleModal] = useState(false);
-  const [player1Name, setPlayer1Name] = useState("Player 1");
-  const [player2Name, setPlayer2Name] = useState("Player 2");
 
   const handleSingleClick = () => {
     setSingleModal(true);
@@ -21,23 +21,42 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <Modal visible={singleModal}>
         <View style={styles.container}>
-          <Text>Name: </Text>
           <TextInput
             style={{ height: 40 }}
             placeholder="What's your name pal?"
-            onChangeText={(text) => setPlayer1Name(text)}
+            onChangeText={(text) => setPlayer1(new Player(text))}
           />
           <Button
             title="Let's play"
             onPress={() => {
               navigation.navigate("Game");
               setSingleModal(false);
+              setCurrentPlayer(player1);
             }}
           />
         </View>
       </Modal>
       <Modal visible={doubleModal}>
-        <TextInput />
+        <View style={styles.container}>
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="What's your name pal?"
+            onChangeText={(text) => setPlayer1(new Player(text))}
+          />
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="..and the other mug?"
+            onChangeText={(text) => setPlayer2(new Player(text))}
+          />
+          <Button
+            title="Let's play"
+            onPress={() => {
+              navigation.navigate("Game");
+              setDoubleModal(false);
+              setCurrentPlayer(player1);
+            }}
+          />
+        </View>
       </Modal>
       {/*  // * changing single option to one or two player */}
       {/* <Button

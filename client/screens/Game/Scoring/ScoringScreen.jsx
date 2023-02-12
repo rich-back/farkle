@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Button, View, Text } from "react-native";
-import { countScore, endTurn } from "./ScoringLogic";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Text, View } from "react-native";
+import { GameTypeContext } from "../../../global/GameContext";
 import { dice } from "../Dice";
+import { countScore, endTurn } from "./ScoringLogic";
 
 const ScoringScreen = ({
   counted,
@@ -21,11 +22,29 @@ const ScoringScreen = ({
   setHasSelectedDice,
 }) => {
   const [rollScore, setRollScore] = useState(0);
-  const [score, setScore] = useState(5000);
+  const {
+    player1,
+    player2,
+    currentPlayer,
+    setCurrentPlayer,
+    setPlayer1,
+    setPlayer2,
+  } = useContext(GameTypeContext);
+  const score = currentPlayer.score;
 
   useEffect(() => {
     completeGame();
   }, [score]);
+
+  useEffect(() => {
+    // ! Added this logic to cope with 2 players
+    if (currentPlayer.name === player1.name) {
+      setCurrentPlayer(player2);
+    } else {
+      setCurrentPlayer(player1);
+    }
+  }, [turnCounter])
+  
 
   const completeGame = () => {
     if (score <= 0) {
@@ -53,7 +72,13 @@ const ScoringScreen = ({
   const clickEndTurn = () => {
     if (endable == true) {
       const endTurnState = endTurn({ score, roundScore, turnCounter });
-      setScore(endTurnState.score);
+      // !trial
+      if (currentPlayer.name === player1.name) {
+        setPlayer1({ ...player1, score: endTurnState.score });
+      } else {
+        setPlayer2({ ...player2, score: endTurnState.score });
+      }
+      // setScore(endTurnState.score);
       setTurnCounter(endTurnState.turnCounter);
       setRoundScore(0);
       setLiveDice(dice);
@@ -73,7 +98,8 @@ const ScoringScreen = ({
       <Text></Text>
       <Button title="end round" onPress={clickEndTurn} />
       <Text>Turn: {turnCounter}</Text>
-      <Text>Score: {score}</Text>
+      {/* //! Scoring logic player dependent */}
+      <Text>Score: {currentPlayer.score}</Text>
       <Text>Round Score: {roundScore}</Text>
     </View>
   );

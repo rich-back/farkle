@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Modal, Pressable, Text, View, StyleSheet } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
+import { GameTypeContext } from "../../global/GameContext";
 
 const Game = () => {
+  const { player1, player2, currentPlayer } = useContext(GameTypeContext);
+
   const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
   const [counted, setCounted] = useState(true);
@@ -17,6 +20,9 @@ const Game = () => {
   const [firstRoll, setFirstRoll] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
+  
+
+
 
   const firstRollHandler = () => {
     setFirstRoll(false);
@@ -62,6 +68,8 @@ const Game = () => {
       {firstRoll ? (
         <Button title="Click to play" onPress={firstRollHandler} />
       ) : null}
+
+      <Text>{currentPlayer.name}</Text>
 
       <GameLogicScreen
         counted={counted}
