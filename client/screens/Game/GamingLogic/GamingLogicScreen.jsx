@@ -2,6 +2,7 @@ import {
   Button,
   FlatList,
   Image,
+  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,6 +11,7 @@ import {
 import { diceImages } from "../Dice";
 import { checkForFarkle, dicePress, rollDice } from "./GameLogic";
 import { useEffect, useState } from "react";
+
 
 const GameLogicScreen = ({
   counted,
@@ -61,9 +63,11 @@ const GameLogicScreen = ({
     <View>
       <Text>Live Dice</Text>
       <FlatList
+        contentContainerStyle={styles.liveFlatList}
+        numColumns={3}
         data={liveDice}
         renderItem={({ item }) => (
-          <View style={styles.diceContainer}>
+          <View style={styles.liveDiceContainer}>
             <TouchableOpacity
               disabled={disabled}
               onPress={() => dicePressed(item.key)}
@@ -75,9 +79,11 @@ const GameLogicScreen = ({
       />
       <Text>Kept Dice</Text>
       <FlatList
+        contentContainerStyle={styles.keptFlatList}
+        horizontal={true}
         data={keptDice}
         renderItem={({ item }) => (
-          <View style={styles.diceContainer}>
+          <View style={styles.keptDiceContainer}>
             <TouchableOpacity onPress={() => dicePressed(item.key)}>
               <Image source={diceImages[item.value - 1]} style={styles.image} />
             </TouchableOpacity>
@@ -90,15 +96,54 @@ const GameLogicScreen = ({
 };
 
 const styles = StyleSheet.create({
-  diceContainer: {
-    flex: 1,
+
+  liveFlatList: {
+    borderColor: 'purple',
+    borderWidth: 1,
+    height: 200,
+    width: 300,
+    marginHorizontal: '15%',
+    marginTop: 10,
+    marginBottom: 10,
+    
+    
+  },
+  keptFlatList: {
+    height: 100,
+    width: '100%',
+    borderColor: 'yellow',
+    borderWidth: 2,
+    marginTop: 10,
+    marginBottom: 10,
+    
+
+  },
+  liveDiceContainer: {
+    width: 100,
+    height: 100,
+    // flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
     alignItems: "center",
+    // borderColor: 'red',
+    // borderWidth: 2,
+  },
+  keptDiceContainer: {
+    maxWidth: 100,
+    maxHeight: 100,
+    // flex: 1,
+    alignItems: "center",
+    justifyContent: 'center'
+    // borderColor: 'green',
+    // borderWidth: 2,
+    
   },
   image: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 10,
     margin: 5,
+    
   },
 });
 
