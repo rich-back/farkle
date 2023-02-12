@@ -10,6 +10,7 @@ const Game = () => {
 
   const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
+  const [bankedDice, setBankedDice] = useState([]);
   const [counted, setCounted] = useState(true);
   const [rollScore, setRollScore] = useState(0);
   const [roundScore, setRoundScore] = useState(0);
@@ -17,17 +18,8 @@ const Game = () => {
   const [farkleAlertVis, setFarkleAlertVis] = useState(false);
   const [endGameAlertVis, setEndGameAlertVis] = useState(false);
   const [endable, setEndable] = useState(false);
-  const [firstRoll, setFirstRoll] = useState(true);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
-  
-
-
-
-  const firstRollHandler = () => {
-    setFirstRoll(false);
-    setLiveDice(dice);
-  };
 
   return (
     <View>
@@ -63,11 +55,8 @@ const Game = () => {
             </View>
           </View>
         </Modal>
-      </View>
 
-      {firstRoll ? (
-        <Button title="Click to play" onPress={firstRollHandler} />
-      ) : null}
+      </View>
 
       <Text>{currentPlayer.name}</Text>
 
@@ -75,12 +64,14 @@ const Game = () => {
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        bankedDice={bankedDice}
         rollScore={rollScore}
         roundScore={roundScore}
         setCounted={setCounted}
         setFarkleAlertVis={setFarkleAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setBankedDice={setBankedDice}
         setRollScore={setRollScore}
         setRoundScore={setRoundScore}
         disabled={disabled}
@@ -95,6 +86,7 @@ const Game = () => {
         counted={counted}
         keptDice={keptDice}
         liveDice={liveDice}
+        bankedDice={bankedDice}
         rollScore={rollScore}
         roundScore={roundScore}
         turnCounter={turnCounter}
@@ -103,6 +95,7 @@ const Game = () => {
         setEndGameAlertVis={setEndGameAlertVis}
         setKeptDice={setKeptDice}
         setLiveDice={setLiveDice}
+        setBankedDice={setBankedDice}
         setRollScore={setRollScore}
         setRoundScore={setRoundScore}
         setTurnCounter={setTurnCounter}
