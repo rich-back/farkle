@@ -51,7 +51,6 @@ const GameLogicScreen = ({
   }, [sound]);
 
   useEffect(() => {
-    console.log(liveDice);
     runCheckForFarkle();
   }, [clickCounter]);
 

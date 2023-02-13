@@ -18,7 +18,7 @@ import background from "../../assets/paper-background.jpeg";
 import button from "../../assets/Roll-Button.png";
 
 const Home = ({ navigation }) => {
-  const { setTypeOfGame, player1, setPlayer1, setPlayer2, setCurrentPlayer } =
+  const { setTypeOfGame, player1, player2, setPlayer1, setPlayer2, setCurrentPlayer } =
     useContext(GameTypeContext);
   const [singleModal, setSingleModal] = useState(false);
   const [doubleModal, setDoubleModal] = useState(false);
@@ -75,6 +75,47 @@ const Home = ({ navigation }) => {
         </Modal>
         {/*  // * changing single option to one or two player */}
         {/* <Button
+      <Modal visible={singleModal}>
+        <View style={styles.container}>
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="What's your name pal?"
+            onChangeText={(text) => setPlayer1(new Player(text))}
+          />
+          <Button
+            title="Let's play"
+            onPress={() => {
+              navigation.navigate("Game");
+              setSingleModal(false);
+              setCurrentPlayer(player2);
+            }}
+          />
+        </View>
+      </Modal>
+      <Modal visible={doubleModal}>
+        <View style={styles.container}>
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="What's your name pal?"
+            onChangeText={(text) => setPlayer1(new Player(text))}
+          />
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="..and the other mug?"
+            onChangeText={(text) => setPlayer2(new Player(text))}
+          />
+          <Button
+            title="Let's play"
+            onPress={() => {
+              navigation.navigate("Game");
+              setDoubleModal(false);
+              setCurrentPlayer(player2);
+            }}
+          />
+        </View>
+      </Modal>
+      {/*  // * changing single option to one or two player */}
+      {/* <Button
         title="Play Farkle!"
         onPress={() => navigation.navigate('Game')}
       /> */}
