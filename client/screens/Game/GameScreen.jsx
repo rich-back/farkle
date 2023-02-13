@@ -8,15 +8,17 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
 import { GameTypeContext } from "../../global/GameContext";
 
-import background from "../../assets/paper-background.jpeg";
+import background from "../../assets/background.png";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
+import modalButton from "../../assets/buttons/modalButton.png";
 
 const Game = () => {
   const { player1, player2, currentPlayer } = useContext(GameTypeContext);
@@ -71,9 +73,11 @@ const Game = () => {
           </Modal>
         </View>
 
-        <Text>{currentPlayer.name}</Text>
-        <Text>Score: {currentPlayer.score}</Text>
-        <Text>Round Score: {roundScore}</Text>
+        <Text className="font-virgil text-3xl">{currentPlayer.name}</Text>
+        <Text className="font-virgil text-3xl">
+          Score: {currentPlayer.score}
+        </Text>
+        <Text className="font-virgil text-3xl">Round Score: {roundScore}</Text>
 
         <GameLogicScreen
           counted={counted}
@@ -119,15 +123,15 @@ const Game = () => {
           setDisabled={setDisabled}
         />
 
-        <Button
-          title="Test EndGame Modal"
-          onPress={() => setEndGameAlertVis(true)}
-        />
-        <Text></Text>
-        <Button
-          title="Test Farkle Modal"
-          onPress={() => setFarkleAlertVis(true)}
-        />
+        <View style={styles.modalButton}>
+          <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -168,6 +172,12 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     elevation: 9,
+  },
+  modalButton: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
   },
 });
 
