@@ -1,26 +1,20 @@
+import { Video } from "expo-av";
 import React, { useContext, useState } from "react";
 import {
-  Button,
-  StyleSheet,
-  TextInput,
-  View,
-  Modal,
-  Text,
-  ImageBackground,
-  Pressable,
   Image,
+  Modal,
+  Pressable,
+  Text,
+  TextInput,
   TouchableOpacity,
-  Dimensions,
+  View
 } from "react-native";
-import { GameTypeContext } from "../../global/GameContext";
-import { Player } from "../Game/Player";
-
-import { Video } from "expo-av";
-import diceMovie from "../../assets/diceMovie.mp4";
-
-import background from "../../assets/paper-background.jpeg";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
+import diceMovie from "../../assets/diceMovie.mp4";
+import postItL from "../../assets/modals/post-it-L.png";
+import { GameTypeContext } from "../../global/GameContext";
+import { Player } from "../Game/Player";
 
 const Home = ({ navigation }) => {
   const {
@@ -37,94 +31,101 @@ const Home = ({ navigation }) => {
     setGameModal(true);
   };
 
+  const handleLetsPlay = () => {
+    if (!player1 || !player2) {
+      alert("Please Enter Names");
+      return;
+    } else {
+      navigation.navigate("Game");
+      setGameModal(false);
+      setCurrentPlayer(player2);
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={background}
+    <View className="h-full align-middle items-center justify-center flex-1">
+      <Video
+        className="absolute self-center w-full h-full"
+        source={diceMovie}
         resizeMode="cover"
-        style={styles.background}
+        isLooping
+        shouldPlay={true}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          setTypeOfGame("two");
+          handleDoubleClick();
+        }}
       >
-        <Video
-          style={styles.video}
-          source={diceMovie}
-          resizeMode="cover"
-          isLooping
-          shouldPlay={true}
-        />
-        <Modal
-          presentationStyle="overFullScreen"
-          transparent={false}
-          visible={gameModal}
-        >
-          <View style={styles.container}>
-            <TextInput
-              style={{ height: 40 }}
-              placeholder="What's your name pal?"
-              onChangeText={(text) => setPlayer1(new Player(text))}
-            />
-            <TextInput
-              style={{ height: 40 }}
-              placeholder="..and the other mug?"
-              onChangeText={(text) => setPlayer2(new Player(text))}
-            />
-            <Button
-              title="Let's play"
-              onPress={() => {
-                navigation.navigate("Game");
-                setGameModal(false);
-                setCurrentPlayer(player2);
-              }}
-            />
-          </View>
-        </Modal>
+        <Image source={playButton} className="items-center m-5" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Instructions")}>
+        <Image source={rulesButton} className="items-center m-5" />
+      </TouchableOpacity>
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                setTypeOfGame("two");
-                handleDoubleClick();
-              }}
-            >
-              <Image source={playButton} style={styles.button} />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Instructions")}
-            >
-              <Image source={rulesButton} style={styles.button} />
-            </TouchableOpacity>
-          </View>
-      </ImageBackground>
+      <Modal
+        animationType="slide"
+        presentationStyle="overFullScreen"
+        transparent={true}
+        visible={gameModal}
+      >
+        <View className="flex-1 h-full absolute self-center justify-center align-middle ">
+          <Image source={postItL} className="" />
+        </View>
+        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil ">
+          <Text className="font-virgil text-2xl text-center">
+            What's your name pal?
+          </Text>
+          <TextInput
+            className="font-virgil text-3xl text-center"
+            autoFocus={true}
+            cursorColor={`#000000`}
+            onChangeText={(text) => setPlayer1(new Player(text))}
+          />
+          <Text className="font-virgil text-2xl text-center">
+            ... and the other mug?
+          </Text>
+          <TextInput
+            className="font-virgil text-3xl text-center"
+            onChangeText={(text) => setPlayer2(new Player(text))}
+          />
+          <Pressable title="Let's play!" onPress={handleLetsPlay}>
+            <Text className="font-virgil text-3xl text-center">
+              Let's play!
+            </Text>
+          </Pressable>
+        </View>
+      </Modal>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  background: {
-    width: "100%",
-    height: "100%",
-  },
-  button: {
-    alignItems: "center",
-    margin: 20,
-  },
-  buttonContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  video: {
-    position: 'absolute',
-    alignSelf: "center",
-    width: '103%',
-    height: '103%',
-    top: -11,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   background: {
+//     width: "100%",
+//     height: "100%",
+//   },
+//   button: {
+//     alignItems: "center",
+//     margin: 20,
+//   },
+//   buttonContainer: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   video: {
+//     position: "absolute",
+//     alignSelf: "center",
+//     width: "103%",
+//     height: "103%",
+//     top: -11,
+//   },
+// });
 
 export default Home;
