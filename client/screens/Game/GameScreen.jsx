@@ -1,22 +1,21 @@
 import { useContext, useState } from "react";
 import {
   Button,
-  Modal,
-  Pressable,
-  Text,
-  View,
-  StyleSheet,
   Image,
   ImageBackground,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
-import ScoringScreen from "./Scoring/ScoringScreen";
-import { dice } from "./Dice";
-import { GameTypeContext } from "../../global/GameContext";
-
-import background from "../../assets/paper-background.jpeg";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
+import background from "../../assets/paper-background.jpeg";
+import { GameTypeContext } from "../../global/GameContext";
+import { dice } from "./Dice";
+import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
+import ScoringScreen from "./Scoring/ScoringScreen";
 
 const Game = () => {
   const { player1, player2, currentPlayer } = useContext(GameTypeContext);
@@ -74,9 +73,9 @@ const Game = () => {
           >
             <View style={styles.centeredView}>
               <Pressable onPress={() => setFarkleAlertVis(false)}>
-              <View style={styles.modalImage}>
-                <Image source={farkleModal} />
-              </View>
+                <View style={styles.modalImage}>
+                  <Image source={farkleModal} />
+                </View>
               </Pressable>
             </View>
           </Modal>
@@ -135,7 +134,6 @@ const styles = StyleSheet.create({
   background: {
     width: "100%",
     height: "100%",
-    
   },
   centeredView: {
     flex: 1,
@@ -144,7 +142,6 @@ const styles = StyleSheet.create({
     marginTop: 22,
     opacity: 80,
     elevation: 50,
-    
   },
   modalView: {
     flex: 1,
@@ -168,7 +165,7 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     elevation: 9,
-  }
+  },
 });
 
 export default Game;
