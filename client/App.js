@@ -10,10 +10,13 @@ import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
 import Instructions from "./screens/Instructions/Instructions";
 import SplashScreen from "./screens/SplashScreen/SplashScreen";
 import { GameTypeContext, GameTypeProvider } from "./global/GameContext";
+import { useFonts } from "expo-font";
+import Virgil from './assets/font/Virgil.ttf';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontLoaded] = useFonts({Virgil})
   return (
     <GameTypeProvider>
       <NavigationContainer>

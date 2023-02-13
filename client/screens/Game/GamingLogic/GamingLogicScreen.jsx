@@ -9,12 +9,16 @@ import {
   View,
 } from "react-native";
 import { diceImages } from "../Dice";
-import { checkForFarkle, liveDicePress, keptDicePress, rollDice } from "./GameLogic";
+import {
+  checkForFarkle,
+  liveDicePress,
+  keptDicePress,
+  rollDice,
+} from "./GameLogic";
 import { useCallback, useEffect, useState } from "react";
 import { Audio } from "expo-av";
 
 import shakeSound from "../../../assets/RATTLE.wav";
-
 
 const GameLogicScreen = ({
   counted,
@@ -35,12 +39,12 @@ const GameLogicScreen = ({
 
   const [sound, setSound] = useState();
 
-  const playSound = useCallback(async() => {
+  const playSound = useCallback(async () => {
     const { sound } = await Audio.Sound.createAsync(shakeSound);
     setSound(sound);
     await sound.playAsync();
-    console.warn('Sound!')
-  }, [])
+    console.warn("Sound!");
+  }, []);
 
   useEffect(() => {
     return sound
@@ -78,18 +82,18 @@ const GameLogicScreen = ({
     const dicePressHandler = liveDicePress({ itemKey, liveDice });
     setLiveDice(dicePressHandler.tempLiveDice);
     setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
-    setHasSelectedDice(false)
+    setHasSelectedDice(false);
   };
   const dicePressedKept = (itemKey) => {
     const dicePressHandler = keptDicePress({ itemKey, keptDice });
     setKeptDice(dicePressHandler.tempKeptDice);
     setLiveDice(liveDice.concat(dicePressHandler.tempLiveDice));
-    setHasSelectedDice(false)
+    setHasSelectedDice(false);
   };
 
   return (
     <View>
-      <Text>Live Dice</Text>
+      <Text style={{ fontFamily: "Virgil" }}>Live Dice</Text>
       <FlatList
         contentContainerStyle={styles.liveFlatList}
         numColumns={3}
@@ -125,44 +129,39 @@ const GameLogicScreen = ({
         data={bankedDice}
         renderItem={({ item }) => (
           <View style={styles.keptDiceContainer}>
-              <Image source={diceImages[item.value - 1]} style={styles.image} />
+            <Image source={diceImages[item.value - 1]} style={styles.image} />
           </View>
         )}
       />
-      <Button title="Roll the dice" onPress={clickRollDice}/>
+      <Button title="Roll the dice" onPress={clickRollDice} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-
   liveFlatList: {
-    borderColor: 'purple',
+    borderColor: "purple",
     borderWidth: 1,
     height: 200,
     width: 300,
-    marginHorizontal: '15%',
+    marginHorizontal: "15%",
     marginTop: 10,
     marginBottom: 10,
-    
-    
   },
   keptFlatList: {
     height: 100,
-    width: '100%',
-    borderColor: 'yellow',
+    width: "100%",
+    borderColor: "yellow",
     borderWidth: 2,
     marginTop: 10,
     marginBottom: 10,
-    
-
   },
   liveDiceContainer: {
     width: 100,
     height: 100,
     // flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: "center",
+    alignContent: "center",
     alignItems: "center",
     // borderColor: 'red',
     // borderWidth: 2,
@@ -172,17 +171,15 @@ const styles = StyleSheet.create({
     maxHeight: 100,
     // flex: 1,
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: "center",
     // borderColor: 'green',
     // borderWidth: 2,
-    
   },
   image: {
     width: 60,
     height: 60,
     borderRadius: 10,
     margin: 5,
-    
   },
 });
 
