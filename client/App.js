@@ -24,12 +24,8 @@ export default function App() {
     <GameTypeProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
           <Stack.Screen name="Game" component={Game} />
           <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
           <Stack.Screen name="Instructions" component={Instructions} />
