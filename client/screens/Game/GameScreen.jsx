@@ -70,7 +70,7 @@ const Game = () => {
               <Image source={farkleModal} />
             </Pressable>
           </View>
-        </Modal>r
+        </Modal>
 
         <Modal
           animationType="fade"
