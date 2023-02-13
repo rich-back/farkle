@@ -43,7 +43,6 @@ const GameLogicScreen = ({
     const { sound } = await Audio.Sound.createAsync(shakeSound);
     setSound(sound);
     await sound.playAsync();
-    console.warn("Sound!");
   }, []);
 
   useEffect(() => {
