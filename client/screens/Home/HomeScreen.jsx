@@ -10,12 +10,15 @@ import {
   Pressable,
   Image,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
 
+import { Video } from "expo-av";
+import diceMovie from "../../assets/diceMovie.mp4";
+
 import background from "../../assets/paper-background.jpeg";
-import splashlogo from "../../assets/SplashModal.png";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
 
@@ -28,15 +31,10 @@ const Home = ({ navigation }) => {
     setPlayer2,
     setCurrentPlayer,
   } = useContext(GameTypeContext);
-  const [singleModal, setSingleModal] = useState(false);
-  const [doubleModal, setDoubleModal] = useState(false);
-
-  const handleSingleClick = () => {
-    setSingleModal(true);
-  };
+  const [gameModal, setGameModal] = useState(false);
 
   const handleDoubleClick = () => {
-    setDoubleModal(true);
+    setGameModal(true);
   };
 
   return (
@@ -46,7 +44,18 @@ const Home = ({ navigation }) => {
         resizeMode="cover"
         style={styles.background}
       >
-        <Modal visible={doubleModal}>
+        <Video
+          style={styles.video}
+          source={diceMovie}
+          resizeMode="cover"
+          isLooping
+          shouldPlay={true}
+        />
+        <Modal
+          presentationStyle="overFullScreen"
+          transparent={false}
+          visible={gameModal}
+        >
           <View style={styles.container}>
             <TextInput
               style={{ height: 40 }}
@@ -62,31 +71,29 @@ const Home = ({ navigation }) => {
               title="Let's play"
               onPress={() => {
                 navigation.navigate("Game");
-                setDoubleModal(false);
-                setCurrentPlayer(player1);
+                setGameModal(false);
+                setCurrentPlayer(player2);
               }}
             />
           </View>
         </Modal>
 
-        <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                setTypeOfGame("two");
+                handleDoubleClick();
+              }}
+            >
+              <Image source={playButton} style={styles.button} />
+            </TouchableOpacity>
 
-        {/* <Image source={splashlogo} style={styles.logo}/> */}
-
-          <TouchableOpacity 
-            onPress={() => {
-              setTypeOfGame("two");
-              handleDoubleClick();
-              }}>
-            <Image source={playButton} style={styles.button} />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate("Instructions")}>
-            <Image source={rulesButton} style={styles.button} />
-          </TouchableOpacity>
-
-        </View>
-
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Instructions")}
+            >
+              <Image source={rulesButton} style={styles.button} />
+            </TouchableOpacity>
+          </View>
       </ImageBackground>
     </View>
   );
@@ -95,7 +102,6 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -103,23 +109,22 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  logo: {
-    width: 400,
-    maxHeight: 200
-  },
   button: {
     alignItems: "center",
-    // width: '20%',
-    // maxHeight: '20%'
+    margin: 20,
   },
   buttonContainer: {
-    borderWidth: 2,
-    borderColor: 'red',
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  video: {
+    position: 'absolute',
+    alignSelf: "center",
+    width: '103%',
+    height: '103%',
+    top: -11,
+  },
 });
 
 export default Home;
