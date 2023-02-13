@@ -112,7 +112,6 @@ const ScoringScreen = ({
       ) : null}
       <Text></Text>
       <Button title="end round" onPress={clickEndTurn} />
-      <Text>Turn: {turnCounter}</Text>
       {/* //! Scoring logic player dependent */}
       <Text>Score: {currentPlayer.score}</Text>
       <Text>Round Score: {roundScore}</Text>
