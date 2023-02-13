@@ -19,6 +19,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Audio } from "expo-av";
 
 import shakeSound from "../../../assets/RATTLE.wav";
+import rollButton from "../../../assets/buttons/roll-button.png"
 
 const GameLogicScreen = ({
   counted,
@@ -92,7 +93,7 @@ const GameLogicScreen = ({
 
   return (
     <View>
-      <Text className="font-virgil">Live Dice</Text>
+      <Text className="font-virgil text-3xl">Live Dice</Text>
       <FlatList
         contentContainerStyle={styles.liveFlatList}
         numColumns={3}
@@ -108,7 +109,7 @@ const GameLogicScreen = ({
           </View>
         )}
       />
-      <Text>Kept Dice</Text>
+      <Text className="font-virgil text-3xl">Kept Dice</Text>
       <FlatList
         contentContainerStyle={styles.keptFlatList}
         horizontal={true}
@@ -121,18 +122,11 @@ const GameLogicScreen = ({
           </View>
         )}
       />
-      <Text>Banked Dice</Text>
-      <FlatList
-        contentContainerStyle={styles.keptFlatList}
-        horizontal={true}
-        data={bankedDice}
-        renderItem={({ item }) => (
-          <View style={styles.keptDiceContainer}>
-            <Image source={diceImages[item.value - 1]} style={styles.image} />
-          </View>
-        )}
-      />
-      <Button title="Roll the dice" onPress={clickRollDice} />
+
+      <TouchableOpacity onPress={clickRollDice}>
+        <Image source={rollButton} style={styles.button} />
+      </TouchableOpacity>
+
     </View>
   );
 };
@@ -150,8 +144,6 @@ const styles = StyleSheet.create({
   keptFlatList: {
     height: 100,
     width: "100%",
-    borderColor: "yellow",
-    borderWidth: 2,
     marginTop: 10,
     marginBottom: 10,
   },
@@ -175,11 +167,17 @@ const styles = StyleSheet.create({
     // borderWidth: 2,
   },
   image: {
-    width: 60,
-    height: 60,
+    width: 90,
+    height: 90,
     borderRadius: 10,
     margin: 5,
   },
+  button: {
+    alignSelf: "flex-end",
+    marginRight: 30,
+    marginBottom: 10,
+  }
+
 });
 
 export default GameLogicScreen;
