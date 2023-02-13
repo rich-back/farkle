@@ -86,6 +86,7 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
 
         </View>
+
       </ImageBackground>
     </View>
   );
@@ -118,6 +119,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
+
 });
 
 export default Home;
