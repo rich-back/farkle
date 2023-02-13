@@ -7,13 +7,16 @@ import {
   View,
   StyleSheet,
   Image,
+  ImageBackground,
 } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
 import { GameTypeContext } from "../../global/GameContext";
 
+import background from "../../assets/paper-background.jpeg";
 import farkleModal from "../../assets/modals/farkle-modal.png";
+import winnerModal from "../../assets/modals/winner-modal2.png";
 
 const Game = () => {
   const { player1, player2, currentPlayer } = useContext(GameTypeContext);
@@ -33,104 +36,115 @@ const Game = () => {
 
   return (
     <View>
-      <ScoringScreen
-        setHasSelectedDice={setHasSelectedDice}
-        hasSelectedDice={hasSelectedDice}
-        endable={endable}
-        counted={counted}
-        keptDice={keptDice}
-        liveDice={liveDice}
-        bankedDice={bankedDice}
-        rollScore={rollScore}
-        roundScore={roundScore}
-        turnCounter={turnCounter}
-        setEndable={setEndable}
-        setCounted={setCounted}
-        setEndGameAlertVis={setEndGameAlertVis}
-        setKeptDice={setKeptDice}
-        setLiveDice={setLiveDice}
-        setBankedDice={setBankedDice}
-        setRollScore={setRollScore}
-        setRoundScore={setRoundScore}
-        setTurnCounter={setTurnCounter}
-        disabled={disabled}
-        setDisabled={setDisabled}
-      />
+      <ImageBackground
+        source={background}
+        resizeMode="cover"
+        style={styles.background}
+      >
+        <ScoringScreen
+          setHasSelectedDice={setHasSelectedDice}
+          hasSelectedDice={hasSelectedDice}
+          endable={endable}
+          counted={counted}
+          keptDice={keptDice}
+          liveDice={liveDice}
+          bankedDice={bankedDice}
+          rollScore={rollScore}
+          roundScore={roundScore}
+          turnCounter={turnCounter}
+          setEndable={setEndable}
+          setCounted={setCounted}
+          setEndGameAlertVis={setEndGameAlertVis}
+          setKeptDice={setKeptDice}
+          setLiveDice={setLiveDice}
+          setBankedDice={setBankedDice}
+          setRollScore={setRollScore}
+          setRoundScore={setRoundScore}
+          setTurnCounter={setTurnCounter}
+          disabled={disabled}
+          setDisabled={setDisabled}
+        />
 
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          presentationStyle="overFullScreen"
-          transparent={true}
-          visible={farkleAlertVis}
-          style={styles.modalBackground}
-        >
-          <View style={styles.centeredView}>
-            <Pressable onPress={() => setFarkleAlertVis(false)}>
-              <Image source={farkleModal} />
-            </Pressable>
-          </View>
-        </Modal>
-
-        <Modal
-          animationType="fade"
-          presentationStyle="overFullScreen"
-          transparent={true}
-          visible={endGameAlertVis}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Winner!</Text>
-              <Pressable onPress={() => setEndGameAlertVis(false)}>
-                <Text style={styles.modalClose}>close</Text>
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={farkleAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setFarkleAlertVis(false)}>
+              <View style={styles.modalImage}>
+                <Image source={farkleModal} />
+              </View>
               </Pressable>
             </View>
-          </View>
-        </Modal>
-      </View>
+          </Modal>
 
-      <Text>{currentPlayer.name}</Text>
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={endGameAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setEndGameAlertVis(false)}>
+                <Image source={winnerModal} />
+              </Pressable>
+            </View>
+          </Modal>
+        </View>
 
-      <GameLogicScreen
-        counted={counted}
-        keptDice={keptDice}
-        liveDice={liveDice}
-        bankedDice={bankedDice}
-        rollScore={rollScore}
-        roundScore={roundScore}
-        setCounted={setCounted}
-        setFarkleAlertVis={setFarkleAlertVis}
-        setKeptDice={setKeptDice}
-        setLiveDice={setLiveDice}
-        setBankedDice={setBankedDice}
-        setRollScore={setRollScore}
-        setRoundScore={setRoundScore}
-        disabled={disabled}
-        setDisabled={setDisabled}
-        setHasSelectedDice={setHasSelectedDice}
-        hasSelectedDice={hasSelectedDice}
-      />
+        <Text>{currentPlayer.name}</Text>
 
-      <Button
-        title="Test EndGame Modal"
-        onPress={() => setEndGameAlertVis(true)}
-      />
-      <Text></Text>
-      <Button
-        title="Test Farkle Modal"
-        onPress={() => setFarkleAlertVis(true)}
-      />
+        <GameLogicScreen
+          counted={counted}
+          keptDice={keptDice}
+          liveDice={liveDice}
+          bankedDice={bankedDice}
+          rollScore={rollScore}
+          roundScore={roundScore}
+          setCounted={setCounted}
+          setFarkleAlertVis={setFarkleAlertVis}
+          setKeptDice={setKeptDice}
+          setLiveDice={setLiveDice}
+          setBankedDice={setBankedDice}
+          setRollScore={setRollScore}
+          setRoundScore={setRoundScore}
+          disabled={disabled}
+          setDisabled={setDisabled}
+          setHasSelectedDice={setHasSelectedDice}
+          hasSelectedDice={hasSelectedDice}
+        />
+
+        <Button
+          title="Test EndGame Modal"
+          onPress={() => setEndGameAlertVis(true)}
+        />
+        <Text></Text>
+        <Button
+          title="Test Farkle Modal"
+          onPress={() => setFarkleAlertVis(true)}
+        />
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    width: "100%",
+    height: "100%",
+    
+  },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
-    opacity: 80
+    opacity: 80,
+    elevation: 50,
+    
   },
   modalView: {
     flex: 1,
@@ -152,20 +166,8 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  modalText: {
-    fontSize: 80,
-    color: "red",
-    position: "absolute",
-  },
-  modalClose: {
-    marginTop: 300,
-    color: "white",
-    backgroundColor: "grey",
-    padding: 15,
-    borderRadius: 10,
-  },
-  modalBackground: {
-    opacity: 10
+  modalImage: {
+    elevation: 9,
   }
 });
 
