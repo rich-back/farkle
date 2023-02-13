@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { View, Image, StyleSheet, Dimensions, Modal } from "react-native";
 import { Video } from "expo-av";
 
-import logo from "../../assets/logo.png";
 import splashlogo from "../../assets/SplashModal.png";
 
 export default function SplashScreen({ navigation }) {
