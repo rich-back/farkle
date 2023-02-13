@@ -5,6 +5,7 @@ import { View, Image, StyleSheet, Dimensions, Modal } from "react-native";
 import { Video } from "expo-av";
 
 import logo from "../../assets/logo.png";
+import splashlogo from "../../assets/SplashModal.png";
 
 export default function SplashScreen({ navigation }) {
   const [logoModal, setLogoModal] = useState(false);
@@ -34,13 +35,12 @@ export default function SplashScreen({ navigation }) {
       <Modal
         animationType="slide"
         presentationStyle="overFullScreen"
-        r
         transparent={true}
         visible={logoModal}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Image source={logo} style={{ maxWidth: 300, maxHeight: 150 }} />
+            <Image source={splashlogo} style={{ maxWidth: 300, maxHeight: 150, borderRadius: 15 }} />
           </View>
         </View>
       </Modal>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 250,
     marginBottom: 550,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     width: 350,
     height: 200,
     borderRadius: 15,
