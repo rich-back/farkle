@@ -93,7 +93,7 @@ const GameLogicScreen = ({
 
   return (
     <View>
-      <Text style={{ fontFamily: "Virgil" }}>Live Dice</Text>
+      <Text className="font-virgil">Live Dice</Text>
       <FlatList
         contentContainerStyle={styles.liveFlatList}
         numColumns={3}
