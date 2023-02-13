@@ -41,6 +41,60 @@ const Game = () => {
         resizeMode="cover"
         style={styles.background}
       >
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={farkleAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setFarkleAlertVis(false)}>
+                <View style={styles.modalImage}>
+                  <Image source={farkleModal} />
+                </View>
+              </Pressable>
+            </View>
+          </Modal>
+
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={endGameAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setEndGameAlertVis(false)}>
+                <Image source={winnerModal} />
+              </Pressable>
+            </View>
+          </Modal>
+        </View>
+
+        <Text>{currentPlayer.name}</Text>
+        <Text>Score: {currentPlayer.score}</Text>
+        <Text>Round Score: {roundScore}</Text>
+
+        <GameLogicScreen
+          counted={counted}
+          keptDice={keptDice}
+          liveDice={liveDice}
+          bankedDice={bankedDice}
+          rollScore={rollScore}
+          roundScore={roundScore}
+          setCounted={setCounted}
+          setFarkleAlertVis={setFarkleAlertVis}
+          setKeptDice={setKeptDice}
+          setLiveDice={setLiveDice}
+          setBankedDice={setBankedDice}
+          setRollScore={setRollScore}
+          setRoundScore={setRoundScore}
+          disabled={disabled}
+          setDisabled={setDisabled}
+          setHasSelectedDice={setHasSelectedDice}
+          hasSelectedDice={hasSelectedDice}
+        />
+
         <ScoringScreen
           setHasSelectedDice={setHasSelectedDice}
           hasSelectedDice={hasSelectedDice}
@@ -65,58 +119,6 @@ const Game = () => {
           setDisabled={setDisabled}
         />
 
-        <View style={styles.centeredView}>
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={farkleAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setFarkleAlertVis(false)}>
-              <View style={styles.modalImage}>
-                <Image source={farkleModal} />
-              </View>
-              </Pressable>
-            </View>
-          </Modal>
-
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={endGameAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setEndGameAlertVis(false)}>
-                <Image source={winnerModal} />
-              </Pressable>
-            </View>
-          </Modal>
-        </View>
-
-        <Text>{currentPlayer.name}</Text>
-
-        <GameLogicScreen
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          setCounted={setCounted}
-          setFarkleAlertVis={setFarkleAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          disabled={disabled}
-          setDisabled={setDisabled}
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-        />
-
         <Button
           title="Test EndGame Modal"
           onPress={() => setEndGameAlertVis(true)}
@@ -135,7 +137,6 @@ const styles = StyleSheet.create({
   background: {
     width: "100%",
     height: "100%",
-    
   },
   centeredView: {
     flex: 1,
@@ -144,7 +145,6 @@ const styles = StyleSheet.create({
     marginTop: 22,
     opacity: 80,
     elevation: 50,
-    
   },
   modalView: {
     flex: 1,
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     elevation: 9,
-  }
+  },
 });
 
 export default Game;
