@@ -4,7 +4,7 @@ import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
 
 const Home = ({ navigation }) => {
-  const { setTypeOfGame, player1, setPlayer1, setPlayer2, setCurrentPlayer } =
+  const { setTypeOfGame, player1, player2, setPlayer1, setPlayer2, setCurrentPlayer } =
     useContext(GameTypeContext);
   const [singleModal, setSingleModal] = useState(false);
   const [doubleModal, setDoubleModal] = useState(false);
@@ -31,7 +31,7 @@ const Home = ({ navigation }) => {
             onPress={() => {
               navigation.navigate("Game");
               setSingleModal(false);
-              setCurrentPlayer(player1);
+              setCurrentPlayer(player2);
             }}
           />
         </View>
@@ -53,7 +53,7 @@ const Home = ({ navigation }) => {
             onPress={() => {
               navigation.navigate("Game");
               setDoubleModal(false);
-              setCurrentPlayer(player1);
+              setCurrentPlayer(player2);
             }}
           />
         </View>
