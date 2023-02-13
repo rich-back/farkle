@@ -1,9 +1,9 @@
-import diceImage1 from "../../assets/images/oneDotDice.png";
-import diceImage2 from "../../assets/images/twoDotDice.png";
-import diceImage3 from "../../assets/images/threeDotDice.png";
-import diceImage4 from "../../assets/images/fourDotDice.png";
-import diceImage5 from "../../assets/images/fiveDotDice.png";
-import diceImage6 from "../../assets/images/sixDotDice.png";
+import diceImage1 from "../../assets/oneDotDice.png";
+import diceImage2 from "../../assets/twoDotDice.png";
+import diceImage3 from "../../assets/threeDotDice.png";
+import diceImage4 from "../../assets/fourDotDice.png";
+import diceImage5 from "../../assets/fiveDotDice.png";
+import diceImage6 from "../../assets/sixDotDice.png";
 
 const dice = [
   { key: "dice1", value: 1 },
