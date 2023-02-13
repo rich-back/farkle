@@ -18,8 +18,14 @@ import background from "../../assets/paper-background.jpeg";
 import button from "../../assets/Roll-Button.png";
 
 const Home = ({ navigation }) => {
-  const { setTypeOfGame, player1, player2, setPlayer1, setPlayer2, setCurrentPlayer } =
-    useContext(GameTypeContext);
+  const {
+    setTypeOfGame,
+    player1,
+    player2,
+    setPlayer1,
+    setPlayer2,
+    setCurrentPlayer,
+  } = useContext(GameTypeContext);
   const [singleModal, setSingleModal] = useState(false);
   const [doubleModal, setDoubleModal] = useState(false);
 
@@ -33,7 +39,11 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={background} resizeMode="cover" style={styles.background}>
+      <ImageBackground
+        source={background}
+        resizeMode="cover"
+        style={styles.background}
+      >
         <Modal visible={singleModal}>
           <View style={styles.container}>
             <TextInput
@@ -115,7 +125,7 @@ const Home = ({ navigation }) => {
         </View>
       </Modal>
       {/*  // * changing single option to one or two player */}
-      {/* <Button
+        {/* <Button
         title="Play Farkle!"
         onPress={() => navigation.navigate('Game')}
       /> */}
@@ -129,6 +139,7 @@ const Home = ({ navigation }) => {
           r
         />
         <Button
+          className="font-Virgil"
           title="Play two player!"
           onPress={() => {
             // navigation.navigate("Game");
@@ -137,7 +148,7 @@ const Home = ({ navigation }) => {
           }}
         />
         <TouchableOpacity onPress={() => navigation.navigate("Instructions")}>
-          <Image source={button} style={styles.button}/>
+          <Image source={button} style={styles.button} />
         </TouchableOpacity>
         {/* <Button
         title="How to play Farkle"
@@ -160,14 +171,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   background: {
-    width: '100%',
-    height: '100%'
+    width: "100%",
+    height: "100%",
   },
   button: {
-    alignItems: 'center',
-    width: '20%',
-    maxHeight: '20%'
-  }
+    alignItems: "center",
+    width: "20%",
+    maxHeight: "20%",
+  },
 });
 
 export default Home;
