@@ -1,8 +1,8 @@
 import splashVideo from "../../assets/hd1722.mov";
 
+import { Video } from "expo-av";
 import React, { useState } from "react";
 import { View, Image, StyleSheet, Dimensions, Modal } from "react-native";
-import { Video } from "expo-av";
 
 import splashlogo from "../../assets/SplashModal.png";
 
