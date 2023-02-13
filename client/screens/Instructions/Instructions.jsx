@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 
-import scoringRules from '../../assets/farkle-scoresheet.png'
+import scoringRules from '../../assets/images/farkle-scoresheet.png'
 
 const Instructions = () => {
   return (
