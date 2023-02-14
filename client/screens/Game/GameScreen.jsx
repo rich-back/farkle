@@ -8,14 +8,20 @@ import {
   StyleSheet,
   Text,
   View,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
 } from "react-native";
-import farkleModal from "../../assets/modals/farkle-modal.png";
-import winnerModal from "../../assets/modals/winner-modal2.png";
-import background from "../../assets/paper-background.jpeg";
-import { GameTypeContext } from "../../global/GameContext";
-import { dice } from "./Dice";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
+import { dice } from "./Dice";
+import { GameTypeContext } from "../../global/GameContext";
+
+import background from "../../assets/background.png";
+import farkleModal from "../../assets/modals/farkle-modal.png";
+import winnerModal from "../../assets/modals/winner-modal2.png";
+import modalButton from "../../assets/buttons/modalButton.png";
 
 const Game = () => {
   const { player1, player2, currentPlayer } = useContext(GameTypeContext);
@@ -40,30 +46,6 @@ const Game = () => {
         resizeMode="cover"
         style={styles.background}
       >
-        <ScoringScreen
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-          endable={endable}
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          turnCounter={turnCounter}
-          setEndable={setEndable}
-          setCounted={setCounted}
-          setEndGameAlertVis={setEndGameAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          setTurnCounter={setTurnCounter}
-          disabled={disabled}
-          setDisabled={setDisabled}
-        />
-
         <View style={styles.centeredView}>
           <Modal
             animationType="slide"
@@ -94,7 +76,11 @@ const Game = () => {
           </Modal>
         </View>
 
-        <Text>{currentPlayer.name}</Text>
+        <Text className="font-virgil text-3xl">{currentPlayer.name}</Text>
+        <Text className="font-virgil text-3xl">
+          Score: {currentPlayer.score}
+        </Text>
+        <Text className="font-virgil text-3xl">Round Score: {roundScore}</Text>
 
         <GameLogicScreen
           counted={counted}
@@ -116,15 +102,39 @@ const Game = () => {
           hasSelectedDice={hasSelectedDice}
         />
 
-        <Button
-          title="Test EndGame Modal"
-          onPress={() => setEndGameAlertVis(true)}
+        <ScoringScreen
+          setHasSelectedDice={setHasSelectedDice}
+          hasSelectedDice={hasSelectedDice}
+          endable={endable}
+          counted={counted}
+          keptDice={keptDice}
+          liveDice={liveDice}
+          bankedDice={bankedDice}
+          rollScore={rollScore}
+          roundScore={roundScore}
+          turnCounter={turnCounter}
+          setEndable={setEndable}
+          setCounted={setCounted}
+          setEndGameAlertVis={setEndGameAlertVis}
+          setKeptDice={setKeptDice}
+          setLiveDice={setLiveDice}
+          setBankedDice={setBankedDice}
+          setRollScore={setRollScore}
+          setRoundScore={setRoundScore}
+          setTurnCounter={setTurnCounter}
+          disabled={disabled}
+          setDisabled={setDisabled}
         />
-        <Text></Text>
-        <Button
-          title="Test Farkle Modal"
-          onPress={() => setFarkleAlertVis(true)}
-        />
+
+        <View style={styles.modalButton}>
+          <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -166,6 +176,14 @@ const styles = StyleSheet.create({
   modalImage: {
     elevation: 9,
   },
+
+  modalButton: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
+  },
+
 });
 
 export default Game;
