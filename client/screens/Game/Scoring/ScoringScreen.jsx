@@ -18,6 +18,10 @@ import endTurnButton from "../../../assets/buttons/blank-button-grey.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
 
+import win from "../../../assets/sounds/TaDasound.mp3";
+import bank from "../../../assets/sounds/CashRegister.mp3";
+import typingSound from "../../../assets/sounds/typing.wav";
+
 const ScoringScreen = ({
   counted,
   endable,
@@ -36,6 +40,7 @@ const ScoringScreen = ({
   setDisabled,
   hasSelectedDice,
   setHasSelectedDice,
+  playSound,
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [rollAgainModal, setRollAgainModal] = useState(false);
@@ -72,6 +77,7 @@ const ScoringScreen = ({
     if (roundScore >= currentPlayer.score) {
       setEndGameAlertVis(true);
       clickEndTurn();
+      playSound(win);
     }
   };
 
@@ -90,6 +96,7 @@ const ScoringScreen = ({
       setEndable(true);
       setBankedDice(bankedDice.concat(keptDice));
       setKeptDice([]);
+      playSound(typingSound);
     }
   };
 
@@ -109,6 +116,7 @@ const ScoringScreen = ({
       setHasSelectedDice(true);
       setCounted(true);
       setEndable(false);
+      playSound(bank);
     }
   };
 
@@ -144,7 +152,7 @@ const ScoringScreen = ({
         </View>
 
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil gap-7 pr-4">
-          <Text className="font-virgil text-3xl text-center" >
+          <Text className="font-virgil text-3xl text-center">
             Would you like to roll again?
           </Text>
           <Pressable
@@ -153,7 +161,7 @@ const ScoringScreen = ({
               clickRollAgain();
             }}
           >
-            <Text className="font-virgil text-3xl text-center" >
+            <Text className="font-virgil text-3xl text-center">
               Roll again!
             </Text>
           </Pressable>
@@ -163,9 +171,7 @@ const ScoringScreen = ({
               clickEndTurn();
             }}
           >
-            <Text className="font-virgil text-3xl text-center">
-              End Turn
-            </Text>
+            <Text className="font-virgil text-3xl text-center">End Turn</Text>
           </Pressable>
         </View>
       </Modal>

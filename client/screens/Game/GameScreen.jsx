@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback, useEffect } from "react";
 import {
   Modal,
   Pressable,
@@ -14,7 +14,7 @@ import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
 import { GameTypeContext } from "../../global/GameContext";
-
+import { Audio } from "expo-av";
 import background from "../../assets/background.png";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
@@ -36,6 +36,22 @@ const Game = () => {
   const [disabled, setDisabled] = useState(true);
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
 
+  const [sound, setSound] = useState();
+
+  const playSound = useCallback(async (soundItem) => {
+    const { sound } = await Audio.Sound.createAsync(soundItem);
+    setSound(sound);
+    await sound.playAsync();
+  }, []);
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   return (
     <ImageBackground
       source={background}
@@ -46,12 +62,11 @@ const Game = () => {
         <View className="flex-1 flex-row justify-between m-2">
           {currentPlayer.name == player1.name ? (
             <View className="">
-              <Text className="font-virgil text-4xl text-emerald-500 ">
-                {player1.name}:
-              </Text>
-              <Text className="font-virgil text-4xl text-emerald-500 ">
+              <Text className="font-virgil text-4xl">{player1.name}: </Text>
+              <Text className="font-virgil text-4xl">
                 {player1.score}
               </Text>
+              <Text className="font-virgil text-6xl pt-2"> ^</Text>
             </View>
           ) : (
             <View>
@@ -66,12 +81,11 @@ const Game = () => {
           </View>
           {currentPlayer.name == player2.name ? (
             <View>
-              <Text className="font-virgil text-4xl text-emerald-500">
-                {player2.name}:
-              </Text>
-              <Text className="font-virgil text-4xl text-emerald-500">
+              <Text className="font-virgil text-4xl">{player2.name}:</Text>
+              <Text className="font-virgil text-4xl">
                 {player2.score}
               </Text>
+              <Text className="font-virgil text-6xl pt-2"> ^</Text>
             </View>
           ) : (
             <View>
@@ -100,6 +114,7 @@ const Game = () => {
             setDisabled={setDisabled}
             setHasSelectedDice={setHasSelectedDice}
             hasSelectedDice={hasSelectedDice}
+            playSound={playSound}
           />
         </View>
         <View className="flex-1">
@@ -125,6 +140,7 @@ const Game = () => {
             setTurnCounter={setTurnCounter}
             disabled={disabled}
             setDisabled={setDisabled}
+            playSound={playSound}
           />
         </View>
 
