@@ -15,12 +15,14 @@ import {
   keptDicePress,
   rollDice,
 } from "./GameLogic";
-import { useCallback, useEffect, useState } from "react";
-import { Audio } from "expo-av";
+import { useEffect, useState } from "react";
 
 import shakeSound from "../../../assets/RATTLE.wav";
+import fail from "../../../assets/sounds/fail.wav";
 import rollButton from "../../../assets/buttons/rollButton.png";
 import CustomButton from "../../../components/Button";
+import diceLivePressSound from "../../../assets/sounds/take.wav";
+import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
 
 const GameLogicScreen = ({
   counted,
@@ -36,24 +38,9 @@ const GameLogicScreen = ({
   setDisabled,
   disabled,
   setHasSelectedDice,
+  playSound,
 }) => {
   const [clickCounter, setClickCounter] = useState(0);
-
-  const [sound, setSound] = useState();
-
-  const playSound = useCallback(async () => {
-    const { sound } = await Audio.Sound.createAsync(shakeSound);
-    setSound(sound);
-    await sound.playAsync();
-  }, []);
-
-  useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
 
   useEffect(() => {
     runCheckForFarkle();
@@ -66,7 +53,7 @@ const GameLogicScreen = ({
       setCounted(false);
       setDisabled(false);
       setClickCounter(clickCounter + 1);
-      playSound();
+      playSound(shakeSound);
     }
   };
 
@@ -76,6 +63,7 @@ const GameLogicScreen = ({
       setFarkleAlertVis(true);
       setRoundScore(0);
       setKeptDice([]);
+      playSound(fail);
     }
   };
 
@@ -84,12 +72,14 @@ const GameLogicScreen = ({
     setLiveDice(dicePressHandler.tempLiveDice);
     setKeptDice(keptDice.concat(dicePressHandler.tempKeptDice));
     setHasSelectedDice(false);
+    playSound(diceLivePressSound);
   };
   const dicePressedKept = (itemKey) => {
     const dicePressHandler = keptDicePress({ itemKey, keptDice });
     setKeptDice(dicePressHandler.tempKeptDice);
     setLiveDice(liveDice.concat(dicePressHandler.tempLiveDice));
     setHasSelectedDice(false);
+    playSound(diceKeptPressSound);
   };
 
   return (
@@ -124,7 +114,12 @@ const GameLogicScreen = ({
               <TouchableOpacity onPress={() => dicePressedKept(item.key)}>
                 <Image
                   source={diceImages[item.value - 1]}
-                  style={{flex:1, height: 70, resizeMode:"contain", width: 70}}
+                  style={{
+                    flex: 1,
+                    height: 70,
+                    resizeMode: "contain",
+                    width: 70,
+                  }}
                 />
               </TouchableOpacity>
             </View>
