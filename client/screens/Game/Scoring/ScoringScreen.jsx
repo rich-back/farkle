@@ -13,8 +13,8 @@ import { GameTypeContext } from "../../../global/GameContext";
 import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
 
-import scoreButton from "../../../assets/buttons/blank-button-grey.png";
-import endTurnButton from "../../../assets/buttons/blank-button-grey.png";
+import scoreButton from "../../../assets/buttons/count-score-button.png";
+import endTurnButton from "../../../assets/buttons/end-turn-button.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
 
@@ -129,7 +129,7 @@ const ScoringScreen = ({
   return (
     <View className="flex-1 flex-row justify-between">
       <View>
-        <CustomButton imageSource={scoreButton} onPress={clickEndTurn} />
+        <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
       </View>
       {!hasSelectedDice ? (
         <View>
