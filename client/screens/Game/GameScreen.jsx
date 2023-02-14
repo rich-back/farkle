@@ -1,11 +1,7 @@
 import { useContext, useState } from "react";
 import {
-  Button,
-  Image,
-  ImageBackground,
   Modal,
   Pressable,
-  StyleSheet,
   Text,
   View,
   StyleSheet,
