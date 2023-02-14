@@ -124,7 +124,7 @@ const GameLogicScreen = ({
               <TouchableOpacity onPress={() => dicePressedKept(item.key)}>
                 <Image
                   source={diceImages[item.value - 1]}
-                  style={styles.image}
+                  style={{flex:1, height: 70, resizeMode:"contain", width: 70}}
                 />
               </TouchableOpacity>
             </View>
@@ -133,10 +133,7 @@ const GameLogicScreen = ({
       </View>
 
       <View className="w-36 mt-24 flex self-center">
-        <CustomButton
-          imageSource={rollButton}
-          onPress={clickRollDice}
-        />
+        <CustomButton imageSource={rollButton} onPress={clickRollDice} />
       </View>
     </View>
   );
@@ -155,6 +152,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 10,
     marginBottom: 10,
+    alignSelf: "center",
   },
   liveDiceContainer: {
     width: 100,

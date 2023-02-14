@@ -139,13 +139,13 @@ const ScoringScreen = ({
         transparent={true}
         visible={rollAgainModal}
       >
-        <View style={styles.modalImageContainer}>
-          <Image source={rollAgain} style={styles.modalImage} />
+        <View className="flex-1 h-full absolute self-center justify-center align-middle">
+          <Image source={rollAgain} />
         </View>
 
-        <View style={styles.modalView}>
-          <Text className="font-virgil text-3xl" style={styles.modalText}>
-            Would you like to Roll again?
+        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil gap-7 pr-4">
+          <Text className="font-virgil text-3xl text-center" >
+            Would you like to roll again?
           </Text>
           <Pressable
             onPress={() => {
@@ -153,7 +153,7 @@ const ScoringScreen = ({
               clickRollAgain();
             }}
           >
-            <Text className="font-virgil text-3xl" style={styles.modalClose}>
+            <Text className="font-virgil text-3xl text-center" >
               Roll again!
             </Text>
           </Pressable>
@@ -163,7 +163,7 @@ const ScoringScreen = ({
               clickEndTurn();
             }}
           >
-            <Text className="font-virgil text-3xl" style={styles.modalClose}>
+            <Text className="font-virgil text-3xl text-center">
               End Turn
             </Text>
           </Pressable>

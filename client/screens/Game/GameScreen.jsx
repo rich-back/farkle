@@ -42,23 +42,44 @@ const Game = () => {
       resizeMode="cover"
       style={styles.background}
     >
-      <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5">
+      <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5 mt-3">
         <View className="flex-1 flex-row justify-between m-2">
-          <View>
-            <Text className="font-virgil text-3xl">{player1.name}:</Text>
-            <Text className="font-virgil text-3xl">{player1.score}</Text>
-          </View>
+          {currentPlayer.name == player1.name ? (
+            <View className="">
+              <Text className="font-virgil text-4xl text-emerald-500 ">
+                {player1.name}:
+              </Text>
+              <Text className="font-virgil text-4xl text-emerald-500 ">
+                {player1.score}
+              </Text>
+            </View>
+          ) : (
+            <View>
+              <Text className="font-virgil text-2xl">{player1.name}:</Text>
+              <Text className="font-virgil text-2xl">{player1.score}</Text>
+            </View>
+          )}
           <View className="flex-1 top-16">
-          <Text className="font-virgil text-3xl text-center">
-            Round Score: {roundScore}
-          </Text>
-        </View>
-          <View>
-            <Text className="font-virgil text-3xl">{player2.name}:</Text>
-            <Text className="font-virgil text-3xl">{player2.score}</Text>
+            <Text className="font-virgil text-3xl text-center">
+              Round Score: {roundScore}
+            </Text>
           </View>
+          {currentPlayer.name == player2.name ? (
+            <View>
+              <Text className="font-virgil text-4xl text-emerald-500">
+                {player2.name}:
+              </Text>
+              <Text className="font-virgil text-4xl text-emerald-500">
+                {player2.score}
+              </Text>
+            </View>
+          ) : (
+            <View>
+              <Text className="font-virgil text-2xl">{player2.name}:</Text>
+              <Text className="font-virgil text-2xl">{player2.score}</Text>
+            </View>
+          )}
         </View>
-        
 
         <View className="flex-6">
           <GameLogicScreen
@@ -107,44 +128,33 @@ const Game = () => {
           />
         </View>
 
-        
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={farkleAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setFarkleAlertVis(false)}>
-                <View style={styles.modalImage}>
-                  <Image source={farkleModal} />
-                </View>
-              </Pressable>
-            </View>
-          </Modal>
+        <Modal
+          animationType="slide"
+          presentationStyle="overFullScreen"
+          transparent={true}
+          visible={farkleAlertVis}
+        >
+          <View style={styles.centeredView}>
+            <Pressable onPress={() => setFarkleAlertVis(false)}>
+              <View style={styles.modalImage}>
+                <Image source={farkleModal} />
+              </View>
+            </Pressable>
+          </View>
+        </Modal>
 
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={endGameAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setEndGameAlertVis(false)}>
-                <Image source={winnerModal} />
-              </Pressable>
-            </View>
-          </Modal>
-
-        {/* <View style={styles.modalButton}>
-          <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
-            <Image source={modalButton} />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
-            <Image source={modalButton} />
-          </TouchableOpacity>
-        </View> */}
+        <Modal
+          animationType="slide"
+          presentationStyle="overFullScreen"
+          transparent={true}
+          visible={endGameAlertVis}
+        >
+          <View style={styles.centeredView}>
+            <Pressable onPress={() => setEndGameAlertVis(false)}>
+              <Image source={winnerModal} />
+            </Pressable>
+          </View>
+        </Modal>
       </SafeAreaView>
     </ImageBackground>
   );
