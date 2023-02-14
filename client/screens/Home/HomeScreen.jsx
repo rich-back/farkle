@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
-import diceMovie from "../../assets/diceMovie.mp4";
+import diceMovie from '../../assets/movies/diceMovie.mp4';
 import postItL from "../../assets/modals/post-it-L.png";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
@@ -48,7 +48,7 @@ const Home = ({ navigation }) => {
         className="absolute self-center w-full h-full"
         source={diceMovie}
         resizeMode="cover"
-        isLooping
+        isLooping={true}
         shouldPlay={true}
       />
       <TouchableOpacity
