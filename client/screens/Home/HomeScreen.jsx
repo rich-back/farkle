@@ -11,8 +11,8 @@ import {
 } from "react-native";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
-import diceMovie from '../../assets/movies/diceMovie.mp4';
 import postItL from "../../assets/modals/post-it-L.png";
+import diceMovie from "../../assets/movies/diceMovie.mp4";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
 
@@ -70,8 +70,9 @@ const Home = ({ navigation }) => {
         visible={gameModal}
       >
         <View className="flex-1 h-full absolute self-center justify-center align-middle ">
-          <Image source={postItL} className="" />
+          <Image source={postItL}/>
         </View>
+
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil ">
           <Text className="font-virgil text-2xl text-center">
             What's your name pal?
@@ -95,37 +96,10 @@ const Home = ({ navigation }) => {
             </Text>
           </Pressable>
         </View>
+
       </Modal>
     </View>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   background: {
-//     width: "100%",
-//     height: "100%",
-//   },
-//   button: {
-//     alignItems: "center",
-//     margin: 20,
-//   },
-//   buttonContainer: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   video: {
-//     position: "absolute",
-//     alignSelf: "center",
-//     width: "103%",
-//     height: "103%",
-//     top: -11,
-//   },
-// });
 
 export default Home;
