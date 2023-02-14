@@ -8,15 +8,17 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
 import { dice } from "./Dice";
 import { GameTypeContext } from "../../global/GameContext";
 
-import background from "../../assets/paper-background.jpeg";
+import background from "../../assets/background.png";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
+import modalButton from "../../assets/buttons/modalButton.png";
 
 const Game = () => {
   const { player1, player2, currentPlayer } = useContext(GameTypeContext);
@@ -41,6 +43,62 @@ const Game = () => {
         resizeMode="cover"
         style={styles.background}
       >
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={farkleAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setFarkleAlertVis(false)}>
+                <View style={styles.modalImage}>
+                  <Image source={farkleModal} />
+                </View>
+              </Pressable>
+            </View>
+          </Modal>
+
+          <Modal
+            animationType="slide"
+            presentationStyle="overFullScreen"
+            transparent={true}
+            visible={endGameAlertVis}
+          >
+            <View style={styles.centeredView}>
+              <Pressable onPress={() => setEndGameAlertVis(false)}>
+                <Image source={winnerModal} />
+              </Pressable>
+            </View>
+          </Modal>
+        </View>
+
+        <Text className="font-virgil text-3xl">{currentPlayer.name}</Text>
+        <Text className="font-virgil text-3xl">
+          Score: {currentPlayer.score}
+        </Text>
+        <Text className="font-virgil text-3xl">Round Score: {roundScore}</Text>
+
+        <GameLogicScreen
+          counted={counted}
+          keptDice={keptDice}
+          liveDice={liveDice}
+          bankedDice={bankedDice}
+          rollScore={rollScore}
+          roundScore={roundScore}
+          setCounted={setCounted}
+          setFarkleAlertVis={setFarkleAlertVis}
+          setKeptDice={setKeptDice}
+          setLiveDice={setLiveDice}
+          setBankedDice={setBankedDice}
+          setRollScore={setRollScore}
+          setRoundScore={setRoundScore}
+          disabled={disabled}
+          setDisabled={setDisabled}
+          setHasSelectedDice={setHasSelectedDice}
+          hasSelectedDice={hasSelectedDice}
+        />
+
         <ScoringScreen
           setHasSelectedDice={setHasSelectedDice}
           hasSelectedDice={hasSelectedDice}
@@ -65,67 +123,15 @@ const Game = () => {
           setDisabled={setDisabled}
         />
 
-        <View style={styles.centeredView}>
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={farkleAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setFarkleAlertVis(false)}>
-              <View style={styles.modalImage}>
-                <Image source={farkleModal} />
-              </View>
-              </Pressable>
-            </View>
-          </Modal>
+        <View style={styles.modalButton}>
+          <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
 
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={endGameAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setEndGameAlertVis(false)}>
-                <Image source={winnerModal} />
-              </Pressable>
-            </View>
-          </Modal>
+          <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
+            <Image source={modalButton} />
+          </TouchableOpacity>
         </View>
-
-        <Text>{currentPlayer.name}</Text>
-
-        <GameLogicScreen
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          setCounted={setCounted}
-          setFarkleAlertVis={setFarkleAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          disabled={disabled}
-          setDisabled={setDisabled}
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-        />
-
-        <Button
-          title="Test EndGame Modal"
-          onPress={() => setEndGameAlertVis(true)}
-        />
-        <Text></Text>
-        <Button
-          title="Test Farkle Modal"
-          onPress={() => setFarkleAlertVis(true)}
-        />
       </ImageBackground>
     </View>
   );
@@ -135,7 +141,6 @@ const styles = StyleSheet.create({
   background: {
     width: "100%",
     height: "100%",
-    
   },
   centeredView: {
     flex: 1,
@@ -144,7 +149,6 @@ const styles = StyleSheet.create({
     marginTop: 22,
     opacity: 80,
     elevation: 50,
-    
   },
   modalView: {
     flex: 1,
@@ -168,7 +172,13 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     elevation: 9,
-  }
+  },
+  modalButton: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
+  },
 });
 
 export default Game;
