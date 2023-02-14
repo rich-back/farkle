@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
 import {
   Button,
+  Image,
+  ImageBackground,
   Modal,
   Pressable,
+  StyleSheet,
   Text,
   View,
   StyleSheet,
@@ -173,12 +176,14 @@ const styles = StyleSheet.create({
   modalImage: {
     elevation: 9,
   },
+
   modalButton: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginTop: 20,
   },
+
 });
 
 export default Game;
