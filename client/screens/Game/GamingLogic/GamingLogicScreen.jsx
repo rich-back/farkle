@@ -19,7 +19,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Audio } from "expo-av";
 
 import shakeSound from "../../../assets/RATTLE.wav";
-import rollButton from "../../../assets/buttons/roll-button.png"
+import rollButton from "../../../assets/buttons/blank-button-grey.png";
+import CustomButton from "../../../components/Button";
 
 const GameLogicScreen = ({
   counted,
@@ -123,10 +124,9 @@ const GameLogicScreen = ({
         )}
       />
 
-      <TouchableOpacity onPress={clickRollDice}>
-        <Image source={rollButton} style={styles.button} />
-      </TouchableOpacity>
-
+      <View className="bg-red-600 w-36 mb-4">
+        <CustomButton imageSource={rollButton} onPress={clickRollDice} className="bg-red-600"/>
+      </View>
     </View>
   );
 };
@@ -176,8 +176,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginRight: 30,
     marginBottom: 10,
-  }
-
+  },
 });
 
 export default GameLogicScreen;

@@ -8,6 +8,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
@@ -36,13 +37,76 @@ const Game = () => {
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
 
   return (
-    <View>
-      <ImageBackground
-        source={background}
-        resizeMode="cover"
-        style={styles.background}
-      >
-        <View style={styles.centeredView}>
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.background}
+    >
+      <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5">
+        <View className="flex-1 flex-row justify-between m-2">
+          <View>
+            <Text className="font-virgil text-3xl">{player1.name}:</Text>
+            <Text className="font-virgil text-3xl">{player1.score}</Text>
+          </View>
+          <View>
+            <Text className="font-virgil text-3xl">{player2.name}:</Text>
+            <Text className="font-virgil text-3xl">{player2.score}</Text>
+          </View>
+        </View>
+        <View className="flex-1">
+          <Text className="font-virgil text-3xl text-center">
+            Round Score: {roundScore}
+          </Text>
+        </View>
+
+        <View className="flex-4">
+          <GameLogicScreen
+            counted={counted}
+            keptDice={keptDice}
+            liveDice={liveDice}
+            bankedDice={bankedDice}
+            rollScore={rollScore}
+            roundScore={roundScore}
+            setCounted={setCounted}
+            setFarkleAlertVis={setFarkleAlertVis}
+            setKeptDice={setKeptDice}
+            setLiveDice={setLiveDice}
+            setBankedDice={setBankedDice}
+            setRollScore={setRollScore}
+            setRoundScore={setRoundScore}
+            disabled={disabled}
+            setDisabled={setDisabled}
+            setHasSelectedDice={setHasSelectedDice}
+            hasSelectedDice={hasSelectedDice}
+          />
+        </View>
+        <View className="flex-1">
+          <ScoringScreen
+            setHasSelectedDice={setHasSelectedDice}
+            hasSelectedDice={hasSelectedDice}
+            endable={endable}
+            counted={counted}
+            keptDice={keptDice}
+            liveDice={liveDice}
+            bankedDice={bankedDice}
+            rollScore={rollScore}
+            roundScore={roundScore}
+            turnCounter={turnCounter}
+            setEndable={setEndable}
+            setCounted={setCounted}
+            setEndGameAlertVis={setEndGameAlertVis}
+            setKeptDice={setKeptDice}
+            setLiveDice={setLiveDice}
+            setBankedDice={setBankedDice}
+            setRollScore={setRollScore}
+            setRoundScore={setRoundScore}
+            setTurnCounter={setTurnCounter}
+            disabled={disabled}
+            setDisabled={setDisabled}
+          />
+        </View>
+
+        
           <Modal
             animationType="slide"
             presentationStyle="overFullScreen"
@@ -70,59 +134,8 @@ const Game = () => {
               </Pressable>
             </View>
           </Modal>
-        </View>
 
-        <Text className="font-virgil text-3xl">{currentPlayer.name}</Text>
-        <Text className="font-virgil text-3xl">
-          Score: {currentPlayer.score}
-        </Text>
-        <Text className="font-virgil text-3xl">Round Score: {roundScore}</Text>
-
-        <GameLogicScreen
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          setCounted={setCounted}
-          setFarkleAlertVis={setFarkleAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          disabled={disabled}
-          setDisabled={setDisabled}
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-        />
-
-        <ScoringScreen
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-          endable={endable}
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          turnCounter={turnCounter}
-          setEndable={setEndable}
-          setCounted={setCounted}
-          setEndGameAlertVis={setEndGameAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          setTurnCounter={setTurnCounter}
-          disabled={disabled}
-          setDisabled={setDisabled}
-        />
-
-        <View style={styles.modalButton}>
+        {/* <View style={styles.modalButton}>
           <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
             <Image source={modalButton} />
           </TouchableOpacity>
@@ -130,9 +143,9 @@ const Game = () => {
           <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
             <Image source={modalButton} />
           </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </View>
+        </View> */}
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -179,7 +192,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     marginTop: 20,
   },
-
 });
 
 export default Game;
