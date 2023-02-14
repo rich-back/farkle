@@ -8,6 +8,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
@@ -36,103 +37,126 @@ const Game = () => {
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
 
   return (
-    <View>
-      <ImageBackground
-        source={background}
-        resizeMode="cover"
-        style={styles.background}
-      >
-        <View style={styles.centeredView}>
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={farkleAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setFarkleAlertVis(false)}>
-                <View style={styles.modalImage}>
-                  <Image source={farkleModal} />
-                </View>
-              </Pressable>
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.background}
+    >
+      <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5 mt-3">
+        <View className="flex-1 flex-row justify-between m-2">
+          {currentPlayer.name == player1.name ? (
+            <View className="">
+              <Text className="font-virgil text-4xl text-emerald-500 ">
+                {player1.name}:
+              </Text>
+              <Text className="font-virgil text-4xl text-emerald-500 ">
+                {player1.score}
+              </Text>
             </View>
-          </Modal>
-
-          <Modal
-            animationType="slide"
-            presentationStyle="overFullScreen"
-            transparent={true}
-            visible={endGameAlertVis}
-          >
-            <View style={styles.centeredView}>
-              <Pressable onPress={() => setEndGameAlertVis(false)}>
-                <Image source={winnerModal} />
-              </Pressable>
+          ) : (
+            <View>
+              <Text className="font-virgil text-2xl">{player1.name}:</Text>
+              <Text className="font-virgil text-2xl">{player1.score}</Text>
             </View>
-          </Modal>
+          )}
+          <View className="flex-1 top-16">
+            <Text className="font-virgil text-3xl text-center">
+              Round Score: {roundScore}
+            </Text>
+          </View>
+          {currentPlayer.name == player2.name ? (
+            <View>
+              <Text className="font-virgil text-4xl text-emerald-500">
+                {player2.name}:
+              </Text>
+              <Text className="font-virgil text-4xl text-emerald-500">
+                {player2.score}
+              </Text>
+            </View>
+          ) : (
+            <View>
+              <Text className="font-virgil text-2xl">{player2.name}:</Text>
+              <Text className="font-virgil text-2xl">{player2.score}</Text>
+            </View>
+          )}
         </View>
 
-        <Text className="font-virgil text-3xl">{currentPlayer.name}</Text>
-        <Text className="font-virgil text-3xl">
-          Score: {currentPlayer.score}
-        </Text>
-        <Text className="font-virgil text-3xl">Round Score: {roundScore}</Text>
-
-        <GameLogicScreen
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          setCounted={setCounted}
-          setFarkleAlertVis={setFarkleAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          disabled={disabled}
-          setDisabled={setDisabled}
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-        />
-
-        <ScoringScreen
-          setHasSelectedDice={setHasSelectedDice}
-          hasSelectedDice={hasSelectedDice}
-          endable={endable}
-          counted={counted}
-          keptDice={keptDice}
-          liveDice={liveDice}
-          bankedDice={bankedDice}
-          rollScore={rollScore}
-          roundScore={roundScore}
-          turnCounter={turnCounter}
-          setEndable={setEndable}
-          setCounted={setCounted}
-          setEndGameAlertVis={setEndGameAlertVis}
-          setKeptDice={setKeptDice}
-          setLiveDice={setLiveDice}
-          setBankedDice={setBankedDice}
-          setRollScore={setRollScore}
-          setRoundScore={setRoundScore}
-          setTurnCounter={setTurnCounter}
-          disabled={disabled}
-          setDisabled={setDisabled}
-        />
-
-        <View style={styles.modalButton}>
-          <TouchableOpacity onPress={() => setEndGameAlertVis(true)}>
-            <Image source={modalButton} />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => setFarkleAlertVis(true)}>
-            <Image source={modalButton} />
-          </TouchableOpacity>
+        <View className="flex-6">
+          <GameLogicScreen
+            counted={counted}
+            keptDice={keptDice}
+            liveDice={liveDice}
+            bankedDice={bankedDice}
+            rollScore={rollScore}
+            roundScore={roundScore}
+            setCounted={setCounted}
+            setFarkleAlertVis={setFarkleAlertVis}
+            setKeptDice={setKeptDice}
+            setLiveDice={setLiveDice}
+            setBankedDice={setBankedDice}
+            setRollScore={setRollScore}
+            setRoundScore={setRoundScore}
+            disabled={disabled}
+            setDisabled={setDisabled}
+            setHasSelectedDice={setHasSelectedDice}
+            hasSelectedDice={hasSelectedDice}
+          />
         </View>
-      </ImageBackground>
-    </View>
+        <View className="flex-1">
+          <ScoringScreen
+            setHasSelectedDice={setHasSelectedDice}
+            hasSelectedDice={hasSelectedDice}
+            endable={endable}
+            counted={counted}
+            keptDice={keptDice}
+            liveDice={liveDice}
+            bankedDice={bankedDice}
+            rollScore={rollScore}
+            roundScore={roundScore}
+            turnCounter={turnCounter}
+            setEndable={setEndable}
+            setCounted={setCounted}
+            setEndGameAlertVis={setEndGameAlertVis}
+            setKeptDice={setKeptDice}
+            setLiveDice={setLiveDice}
+            setBankedDice={setBankedDice}
+            setRollScore={setRollScore}
+            setRoundScore={setRoundScore}
+            setTurnCounter={setTurnCounter}
+            disabled={disabled}
+            setDisabled={setDisabled}
+          />
+        </View>
+
+        <Modal
+          animationType="slide"
+          presentationStyle="overFullScreen"
+          transparent={true}
+          visible={farkleAlertVis}
+        >
+          <View style={styles.centeredView}>
+            <Pressable onPress={() => setFarkleAlertVis(false)}>
+              <View style={styles.modalImage}>
+                <Image source={farkleModal} />
+              </View>
+            </Pressable>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="slide"
+          presentationStyle="overFullScreen"
+          transparent={true}
+          visible={endGameAlertVis}
+        >
+          <View style={styles.centeredView}>
+            <Pressable onPress={() => setEndGameAlertVis(false)}>
+              <Image source={winnerModal} />
+            </Pressable>
+          </View>
+        </Modal>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -179,7 +203,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     marginTop: 20,
   },
-
 });
 
 export default Game;

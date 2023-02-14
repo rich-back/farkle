@@ -69,11 +69,11 @@ const Home = ({ navigation }) => {
         transparent={true}
         visible={gameModal}
       >
-        <View className="flex-1 h-full absolute self-center justify-center align-middle ">
+        <View className="flex-1 h-full absolute self-center justify-center align-middle">
           <Image source={postItL}/>
         </View>
 
-        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil ">
+        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
           <Text className="font-virgil text-2xl text-center">
             What's your name pal?
           </Text>

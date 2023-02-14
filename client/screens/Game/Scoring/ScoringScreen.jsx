@@ -13,9 +13,10 @@ import { GameTypeContext } from "../../../global/GameContext";
 import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
 
-import scoreButton from "../../../assets/buttons/count-score-button.png";
-import endTurnButton from "../../../assets/buttons/end-turn-button.png";
+import scoreButton from "../../../assets/buttons/blank-button-grey.png";
+import endTurnButton from "../../../assets/buttons/blank-button-grey.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
+import CustomButton from "../../../components/Button";
 
 const ScoringScreen = ({
   counted,
@@ -118,22 +119,19 @@ const ScoringScreen = ({
   };
 
   return (
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity onPress={clickEndTurn}>
-        <Image source={endTurnButton} style={styles.button} />
-      </TouchableOpacity>
-
+    <View className="flex-1 flex-row justify-between">
+      <View>
+        <CustomButton imageSource={scoreButton} onPress={clickEndTurn} />
+      </View>
       {!hasSelectedDice ? (
-        <TouchableOpacity onPress={clickCountScore}>
-          <Image source={scoreButton} style={styles.button} />
-        </TouchableOpacity>
+        <View>
+          <CustomButton imageSource={scoreButton} onPress={clickCountScore} />
+        </View>
       ) : (
-        <TouchableOpacity onPress={null}>
-          <Image source={scoreButton} style={styles.button} />
-        </TouchableOpacity>
+        <View>
+          <CustomButton imageSource={scoreButton} onPress={null} />
+        </View>
       )}
-
-      {/* //! Scoring logic player dependent */}
 
       <Modal
         animationType="slide"
@@ -141,41 +139,46 @@ const ScoringScreen = ({
         transparent={true}
         visible={rollAgainModal}
       >
-        <View style={styles.modalImageContainer}>
-          <Image source={rollAgain} style={styles.modalImage} />
+        <View className="flex-1 h-full absolute self-center justify-center align-middle">
+          <Image source={rollAgain} />
         </View>
 
-          <View style={styles.modalView}>
-            <Text className="font-virgil text-3xl" style={styles.modalText}>Would you like to Roll again?</Text>
-            <Pressable
-              onPress={() => {
-                setRollAgainModal(false);
-                clickRollAgain();
-              }}
-            >
-              <Text className="font-virgil text-3xl" style={styles.modalClose}>Roll again!</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setRollAgainModal(false);
-                clickEndTurn();
-              }}
-            >
-              <Text className="font-virgil text-3xl" style={styles.modalClose}>End Turn</Text>
-            </Pressable>
-          </View>
+        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil gap-7 pr-4">
+          <Text className="font-virgil text-3xl text-center" >
+            Would you like to roll again?
+          </Text>
+          <Pressable
+            onPress={() => {
+              setRollAgainModal(false);
+              clickRollAgain();
+            }}
+          >
+            <Text className="font-virgil text-3xl text-center" >
+              Roll again!
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setRollAgainModal(false);
+              clickEndTurn();
+            }}
+          >
+            <Text className="font-virgil text-3xl text-center">
+              End Turn
+            </Text>
+          </Pressable>
+        </View>
       </Modal>
     </View>
   );
 };
 const styles = StyleSheet.create({
-
   modalView: {
     flex: 1,
     alignItems: "center",
-    justifyContent: 'space-evenly',
+    justifyContent: "space-evenly",
     backgroundColor: "transparent",
-    marginBottom: 400
+    marginBottom: 400,
   },
   modalText: {
     color: "red",
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 30,
   },
-  modalImageContainer: {    
+  modalImageContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -200,8 +203,6 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     position: "absolute",
-
-
   },
 });
 
