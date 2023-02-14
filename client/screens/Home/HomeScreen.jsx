@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
-import postItL from "../../assets/modals/post-it-L.png";
+import postItL from "../../assets/modals/post-it-blankL.png";
 import diceMovie from "../../assets/movies/diceMovie.mp4";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
@@ -74,24 +74,28 @@ const Home = ({ navigation }) => {
         </View>
 
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
-          <Text className="font-virgil text-2xl text-center">
+          <Text className="font-virgil text-3xl text-center pb-2">
             What's your name pal?
           </Text>
           <TextInput
-            className="font-virgil text-3xl text-center"
+            className="font-virgil text-2xl text-center"
             autoFocus={true}
             cursorColor={`#000000`}
+            placeholder="player 1... "
+            placeholderTextColor={'grey'}
             onChangeText={(text) => setPlayer1(new Player(text))}
           />
-          <Text className="font-virgil text-2xl text-center">
+          <Text className="font-virgil text-3xl text-center pb-2">
             ... and the other mug?
           </Text>
           <TextInput
-            className="font-virgil text-3xl text-center"
+            className="font-virgil text-2xl text-center"
+            placeholder="player 2... "
+            placeholderTextColor={'grey'}
             onChangeText={(text) => setPlayer2(new Player(text))}
           />
-          <Pressable title="Let's play!" onPress={handleLetsPlay}>
-            <Text className="font-virgil text-3xl text-center">
+          <Pressable onPress={handleLetsPlay}>
+            <Text className="font-virgil text-5xl text-center pt-12">
               Let's play!
             </Text>
           </Pressable>
