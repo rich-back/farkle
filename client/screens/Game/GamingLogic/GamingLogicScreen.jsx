@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Audio } from "expo-av";
 
 import shakeSound from "../../../assets/RATTLE.wav";
-import rollButton from "../../../assets/buttons/blank-button-grey.png";
+import rollButton from "../../../assets/buttons/rollButton.png";
 import CustomButton from "../../../components/Button";
 
 const GameLogicScreen = ({
@@ -93,39 +93,50 @@ const GameLogicScreen = ({
   };
 
   return (
-    <View>
-      <Text className="font-virgil text-3xl">Live Dice</Text>
-      <FlatList
-        contentContainerStyle={styles.liveFlatList}
-        numColumns={3}
-        data={liveDice}
-        renderItem={({ item }) => (
-          <View style={styles.liveDiceContainer}>
-            <TouchableOpacity
-              disabled={disabled}
-              onPress={() => dicePressedLive(item.key)}
-            >
-              <Image source={diceImages[item.value - 1]} style={styles.image} />
-            </TouchableOpacity>
-          </View>
-        )}
-      />
-      <Text className="font-virgil text-3xl">Kept Dice</Text>
-      <FlatList
-        contentContainerStyle={styles.keptFlatList}
-        horizontal={true}
-        data={keptDice}
-        renderItem={({ item }) => (
-          <View style={styles.keptDiceContainer}>
-            <TouchableOpacity onPress={() => dicePressedKept(item.key)}>
-              <Image source={diceImages[item.value - 1]} style={styles.image} />
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+    <View className="flex">
+      <View>
+        <Text className="font-virgil text-3xl text-center">Live Dice</Text>
+        <FlatList
+          contentContainerStyle={styles.liveFlatList}
+          numColumns={3}
+          data={liveDice}
+          renderItem={({ item }) => (
+            <View style={styles.liveDiceContainer}>
+              <TouchableOpacity
+                disabled={disabled}
+                onPress={() => dicePressedLive(item.key)}
+              >
+                <Image
+                  source={diceImages[item.value - 1]}
+                  style={styles.image}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+        <Text className="font-virgil text-3xl text-center">Kept Dice</Text>
+        <FlatList
+          contentContainerStyle={styles.keptFlatList}
+          horizontal={true}
+          data={keptDice}
+          renderItem={({ item }) => (
+            <View style={styles.keptDiceContainer}>
+              <TouchableOpacity onPress={() => dicePressedKept(item.key)}>
+                <Image
+                  source={diceImages[item.value - 1]}
+                  style={styles.image}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      </View>
 
-      <View className="bg-red-600 w-36 mb-4">
-        <CustomButton imageSource={rollButton} onPress={clickRollDice} className="bg-red-600"/>
+      <View className="w-36 mt-24 flex self-center">
+        <CustomButton
+          imageSource={rollButton}
+          onPress={clickRollDice}
+        />
       </View>
     </View>
   );
@@ -133,11 +144,9 @@ const GameLogicScreen = ({
 
 const styles = StyleSheet.create({
   liveFlatList: {
-    borderColor: "purple",
-    borderWidth: 1,
-    height: 200,
+    height: 300,
     width: 300,
-    marginHorizontal: "15%",
+    alignSelf: "center",
     marginTop: 10,
     marginBottom: 10,
   },
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
   },
   liveDiceContainer: {
     width: 100,
-    height: 100,
+    height: 150,
     // flex: 1,
     justifyContent: "center",
     alignContent: "center",

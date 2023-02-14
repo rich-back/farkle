@@ -120,15 +120,15 @@ const ScoringScreen = ({
 
   return (
     <View className="flex-1 flex-row justify-between">
-      <View className="bg-blue-600">
+      <View>
         <CustomButton imageSource={scoreButton} onPress={clickEndTurn} />
       </View>
       {!hasSelectedDice ? (
-        <View className="bg-yellow-600">
+        <View>
           <CustomButton imageSource={scoreButton} onPress={clickCountScore} />
         </View>
       ) : (
-        <View className="bg-green-600">
+        <View>
           <CustomButton imageSource={scoreButton} onPress={null} />
         </View>
       )}

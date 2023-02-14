@@ -48,18 +48,19 @@ const Game = () => {
             <Text className="font-virgil text-3xl">{player1.name}:</Text>
             <Text className="font-virgil text-3xl">{player1.score}</Text>
           </View>
+          <View className="flex-1 top-16">
+          <Text className="font-virgil text-3xl text-center">
+            Round Score: {roundScore}
+          </Text>
+        </View>
           <View>
             <Text className="font-virgil text-3xl">{player2.name}:</Text>
             <Text className="font-virgil text-3xl">{player2.score}</Text>
           </View>
         </View>
-        <View className="flex-1">
-          <Text className="font-virgil text-3xl text-center">
-            Round Score: {roundScore}
-          </Text>
-        </View>
+        
 
-        <View className="flex-4">
+        <View className="flex-6">
           <GameLogicScreen
             counted={counted}
             keptDice={keptDice}
