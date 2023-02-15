@@ -3,13 +3,17 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, } from "react";
+import { useState, useEffect, useCallback} from "react";
 import Virgil from "./assets/Fonts/Virgil.ttf";
 import { GameTypeProvider } from "./global/GameContext";
 import Game from "./screens/Game/GameScreen";
 import Home from "./screens/Home/HomeScreen";
 import Instructions from "./screens/Instructions/Instructions";
 import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
+import { Audio } from "expo-av";
+
+import start from './assets/sounds/pencil.wav'
+
 
 const Stack = createNativeStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -19,13 +23,30 @@ export default function App() {
     Virgil: Virgil,
   });
 
+  const [sound, setSound] = useState();
+
+  const playSound = useCallback(async (soundItem) => {
+    const { sound } = await Audio.Sound.createAsync(soundItem);
+    setSound(sound);
+    await sound.playAsync();
+  }, []);
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   useEffect(() => {
     const prepare = async () => {
+      playSound(start);
       // keep splash screen visible
       await SplashScreen.preventAutoHideAsync()
 
       // pre-load your stuff
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      await new Promise(resolve => setTimeout(resolve, 4000))
 
       // hide splash screen
       await SplashScreen.hideAsync()
