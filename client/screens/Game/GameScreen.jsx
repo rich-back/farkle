@@ -1,28 +1,36 @@
-import { useContext, useState, useCallback, useEffect } from "react";
+import { Audio } from "expo-av";
+import { useCallback, useContext, useEffect, useState } from "react";
 import {
-  Modal,
-  Pressable,
-  Text,
-  View,
-  StyleSheet,
   Image,
   ImageBackground,
-  TouchableOpacity,
+  Modal,
+  Pressable,
   SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
-import ScoringScreen from "./Scoring/ScoringScreen";
-import { dice } from "./Dice";
-import { GameTypeContext } from "../../global/GameContext";
-import { Audio } from "expo-av";
-import background from "../../assets/background.png";
+import background from "../../assets/images/background.png";
+import modalButton from "../../assets/buttons/modalButton.png";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
-import modalButton from "../../assets/buttons/modalButton.png";
+import { GameTypeContext } from "../../global/GameContext";
+import { dice } from "./Dice";
+import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
+import ScoringScreen from "./Scoring/ScoringScreen";
+import arrowL from '../../assets/images/arrow.png';
+import arrowR from '../../assets/images/arrowR.png';
 
 const Game = () => {
-  const { player1, player2, currentPlayer } = useContext(GameTypeContext);
-
+  const {
+    player1,
+    player2,
+    setPlayer1,
+    setPlayer2,
+    currentPlayer,
+    setCurrentPlayer,
+  } = useContext(GameTypeContext);
   const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
   const [bankedDice, setBankedDice] = useState([]);
@@ -35,7 +43,6 @@ const Game = () => {
   const [endable, setEndable] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [hasSelectedDice, setHasSelectedDice] = useState(true);
-
   const [sound, setSound] = useState();
 
   const playSound = useCallback(async (soundItem) => {
@@ -52,6 +59,13 @@ const Game = () => {
       : undefined;
   }, [sound]);
 
+  const handleEndGame = () => {
+    setEndGameAlertVis(false);
+    setCurrentPlayer(player1);
+    setPlayer1({ ...player1, score: 500 });
+    setPlayer2({ ...player2, score: 500 });
+  };
+
   return (
     <ImageBackground
       source={background}
@@ -62,11 +76,10 @@ const Game = () => {
         <View className="flex-1 flex-row justify-between m-2">
           {currentPlayer.name == player1.name ? (
             <View className="">
+              <Image className="absolute z-0" source={arrowL}/>
               <Text className="font-virgil text-4xl">{player1.name}: </Text>
-              <Text className="font-virgil text-4xl">
-                {player1.score}
-              </Text>
-              <Text className="font-virgil text-6xl pt-2"> ^</Text>
+              <Text className="font-virgil text-4xl">{player1.score}</Text>
+              {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
             </View>
           ) : (
             <View>
@@ -81,11 +94,10 @@ const Game = () => {
           </View>
           {currentPlayer.name == player2.name ? (
             <View>
+              <Image className="absolute right-8 z-0" source={arrowR}/>
               <Text className="font-virgil text-4xl">{player2.name}:</Text>
-              <Text className="font-virgil text-4xl">
-                {player2.score}
-              </Text>
-              <Text className="font-virgil text-6xl pt-2"> ^</Text>
+              <Text className="font-virgil text-4xl">{player2.score}</Text>
+              {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
             </View>
           ) : (
             <View>
@@ -97,50 +109,51 @@ const Game = () => {
 
         <View className="flex-6">
           <GameLogicScreen
+            bankedDice={bankedDice}
             counted={counted}
+            disabled={disabled}
+            hasSelectedDice={hasSelectedDice}
             keptDice={keptDice}
             liveDice={liveDice}
-            bankedDice={bankedDice}
+            playSound={playSound}
             rollScore={rollScore}
             roundScore={roundScore}
+            setBankedDice={setBankedDice}
             setCounted={setCounted}
+            setDisabled={setDisabled}
+            setEndable={setEndable}
             setFarkleAlertVis={setFarkleAlertVis}
+            setHasSelectedDice={setHasSelectedDice}
             setKeptDice={setKeptDice}
             setLiveDice={setLiveDice}
-            setBankedDice={setBankedDice}
             setRollScore={setRollScore}
             setRoundScore={setRoundScore}
-            disabled={disabled}
-            setDisabled={setDisabled}
-            setHasSelectedDice={setHasSelectedDice}
-            hasSelectedDice={hasSelectedDice}
-            playSound={playSound}
           />
         </View>
         <View className="flex-1">
           <ScoringScreen
-            setHasSelectedDice={setHasSelectedDice}
-            hasSelectedDice={hasSelectedDice}
-            endable={endable}
+            bankedDice={bankedDice}
             counted={counted}
+            disabled={disabled}
+            endable={endable}
+            hasSelectedDice={hasSelectedDice}
             keptDice={keptDice}
             liveDice={liveDice}
-            bankedDice={bankedDice}
+            playSound={playSound}
             rollScore={rollScore}
             roundScore={roundScore}
-            turnCounter={turnCounter}
-            setEndable={setEndable}
+            setBankedDice={setBankedDice}
             setCounted={setCounted}
+            setDisabled={setDisabled}
+            setEndable={setEndable}
             setEndGameAlertVis={setEndGameAlertVis}
+            setHasSelectedDice={setHasSelectedDice}
             setKeptDice={setKeptDice}
             setLiveDice={setLiveDice}
-            setBankedDice={setBankedDice}
             setRollScore={setRollScore}
             setRoundScore={setRoundScore}
             setTurnCounter={setTurnCounter}
-            disabled={disabled}
-            setDisabled={setDisabled}
-            playSound={playSound}
+            turnCounter={turnCounter}
           />
         </View>
 
@@ -166,7 +179,11 @@ const Game = () => {
           visible={endGameAlertVis}
         >
           <View style={styles.centeredView}>
-            <Pressable onPress={() => setEndGameAlertVis(false)}>
+            <Pressable
+              onPress={() => {
+                handleEndGame();
+              }}
+            >
               <Image source={winnerModal} />
             </Pressable>
           </View>

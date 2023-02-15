@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Button,
   FlatList,
@@ -8,21 +9,22 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { diceImages } from "../Dice";
+import { diceImages, farkleDice } from "../Dice";
 import {
   checkForFarkle,
-  liveDicePress,
   keptDicePress,
+  liveDicePress,
   rollDice,
 } from "./GameLogic";
+import shakeSound from "../../../assets/sounds/RATTLE.wav";
 import { useEffect, useState } from "react";
-
-import shakeSound from "../../../assets/RATTLE.wav";
 import fail from "../../../assets/sounds/fail.wav";
 import rollButton from "../../../assets/buttons/roll-button.png";
 import CustomButton from "../../../components/Button";
 import diceLivePressSound from "../../../assets/sounds/take.wav";
 import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
+import diceLivePressSound from "../../../assets/sounds/take.wav";
+import CustomButton from "../../../components/Button";
 
 const GameLogicScreen = ({
   counted,
@@ -34,6 +36,7 @@ const GameLogicScreen = ({
   setKeptDice,
   setLiveDice,
   setBankedDice,
+  setEndable,
   setRoundScore,
   setDisabled,
   disabled,
@@ -50,6 +53,7 @@ const GameLogicScreen = ({
     if (counted) {
       const rolledDice = rollDice({ liveDice });
       setLiveDice(rolledDice.newDice);
+      // * setLiveDice(farkleDice) used to check for issues with 6 dice farkle
       setCounted(false);
       setDisabled(false);
       setClickCounter(clickCounter + 1);
@@ -64,6 +68,7 @@ const GameLogicScreen = ({
       setRoundScore(0);
       setKeptDice([]);
       playSound(fail);
+      setEndable(true);
     }
   };
 
@@ -173,11 +178,6 @@ const styles = StyleSheet.create({
     height: 90,
     borderRadius: 10,
     margin: 5,
-  },
-  button: {
-    alignSelf: "flex-end",
-    marginRight: 30,
-    marginBottom: 10,
   },
 });
 

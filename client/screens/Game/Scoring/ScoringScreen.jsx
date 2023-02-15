@@ -1,25 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   Button,
-  Text,
-  View,
-  Modal,
-  StyleSheet,
-  Pressable,
-  TouchableOpacity,
   Image,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { GameTypeContext } from "../../../global/GameContext";
 import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
-
 import scoreButton from "../../../assets/buttons/count-score-button.png";
 import endTurnButton from "../../../assets/buttons/end-turn-button.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
-
-import win from "../../../assets/sounds/TaDasound.mp3";
 import bank from "../../../assets/sounds/CashRegister.mp3";
+import win from "../../../assets/sounds/TaDasound.mp3";
 import typingSound from "../../../assets/sounds/typing.wav";
 
 const ScoringScreen = ({

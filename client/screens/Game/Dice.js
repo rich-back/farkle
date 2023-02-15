@@ -14,6 +14,15 @@ const dice = [
   { key: "dice6", value: 6 },
 ];
 
+const farkleDice = [
+  { key: "dice1", value: 3 },
+  { key: "dice2", value: 2 },
+  { key: "dice3", value: 3 },
+  { key: "dice4", value: 4 },
+  { key: "dice5", value: 4 },
+  { key: "dice6", value: 6 },
+];
+
 const diceImages = [
   diceImage1,
   diceImage2,
@@ -23,4 +32,4 @@ const diceImages = [
   diceImage6,
 ];
 
-export { dice, diceImages };
+export { dice, diceImages,farkleDice };
