@@ -12,10 +12,8 @@ import {
 import { GameTypeContext } from "../../../global/GameContext";
 import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
-import {
-  default as endTurnButton,
-  default as scoreButton,
-} from "../../../assets/buttons/blank-button-grey.png";
+import scoreButton from "../../../assets/buttons/count-score-button.png";
+import endTurnButton from "../../../assets/buttons/end-turn-button.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
 import bank from "../../../assets/sounds/CashRegister.mp3";
@@ -76,7 +74,7 @@ const ScoringScreen = ({
   const completeGame = () => {
     if (roundScore >= currentPlayer.score) {
       setEndGameAlertVis(true);
-      clickEndTurn();
+      // clickEndTurn(); // * This cancels out winner sound effect
       playSound(win);
     }
   };
@@ -129,7 +127,7 @@ const ScoringScreen = ({
   return (
     <View className="flex-1 flex-row justify-between">
       <View>
-        <CustomButton imageSource={scoreButton} onPress={clickEndTurn} />
+        <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
       </View>
       {!hasSelectedDice ? (
         <View>

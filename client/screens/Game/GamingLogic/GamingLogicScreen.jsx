@@ -16,9 +16,12 @@ import {
   liveDicePress,
   rollDice,
 } from "./GameLogic";
-import rollButton from "../../../assets/buttons/rollButton.png";
 import shakeSound from "../../../assets/sounds/RATTLE.wav";
+import { useEffect, useState } from "react";
 import fail from "../../../assets/sounds/fail.wav";
+import rollButton from "../../../assets/buttons/roll-button.png";
+import CustomButton from "../../../components/Button";
+import diceLivePressSound from "../../../assets/sounds/take.wav";
 import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
 import diceLivePressSound from "../../../assets/sounds/take.wav";
 import CustomButton from "../../../components/Button";
@@ -129,7 +132,7 @@ const GameLogicScreen = ({
         />
       </View>
 
-      <View className="w-36 mt-24 flex self-center">
+      <View className="w-38 mt-24 flex self-center">
         <CustomButton imageSource={rollButton} onPress={clickRollDice} />
       </View>
     </View>
