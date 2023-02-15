@@ -5,7 +5,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useState } from "react";
-import Virgil from "./assets/fonts/Virgil.ttf";
+import Virgil from "./assets/fonts/Virgil.ttf"; 
 import start from './assets/sounds/pencil.wav';
 import { GameTypeProvider } from "./global/GameContext";
 import Game from "./screens/Game/GameScreen";
