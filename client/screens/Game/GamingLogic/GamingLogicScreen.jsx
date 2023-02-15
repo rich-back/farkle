@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
 import {
-  Button,
   FlatList,
   Image,
-  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import { diceImages, farkleDice } from "../Dice";
+import rollButton from "../../../assets/buttons/roll-button.png";
+import fail from "../../../assets/sounds/fail.wav";
+import shakeSound from "../../../assets/sounds/RATTLE.wav";
+import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
+import { diceLivePressSound } from "../../../assets/sounds/take.wav";
+import { CustomButton } from "../../../components/Button";
+import { diceImages  } from "../Dice";
 import {
   checkForFarkle,
   keptDicePress,
   liveDicePress,
-  rollDice,
+  rollDice
 } from "./GameLogic";
-import shakeSound from "../../../assets/sounds/RATTLE.wav";
-import { useEffect, useState } from "react";
-import fail from "../../../assets/sounds/fail.wav";
-import rollButton from "../../../assets/buttons/roll-button.png";
-import CustomButton from "../../../components/Button";
-import diceLivePressSound from "../../../assets/sounds/take.wav";
-import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
-import diceLivePressSound from "../../../assets/sounds/take.wav";
-import CustomButton from "../../../components/Button";
 
 const GameLogicScreen = ({
   counted,
@@ -79,6 +74,7 @@ const GameLogicScreen = ({
     setHasSelectedDice(false);
     playSound(diceLivePressSound);
   };
+
   const dicePressedKept = (itemKey) => {
     const dicePressHandler = keptDicePress({ itemKey, keptDice });
     setKeptDice(dicePressHandler.tempKeptDice);

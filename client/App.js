@@ -1,18 +1,17 @@
 import { NavigationContainer, useScrollToTop } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Audio } from "expo-av";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useState, useEffect, useCallback} from "react";
-import Virgil from "./assets/Fonts/Virgil.ttf";
+import { useCallback, useEffect, useState } from "react";
+import Virgil from "./assets/fonts/Virgil.ttf";
+import start from './assets/sounds/pencil.wav';
 import { GameTypeProvider } from "./global/GameContext";
 import Game from "./screens/Game/GameScreen";
 import Home from "./screens/Home/HomeScreen";
 import Instructions from "./screens/Instructions/Instructions";
 import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
-import { Audio } from "expo-av";
-
-import start from './assets/sounds/pencil.wav'
 
 
 const Stack = createNativeStackNavigator();
