@@ -11,7 +11,7 @@ import rollButton from "../../../assets/buttons/roll-button.png";
 import fail from "../../../assets/sounds/fail.wav";
 import shakeSound from "../../../assets/sounds/RATTLE.wav";
 import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
-import { diceLivePressSound } from "../../../assets/sounds/take.wav";
+import diceLivePressSound from "../../../assets/sounds/take.wav";
 import CustomButton from "../../../components/Button";
 import { diceImages  } from "../Dice";
 import {
