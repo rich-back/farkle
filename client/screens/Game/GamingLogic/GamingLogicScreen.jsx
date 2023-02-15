@@ -17,7 +17,7 @@ import {
   rollDice,
 } from "./GameLogic";
 import rollButton from "../../../assets/buttons/rollButton.png";
-import shakeSound from "../../../assets/RATTLE.wav";
+import shakeSound from "../../../assets/sounds/RATTLE.wav";
 import fail from "../../../assets/sounds/fail.wav";
 import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
 import diceLivePressSound from "../../../assets/sounds/take.wav";
