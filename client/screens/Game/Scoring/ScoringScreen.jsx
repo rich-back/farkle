@@ -67,7 +67,7 @@ const ScoringScreen = ({
 
   useEffect(() => {
     // ! Added this logic to cope with 2 players
-    if (currentPlayer.name === player1.name) {
+    if (currentPlayer.playerName === player1.playerName) {
       setCurrentPlayer(player2);
     } else {
       setCurrentPlayer(player1);
@@ -104,7 +104,7 @@ const ScoringScreen = ({
   const clickEndTurn = () => {
     if (endable == true) {
       const endTurnState = endTurn({ score, roundScore, turnCounter });
-      if (currentPlayer.name === player1.name) {
+      if (currentPlayer.playerName === player1.playerName) {
         setPlayer1({ ...player1, score: endTurnState.score });
       } else {
         setPlayer2({ ...player2, score: endTurnState.score });
