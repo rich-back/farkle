@@ -14,11 +14,13 @@ import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
 import scoreButton from "../../../assets/buttons/count-score-button.png";
 import endTurnButton from "../../../assets/buttons/end-turn-button.png";
+import rulesToggle from "../../../assets/buttons/scoreRulesToggle.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
 import bank from "../../../assets/sounds/CashRegister.mp3";
 import win from "../../../assets/sounds/TaDasound.mp3";
 import typingSound from "../../../assets/sounds/typing.wav";
+import scoringModal from "../../../assets/images/farkle-scoresheet.png";
 
 const ScoringScreen = ({
   counted,
@@ -42,6 +44,7 @@ const ScoringScreen = ({
 }) => {
   const [rollScore, setRollScore] = useState(0);
   const [rollAgainModal, setRollAgainModal] = useState(false);
+  const [scoreRulesModal, setScoreRulesModal] = useState(false);
   const {
     player1,
     player2,
@@ -124,11 +127,23 @@ const ScoringScreen = ({
     setDisabled(true);
   };
 
+  const clickScoreRulesButton = () => {
+    setScoreRulesModal(true);
+  };
+
   return (
     <View className="flex-1 flex-row justify-between">
       <View>
         <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
       </View>
+
+      <View>
+        <CustomButton
+          imageSource={rulesToggle}
+          onPress={clickScoreRulesButton}
+        />
+      </View>
+
       {!hasSelectedDice ? (
         <View>
           <CustomButton imageSource={scoreButton} onPress={clickCountScore} />
@@ -138,6 +153,34 @@ const ScoringScreen = ({
           <CustomButton imageSource={scoreButton} onPress={null} />
         </View>
       )}
+
+      <Modal
+        animationType="slide"
+        presentationStyle="overFullScreen"
+        transparent={true}
+        visible={scoreRulesModal}
+      >
+        <View className="absolute self-center mt-48 ">
+
+            <Pressable
+              onPress={() => {
+                setScoreRulesModal(false);
+              }}
+            >
+            <Image
+              style={{
+                flex: 1,
+                height: 500,
+                resizeMode: "contain",
+                width: 450,
+   
+              }}
+              source={scoringModal}
+            />
+            </Pressable>
+
+        </View>
+      </Modal>
 
       <Modal
         animationType="slide"
