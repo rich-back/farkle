@@ -1,5 +1,5 @@
 import { Video } from "expo-av";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import {
   Image,
   Modal,
@@ -10,11 +10,13 @@ import {
   View,
 } from "react-native";
 import playButton from "../../assets/buttons/home-play-button.png";
+import { Audio } from "expo-av";
 import rulesButton from "../../assets/buttons/rules-button.png";
 import postItL from "../../assets/modals/post-it-blankL.png";
 import diceMovie from "../../assets/movies/diceMovie.mp4";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../Game/Player";
+import crashSound from "../../assets/sounds/CrashCymbal.wav";
 
 const Home = ({ navigation }) => {
   const {
@@ -26,6 +28,22 @@ const Home = ({ navigation }) => {
     setCurrentPlayer,
   } = useContext(GameTypeContext);
   const [gameModal, setGameModal] = useState(false);
+
+  const [sound, setSound] = useState();
+
+  const playSound = useCallback(async (soundItem) => {
+    const { sound } = await Audio.Sound.createAsync(soundItem);
+    setSound(sound);
+    await sound.playAsync();
+  }, []);
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   useEffect(() => {
     setPlayer1(new Player(""));
@@ -44,6 +62,7 @@ const Home = ({ navigation }) => {
       navigation.navigate("Game");
       setGameModal(false);
       setCurrentPlayer(player2);
+      playSound(crashSound);
     }
   };
 

@@ -17,7 +17,11 @@ import { Button, Image, TouchableOpacity } from "react-native";
 import BackButton from "./components/BackButton";
 
 const Stack = createNativeStackNavigator();
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
+  .then((result) =>
+    console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`)
+  )
+  .catch(console.warn);
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -62,7 +66,7 @@ export default function App() {
           initialRouteName="Home"
           screenOptions={{
             headerBackTitleVisible: false,
-            headerTitleStyle: {fontFamily: "Virgil", fontSize: 30}
+            headerTitleStyle: { fontFamily: "Virgil", fontSize: 30 },
           }}
         >
           <Stack.Screen

@@ -78,6 +78,13 @@ const ScoringScreen = ({
     if (roundScore >= currentPlayer.score) {
       setEndGameAlertVis(true);
       // clickEndTurn(); // * This cancels out winner sound effect
+      setRoundScore(0);
+      setLiveDice(dice);
+      setKeptDice([]);
+      setBankedDice([]);
+      setHasSelectedDice(true);
+      setCounted(true);
+      setEndable(false);
       playSound(win);
     }
   };
@@ -161,24 +168,21 @@ const ScoringScreen = ({
         visible={scoreRulesModal}
       >
         <View className="absolute self-center mt-48 ">
-
-            <Pressable
-              onPress={() => {
-                setScoreRulesModal(false);
-              }}
-            >
+          <Pressable
+            onPress={() => {
+              setScoreRulesModal(false);
+            }}
+          >
             <Image
               style={{
                 flex: 1,
                 height: 500,
                 resizeMode: "contain",
                 width: 450,
-   
               }}
               source={scoringModal}
             />
-            </Pressable>
-
+          </Pressable>
         </View>
       </Modal>
 
