@@ -1,6 +1,7 @@
 import { Audio } from "expo-av";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
+  Button,
   Image,
   ImageBackground,
   Modal,
@@ -19,10 +20,11 @@ import { GameTypeContext } from "../../global/GameContext";
 import { dice } from "./Dice";
 import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
 import ScoringScreen from "./Scoring/ScoringScreen";
-import arrowL from '../../assets/images/arrow.png';
-import arrowR from '../../assets/images/arrowR.png';
+import arrowL from "../../assets/images/arrow.png";
+import arrowR from "../../assets/images/arrowR.png";
+import BackButton from "../../components/BackButton";
 
-const Game = () => {
+const Game = ({ navigation }) => {
   const {
     player1,
     player2,
@@ -59,6 +61,21 @@ const Game = () => {
       : undefined;
   }, [sound]);
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <BackButton
+          onPress={() => {
+            setPlayer1({ playerName: "", score: 500 });
+            setPlayer2({ playerName: "", score: 500 });
+            navigation.navigate("Home");
+          }}
+        />
+      ),
+    });
+    
+  }, [navigation]);
+
   const handleEndGame = () => {
     setEndGameAlertVis(false);
     setCurrentPlayer(player1);
@@ -74,16 +91,20 @@ const Game = () => {
     >
       <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5 mt-3">
         <View className="flex-1 flex-row justify-between m-2">
-          {currentPlayer.name == player1.name ? (
+          {currentPlayer.playerName == player1.playerName ? (
             <View className="">
-              <Image className="absolute z-0" source={arrowL}/>
-              <Text className="font-virgil text-4xl">{player1.name}: </Text>
+              <Image className="absolute z-0" source={arrowL} />
+              <Text className="font-virgil text-4xl">
+                {player1.playerName}:{" "}
+              </Text>
               <Text className="font-virgil text-4xl">{player1.score}</Text>
               {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
             </View>
           ) : (
             <View>
-              <Text className="font-virgil text-2xl">{player1.name}:</Text>
+              <Text className="font-virgil text-2xl">
+                {player1.playerName}:
+              </Text>
               <Text className="font-virgil text-2xl">{player1.score}</Text>
             </View>
           )}
@@ -92,16 +113,20 @@ const Game = () => {
               Round Score: {roundScore}
             </Text>
           </View>
-          {currentPlayer.name == player2.name ? (
+          {currentPlayer.playerName == player2.playerName ? (
             <View>
-              <Image className="absolute right-8 z-0" source={arrowR}/>
-              <Text className="font-virgil text-4xl">{player2.name}:</Text>
+              <Image className="absolute right-8 z-0" source={arrowR} />
+              <Text className="font-virgil text-4xl">
+                {player2.playerName}:
+              </Text>
               <Text className="font-virgil text-4xl">{player2.score}</Text>
               {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
             </View>
           ) : (
             <View>
-              <Text className="font-virgil text-2xl">{player2.name}:</Text>
+              <Text className="font-virgil text-2xl">
+                {player2.playerName}:
+              </Text>
               <Text className="font-virgil text-2xl">{player2.score}</Text>
             </View>
           )}

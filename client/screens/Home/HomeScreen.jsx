@@ -1,5 +1,5 @@
 import { Video } from "expo-av";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Image,
   Modal,
@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import playButton from "../../assets/buttons/home-play-button.png";
 import rulesButton from "../../assets/buttons/rules-button.png";
@@ -27,12 +27,17 @@ const Home = ({ navigation }) => {
   } = useContext(GameTypeContext);
   const [gameModal, setGameModal] = useState(false);
 
+  useEffect(() => {
+    setPlayer1(new Player(""));
+    setPlayer2(new Player(""));
+  }, []);
+
   const handleDoubleClick = () => {
     setGameModal(true);
   };
 
   const handleLetsPlay = () => {
-    if (!player1 || !player2) {
+    if (player1.playerName.length < 1 || player2.playerName.length < 1) {
       alert("Please Enter Names");
       return;
     } else {
@@ -70,7 +75,7 @@ const Home = ({ navigation }) => {
         visible={gameModal}
       >
         <View className="flex-1 h-full absolute self-center justify-center align-middle">
-          <Image source={postItL}/>
+          <Image source={postItL} />
         </View>
 
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
@@ -82,8 +87,10 @@ const Home = ({ navigation }) => {
             autoFocus={true}
             cursorColor={`#000000`}
             placeholder="player 1... "
-            placeholderTextColor={'grey'}
-            onChangeText={(text) => setPlayer1(new Player(text))}
+            placeholderTextColor={"grey"}
+            onChangeText={(text) =>
+              setPlayer1({ ...player1, playerName: text })
+            }
           />
           <Text className="font-virgil text-3xl text-center pb-2">
             ... and the other mug?
@@ -91,8 +98,10 @@ const Home = ({ navigation }) => {
           <TextInput
             className="font-virgil text-2xl text-center"
             placeholder="player 2... "
-            placeholderTextColor={'grey'}
-            onChangeText={(text) => setPlayer2(new Player(text))}
+            placeholderTextColor={"grey"}
+            onChangeText={(text) =>
+              setPlayer2({ ...player2, playerName: text })
+            }
           />
           <Pressable onPress={handleLetsPlay}>
             <Text className="font-virgil text-5xl text-center pt-12">
@@ -100,7 +109,6 @@ const Home = ({ navigation }) => {
             </Text>
           </Pressable>
         </View>
-
       </Modal>
     </View>
   );
