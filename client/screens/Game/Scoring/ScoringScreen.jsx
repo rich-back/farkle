@@ -17,9 +17,9 @@ import endTurnButton from "../../../assets/buttons/end-turn-button.png";
 import rulesToggle from "../../../assets/buttons/scoreRulesToggle.png";
 import rollAgain from "../../../assets/modals/roll-again-modal.png";
 import CustomButton from "../../../components/Button";
-import bank from "../../../assets/sounds/CashRegister.mp3";
+import typingSound from "../../../assets/sounds/CashRegister.mp3";
 import win from "../../../assets/sounds/TaDasound.mp3";
-import typingSound from "../../../assets/sounds/typing.wav";
+import bank from "../../../assets/sounds/typing.wav";
 import scoringModal from "../../../assets/images/farkle-scoresheet.png";
 
 const ScoringScreen = ({
