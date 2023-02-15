@@ -1,7 +1,7 @@
 import {
   checkFive,
-  checkOne,
   checkMultiples,
+  checkOne,
   checkQuadPair,
 } from "./ScoringLogicChecks";
 
@@ -29,7 +29,10 @@ const countScore = ({ roundScore, rollScore, keptDice }) => {
   } else {
     tempRollScore += onesFivesOutcome(keptDice);
   }
-  return { roundScore: tempRoundScore + tempRollScore, rollScore: tempRollScore };
+  return {
+    roundScore: tempRoundScore + tempRollScore,
+    rollScore: tempRollScore,
+  };
 };
 
 const onesFivesOutcome = (keptDice) => {
