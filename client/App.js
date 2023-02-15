@@ -62,8 +62,6 @@ export default function App() {
           initialRouteName="Home"
           screenOptions={{
             headerBackTitleVisible: false,
-            headerBackImageSource: homeButton,
-            headerTintColor: "black",
             headerTitleStyle: {fontFamily: "Virgil", fontSize: 30}
           }}
         >
