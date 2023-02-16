@@ -76,6 +76,7 @@ const ScoringScreen = ({
 
   const completeGame = () => {
     if (roundScore >= currentPlayer.score) {
+      playSound(win);
       setEndGameAlertVis(true);
       // clickEndTurn(); // * This cancels out winner sound effect
       setRoundScore(0);
@@ -85,7 +86,6 @@ const ScoringScreen = ({
       setHasSelectedDice(true);
       setCounted(true);
       setEndable(false);
-      playSound(win);
     }
   };
 
