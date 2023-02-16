@@ -1,25 +1,83 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import React, { useState } from "react";
 
-import scoringRules from '../../assets/images/farkle-scoresheet.png'
+import img1 from "../../assets/images/Screenshot1.png";
+import img2 from "../../assets/images/Screenshot2.png";
+import img3 from "../../assets/images/Screenshot3.png";
+import img4 from "../../assets/images/Screenshot4.png";
 
 const Instructions = () => {
+  const images = [img1, img2, img3, img4];
+
+  const [index, setIndex] = useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text>This is where the Instructions go...</Text>
-      <Image source={scoringRules} style={{maxWidth: 400, maxHeight: 400}}/>
+    <View className="flex-1 justify-center self-center gap-6">
+      <Image source={images[index]} style={{ maxWidth: 400, maxHeight: 800 }} />
+      <View className="flex-row justify-between">
+        {index > 0 ? (
+          <View>
+            <Text
+              className="font-virgil text-3xl"
+              onPress={() => {
+                setIndex(index - 1);
+              }}
+            >
+              Prev
+            </Text>
+          </View>
+        ) : (
+          <View>
+            <Text
+              className="font-virgil text-3xl"
+              onPress={() => {
+                null;
+              }}
+            >
+              Prev
+            </Text>
+          </View>
+        )}
+
+        <View>
+          <Text className="font-virgil text-3xl">{index+1}/4</Text>
+        </View>
+
+        {index < 3 ? (
+          <View>
+            <Text
+              className="font-virgil text-3xl"
+              onPress={() => {
+                setIndex(index + 1);
+              }}
+            >
+              Next
+            </Text>
+          </View>
+        ) : (
+          <View>
+            <Text
+              className="font-virgil text-3xl"
+              onPress={() => {
+                null;
+              }}
+            >
+              Next
+            </Text>
+          </View>
+        )}
+      </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
-export default Instructions
-
+export default Instructions;
