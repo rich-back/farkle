@@ -1,6 +1,7 @@
 import {
   checkForFarkle,
-  dicePress,
+  liveDicePress,
+  keptDicePress,
   getRandomNumber,
   rollDice,
 } from "./GameLogic";
@@ -81,20 +82,34 @@ it("should return an array of dice of the same length as is input", () => {
 });
 
 it("should return 2 altered arrays of dice(one decrement, one increment)", () => {
-  expected1 = dicePress({ itemKey: "dice1", liveDice: dice6 });
+  expected1 = liveDicePress({ itemKey: "dice1", liveDice: dice6 });
   expect(expected1.tempLiveDice.length).toBe(5);
   expect(expected1.tempKeptDice.length).toBe(1);
 });
 
+it("should return 2 altered arrays of dice(one decrement, one increment)", () => {
+  expected1 = keptDicePress({ itemKey: "dice1", keptDice: dice6 });
+  expect(expected1.tempKeptDice.length).toBe(5);
+  expect(expected1.tempLiveDice.length).toBe(1);
+});
+
 it("should return true if farkle and false if not 6 dice", () => {
-  expected1 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: sixDiceFarkle });
+  expected1 = checkForFarkle({
+    roundScore: 0,
+    rollScore: 0,
+    liveDice: sixDiceFarkle,
+  });
   expected2 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: dice6 });
   expect(expected1).toBeTruthy();
   expect(expected2).toBeFalsy();
 });
 
 it("should return true if farkle and false if not 5 dice", () => {
-  expected1 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: fiveDiceFarkle });
+  expected1 = checkForFarkle({
+    roundScore: 0,
+    rollScore: 0,
+    liveDice: fiveDiceFarkle,
+  });
   expected2 = checkForFarkle({ roundScore: 0, rollScore: 0, liveDice: dice5 });
   expect(expected1).toBeTruthy();
   expect(expected2).toBeFalsy();
