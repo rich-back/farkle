@@ -15,7 +15,7 @@ import rulesButton from "../../assets/buttons/rules-button.png";
 import postItL from "../../assets/modals/post-it-blankL.png";
 import diceMovie from "../../assets/movies/diceMovie.mp4";
 import { GameTypeContext } from "../../global/GameContext";
-import { Player } from "../Game/Player";
+import { Player } from "../../components/Player";
 import crashSound from "../../assets/sounds/CrashCymbal.wav";
 
 const Home = ({ navigation }) => {
@@ -112,7 +112,7 @@ const Home = ({ navigation }) => {
             }
           />
           <Text className="font-virgil text-3xl text-center pb-2">
-            ... and the other mug?
+            ... and your rival?
           </Text>
           <TextInput
             className="font-virgil text-2xl text-center"

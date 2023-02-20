@@ -5,20 +5,20 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import rollButton from "../../../assets/buttons/roll-button.png";
-import fail from "../../../assets/sounds/fail.wav";
-import shakeSound from "../../../assets/sounds/RATTLE.wav";
-import diceKeptPressSound from "../../../assets/sounds/smrpg_click.wav";
-import diceLivePressSound from "../../../assets/sounds/take.wav";
-import CustomButton from "../../../components/Button";
-import { diceImages  } from "../Dice";
+import rollButton from "../../assets/buttons/roll-button.png";
+import fail from "../../assets/sounds/fail.wav";
+import shakeSound from "../../assets/sounds/RATTLE.wav";
+import diceKeptPressSound from "../../assets/sounds/smrpg_click.wav";
+import diceLivePressSound from "../../assets/sounds/take.wav";
+import CustomButton from "../Button";
+import { diceImages } from "../Dice";
 import {
   checkForFarkle,
   keptDicePress,
   liveDicePress,
-  rollDice
+  rollDice,
 } from "./GameLogic";
 
 const GameLogicScreen = ({

@@ -1,7 +1,6 @@
 import { Audio } from "expo-av";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
-  Button,
   Image,
   ImageBackground,
   Modal,
@@ -9,17 +8,15 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import background from "../../assets/images/background.png";
-import modalButton from "../../assets/buttons/modalButton.png";
 import farkleModal from "../../assets/modals/farkle-modal.png";
 import winnerModal from "../../assets/modals/winner-modal2.png";
 import { GameTypeContext } from "../../global/GameContext";
-import { dice } from "./Dice";
-import GameLogicScreen from "./GamingLogic/GamingLogicScreen";
-import ScoringScreen from "./Scoring/ScoringScreen";
+import { dice } from "../../components/Dice";
+import GameLogicScreen from "../../components/GamingLogic/GamingLogicComponent";
+import ScoringScreen from "../../components/Scoring/ScoringComponent"
 import arrowL from "../../assets/images/arrow.png";
 import arrowR from "../../assets/images/arrowR.png";
 import BackButton from "../../components/BackButton";

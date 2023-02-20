@@ -9,18 +9,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { GameTypeContext } from "../../../global/GameContext";
+import { GameTypeContext } from "../../global/GameContext";
 import { dice } from "../Dice";
 import { countScore, endTurn } from "./ScoringLogic";
-import scoreButton from "../../../assets/buttons/count-score-button.png";
-import endTurnButton from "../../../assets/buttons/end-turn-button.png";
-import rulesToggle from "../../../assets/buttons/scoreRulesToggle.png";
-import rollAgain from "../../../assets/modals/roll-again-modal.png";
-import CustomButton from "../../../components/Button";
-import typingSound from "../../../assets/sounds/CashRegister.mp3";
-import win from "../../../assets/sounds/TaDasound.mp3";
-import bank from "../../../assets/sounds/typing.wav";
-import scoringModal from "../../../assets/images/farkle-scoresheet.png";
+import scoreButton from "../../assets/buttons/count-score-button.png";
+import endTurnButton from "../../assets/buttons/end-turn-button.png";
+import rulesToggle from "../../assets/buttons/scoreRulesToggle.png";
+import rollAgain from "../../assets/modals/roll-again-modal.png";
+import CustomButton from "../Button";
+import typingSound from "../../assets/sounds/CashRegister.mp3";
+import win from "../../assets/sounds/TaDasound.mp3";
+import bank from "../../assets/sounds/typing.wav";
+import scoringModal from "../../assets/images/farkle-scoresheet.png";
 
 const ScoringScreen = ({
   counted,
