@@ -17,6 +17,7 @@ import diceMovie from "../../assets/movies/diceMovie.mp4";
 import { GameTypeContext } from "../../global/GameContext";
 import { Player } from "../../components/Player";
 import crashSound from "../../assets/sounds/CrashCymbal.wav";
+import { Slider } from "@miblanchard/react-native-slider";
 
 const Home = ({ navigation }) => {
   const {
@@ -30,6 +31,7 @@ const Home = ({ navigation }) => {
   const [gameModal, setGameModal] = useState(false);
 
   const [sound, setSound] = useState();
+  const [sliderValue, setSliderValue] = useState(2000);
 
   const playSound = useCallback(async (soundItem) => {
     const { sound } = await Audio.Sound.createAsync(soundItem);
@@ -59,6 +61,8 @@ const Home = ({ navigation }) => {
       alert("Please Enter Names");
       return;
     } else {
+      setPlayer1({ ...player1, score: sliderValue })
+      setPlayer2({ ...player2, score: sliderValue })
       navigation.navigate("Game");
       setGameModal(false);
       setCurrentPlayer(player2);
@@ -122,6 +126,16 @@ const Home = ({ navigation }) => {
               setPlayer2({ ...player2, playerName: text })
             }
           />
+          <View>
+            <Slider
+            value={sliderValue} 
+            onValueChange={value => setSliderValue(value)} 
+            minimumValue={1000} 
+            maximumValue={10000} 
+            step={1000} 
+            trackClickable={true} />
+            <Text className="font-virgil text-2xl text-center" >{sliderValue}</Text>
+          </View>
           <Pressable onPress={handleLetsPlay}>
             <Text className="font-virgil text-5xl text-center pt-12">
               Let's play!
