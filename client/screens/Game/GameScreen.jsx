@@ -16,7 +16,7 @@ import winnerModal from "../../assets/modals/winner-modal2.png";
 import { GameTypeContext } from "../../global/GameContext";
 import { dice } from "../../components/Dice";
 import GameLogicScreen from "../../components/GamingLogic/GamingLogicComponent";
-import ScoringScreen from "../../components/Scoring/ScoringComponent"
+import ScoringScreen from "../../components/Scoring/ScoringComponent";
 import arrowL from "../../assets/images/arrow.png";
 import arrowR from "../../assets/images/arrowR.png";
 import BackButton from "../../components/BackButton";
@@ -70,7 +70,6 @@ const Game = ({ navigation }) => {
         />
       ),
     });
-    
   }, [navigation]);
 
   const handleEndGame = () => {
