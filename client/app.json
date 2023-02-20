@@ -26,9 +26,6 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#FFFFFF"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
