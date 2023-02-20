@@ -112,7 +112,7 @@ const Home = ({ navigation }) => {
             }
           />
           <Text className="font-virgil text-3xl text-center pb-2">
-            ... and the other mug?
+            ... and your rival?
           </Text>
           <TextInput
             className="font-virgil text-2xl text-center"
