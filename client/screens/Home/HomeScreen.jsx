@@ -119,7 +119,7 @@ const Home = ({ navigation }) => {
             ... and your rival?
           </Text>
           <TextInput
-            className="font-virgil text-2xl text-center"
+            className="font-virgil text-2xl text-center pb-10"
             placeholder="player 2... "
             placeholderTextColor={"grey"}
             onChangeText={(text) =>
@@ -127,6 +127,7 @@ const Home = ({ navigation }) => {
             }
           />
           <View>
+            <Text className="font-virgil text-2xl text-center" >Play to score: {sliderValue}</Text>
             <Slider
             value={sliderValue} 
             onValueChange={value => setSliderValue(value)} 
@@ -134,10 +135,9 @@ const Home = ({ navigation }) => {
             maximumValue={10000} 
             step={1000} 
             trackClickable={true} />
-            <Text className="font-virgil text-2xl text-center" >{sliderValue}</Text>
           </View>
           <Pressable onPress={handleLetsPlay}>
-            <Text className="font-virgil text-5xl text-center pt-12">
+            <Text className="font-virgil text-5xl text-center pt-6">
               Let's play!
             </Text>
           </Pressable>
