@@ -40,7 +40,7 @@ const Instructions = () => {
         )}
 
         <View>
-          <Text className="font-virgil text-3xl">{index+1}/4</Text>
+          <Text className="font-virgil text-3xl">{index + 1}/4</Text>
         </View>
 
         {index < 3 ? (
@@ -70,14 +70,5 @@ const Instructions = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default Instructions;
