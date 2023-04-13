@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Audio } from "expo-av";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useState } from "react";
 import Virgil from "./assets/fonts/Virgil.ttf";
 import start from "./assets/sounds/pencil.wav";
@@ -12,8 +11,6 @@ import Game from "./screens/Game/GameScreen";
 import Home from "./screens/Home/HomeScreen";
 import Instructions from "./screens/Instructions/Instructions";
 import LeaderBoard from "./screens/LeaderBoard/LeaderBoard";
-import homeButton from "./assets/images/homeButton.png";
-import { Button, Image, TouchableOpacity } from "react-native";
 import BackButton from "./components/BackButton";
 
 const Stack = createNativeStackNavigator();
