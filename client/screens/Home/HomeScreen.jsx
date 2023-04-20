@@ -19,6 +19,11 @@ import { Player } from "../../components/Player";
 import crashSound from "../../assets/sounds/CrashCymbal.wav";
 import { Slider } from "@miblanchard/react-native-slider";
 
+import { styled } from 'nativewind';
+const StyledView = styled(View)
+const StyledImage = styled(Image)
+
+
 const Home = ({ navigation }) => {
   const {
     setTypeOfGame,
@@ -97,16 +102,16 @@ const Home = ({ navigation }) => {
         transparent={true}
         visible={gameModal}
       >
-        <View className="flex-1 h-full absolute self-center justify-center align-middle">
-          <Image source={postItL} />
-        </View>
+        <StyledView className="container flex-1 w-[90vw] h-full self-center justify-center items-center">
+          <StyledImage source={postItL} className="w-[375px] h-[375px]"/>
+        </StyledView>
 
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
-          <Text className="font-virgil text-3xl text-center pb-2">
+          <Text className="font-virgil text-2xl text-center pb-2">
             What's your name pal?
           </Text>
           <TextInput
-            className="font-virgil text-2xl text-center"
+            className="font-virgil text-xl text-center"
             autoFocus={true}
             cursorColor={`#000000`}
             placeholder="player 1... "
@@ -115,11 +120,11 @@ const Home = ({ navigation }) => {
               setPlayer1({ ...player1, playerName: text })
             }
           />
-          <Text className="font-virgil text-3xl text-center pb-2">
+          <Text className="font-virgil text-2xl text-center pb-2">
             ... and your rival?
           </Text>
           <TextInput
-            className="font-virgil text-2xl text-center pb-10"
+            className="font-virgil text-xl text-center pb-6"
             placeholder="player 2... "
             placeholderTextColor={"grey"}
             onChangeText={(text) =>
@@ -127,7 +132,7 @@ const Home = ({ navigation }) => {
             }
           />
           <View>
-            <Text className="font-virgil text-2xl text-center" >Play to score: {sliderValue}</Text>
+            <Text className="font-virgil text-xl text-center" >Play to score: {sliderValue}</Text>
             <Slider
             value={sliderValue} 
             onValueChange={value => setSliderValue(value)} 
@@ -137,7 +142,7 @@ const Home = ({ navigation }) => {
             trackClickable={true} />
           </View>
           <Pressable onPress={handleLetsPlay}>
-            <Text className="font-virgil text-5xl text-center pt-6">
+            <Text className="font-virgil text-3xl text-center pt-2">
               Let's play!
             </Text>
           </Pressable>

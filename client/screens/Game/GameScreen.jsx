@@ -86,47 +86,52 @@ const Game = ({ navigation }) => {
       style={styles.background}
     >
       <SafeAreaView className="h-full flex-1 justify-between mr-5 ml-5 mt-3">
-        <View className="flex-1 flex-row justify-between m-2">
+        <View className="flex flex-row justify-between">
           {currentPlayer.playerName == player1.playerName ? (
             <View className="">
-              <Image className="absolute z-0" source={arrowL} />
-              <Text className="font-virgil text-4xl">
-                {player1.playerName}:{" "}
-              </Text>
-              <Text className="font-virgil text-4xl">{player1.score}</Text>
-              {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
-            </View>
-          ) : (
-            <View>
+              {/* <Image className="absolute z-0" source={arrowL} /> */}
               <Text className="font-virgil text-2xl">
-                {player1.playerName}:
+                {player1.playerName}:{" "}
               </Text>
               <Text className="font-virgil text-2xl">{player1.score}</Text>
             </View>
-          )}
-          <View className="flex-1 top-16">
-            <Text className="font-virgil text-3xl text-center">
-              Round Score: {roundScore}
-            </Text>
-          </View>
-          {currentPlayer.playerName == player2.playerName ? (
-            <View>
-              <Image className="absolute right-8 z-0" source={arrowR} />
-              <Text className="font-virgil text-4xl">
-                {player2.playerName}:
-              </Text>
-              <Text className="font-virgil text-4xl">{player2.score}</Text>
-              {/* <Text className="font-virgil text-6xl pt-2"> ^</Text> */}
-            </View>
           ) : (
             <View>
+              <Text className="font-virgil text-gray-400 text-lg">
+                {player1.playerName}:
+              </Text>
+              <Text className="font-virgil text-gray-400 text-lg">
+                {player1.score}
+              </Text>
+            </View>
+          )}
+
+
+          {currentPlayer.playerName == player2.playerName ? (
+            <View>
+              {/* <Image className="absolute right-8 z-0" source={arrowR} /> */}
               <Text className="font-virgil text-2xl">
                 {player2.playerName}:
               </Text>
               <Text className="font-virgil text-2xl">{player2.score}</Text>
             </View>
+          ) : (
+            <View>
+              <Text className="font-virgil text-gray-400 text-lg">
+                {player2.playerName}:
+              </Text>
+              <Text className="font-virgil text-gray-400 text-lg">
+                {player2.score}
+              </Text>
+            </View>
           )}
         </View>
+
+          <View className="m-4">
+            <Text className="font-virgil text-2xl text-center">
+              Round Score: {roundScore}
+            </Text>
+          </View>
 
         <View className="flex-6">
           <GameLogicScreen
@@ -184,11 +189,13 @@ const Game = ({ navigation }) => {
           transparent={true}
           visible={farkleAlertVis}
         >
-          <View style={styles.centeredView}>
+          <View className="flex-1 h-full w-full self-center justify-center items-center">
             <Pressable onPress={() => setFarkleAlertVis(false)}>
-              <View style={styles.modalImage}>
-                <Image source={farkleModal} />
-              </View>
+              <Image
+                source={farkleModal}
+                className="w-[350px]"
+                style={{ resizeMode: "contain" }}
+              />
             </Pressable>
           </View>
         </Modal>
@@ -199,13 +206,13 @@ const Game = ({ navigation }) => {
           transparent={true}
           visible={endGameAlertVis}
         >
-          <View style={styles.centeredView}>
+          <View className="flex-1 h-full w-full self-center justify-center items-center">
             <Pressable
               onPress={() => {
                 handleEndGame();
               }}
             >
-              <Image source={winnerModal} />
+              <Image source={winnerModal} className="w-[350px]" style={{resizeMode: 'contain'}}/>
             </Pressable>
           </View>
         </Modal>

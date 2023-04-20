@@ -21,6 +21,7 @@ import typingSound from "../../assets/sounds/CashRegister.mp3";
 import win from "../../assets/sounds/TaDasound.mp3";
 import bank from "../../assets/sounds/typing.wav";
 import scoringModal from "../../assets/images/farkle-scoresheet.png";
+import RulesButton from "../RulesButton";
 
 const ScoringScreen = ({
   counted,
@@ -139,13 +140,13 @@ const ScoringScreen = ({
   };
 
   return (
-    <View className="flex-1 flex-row justify-between">
+    <View className="flex-1 flex-row justify-between items-center">
       <View>
         <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
       </View>
 
       <View>
-        <CustomButton
+        <RulesButton
           imageSource={rulesToggle}
           onPress={clickScoreRulesButton}
         />
@@ -167,7 +168,7 @@ const ScoringScreen = ({
         transparent={true}
         visible={scoreRulesModal}
       >
-        <View className="absolute self-center mt-48 ">
+        <View className="self-center">
           <Pressable
             onPress={() => {
               setScoreRulesModal(false);
@@ -176,9 +177,9 @@ const ScoringScreen = ({
             <Image
               style={{
                 flex: 1,
-                height: 500,
+                height: 400,
+                width: 350,
                 resizeMode: "contain",
-                width: 450,
               }}
               source={scoringModal}
             />
@@ -192,8 +193,8 @@ const ScoringScreen = ({
         transparent={true}
         visible={rollAgainModal}
       >
-        <View className="flex-1 h-full absolute self-center justify-center align-middle">
-          <Image source={rollAgain} />
+        <View className="flex-1 h-full w-full self-center justify-center items-center">
+          <Image source={rollAgain} className="w-[350px]" style={{resizeMode: 'contain'}}/>
         </View>
 
         <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil gap-7 pr-4">
@@ -223,38 +224,6 @@ const ScoringScreen = ({
     </View>
   );
 };
-const styles = StyleSheet.create({
-  modalView: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    backgroundColor: "transparent",
-    marginBottom: 400,
-  },
-  modalText: {
-    color: "red",
-  },
-  modalClose: {
-    color: "white",
-    backgroundColor: "grey",
-    padding: 15,
-    borderRadius: 10,
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    marginBottom: 30,
-  },
-  modalImageContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 300,
-  },
-  modalImage: {
-    position: "absolute",
-  },
-});
+
 
 export default ScoringScreen;
