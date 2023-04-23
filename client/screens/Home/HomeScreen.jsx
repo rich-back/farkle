@@ -19,10 +19,9 @@ import { Player } from "../../components/Player";
 import crashSound from "../../assets/sounds/CrashCymbal.wav";
 import { Slider } from "@miblanchard/react-native-slider";
 
-import { styled } from 'nativewind';
-const StyledView = styled(View)
-const StyledImage = styled(Image)
-
+import { styled } from "nativewind";
+const StyledView = styled(View);
+const StyledImage = styled(Image);
 
 const Home = ({ navigation }) => {
   const {
@@ -66,8 +65,8 @@ const Home = ({ navigation }) => {
       alert("Please Enter Names");
       return;
     } else {
-      setPlayer1({ ...player1, score: sliderValue })
-      setPlayer2({ ...player2, score: sliderValue })
+      setPlayer1({ ...player1, score: sliderValue });
+      setPlayer2({ ...player2, score: sliderValue });
       navigation.navigate("Game");
       setGameModal(false);
       setCurrentPlayer(player2);
@@ -78,7 +77,7 @@ const Home = ({ navigation }) => {
   return (
     <View className="h-full align-middle items-center justify-center flex-1">
       <Video
-        className="absolute self-center w-full h-full"
+        className="absolute scale-110 self-center w-full h-screen"
         source={diceMovie}
         resizeMode="cover"
         isLooping={true}
@@ -96,58 +95,69 @@ const Home = ({ navigation }) => {
         <Image source={rulesButton} className="items-center m-5" />
       </TouchableOpacity>
 
-      <Modal
-        animationType="slide"
-        presentationStyle="overFullScreen"
-        transparent={true}
-        visible={gameModal}
-      >
-        <StyledView className="container flex-1 w-[90vw] h-full self-center justify-center items-center">
-          <StyledImage source={postItL} className="w-[375px] h-[375px]"/>
-        </StyledView>
+        <Modal
+          animationType="slide"
+          presentationStyle="overFullScreen"
+          transparent={true}
+          visible={gameModal}
+        >
+          <StyledView className="container flex-1 w-[90vw] h-full self-center justify-center items-center">
+            <StyledImage
+              source={postItL}
+              className="w-screen"
+              style={{ resizeMode: "contain" }}
+            />
+          </StyledView>
 
-        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
-          <Text className="font-virgil text-2xl text-center pb-2">
-            What's your name pal?
-          </Text>
-          <TextInput
-            className="font-virgil text-xl text-center"
-            autoFocus={true}
-            cursorColor={`#000000`}
-            placeholder="player 1... "
-            placeholderTextColor={"grey"}
-            onChangeText={(text) =>
-              setPlayer1({ ...player1, playerName: text })
-            }
-          />
-          <Text className="font-virgil text-2xl text-center pb-2">
-            ... and your rival?
-          </Text>
-          <TextInput
-            className="font-virgil text-xl text-center pb-6"
-            placeholder="player 2... "
-            placeholderTextColor={"grey"}
-            onChangeText={(text) =>
-              setPlayer2({ ...player2, playerName: text })
-            }
-          />
-          <View>
-            <Text className="font-virgil text-xl text-center" >Play to score: {sliderValue}</Text>
-            <Slider
-            value={sliderValue} 
-            onValueChange={value => setSliderValue(value)} 
-            minimumValue={1000} 
-            maximumValue={10000} 
-            step={1000} 
-            trackClickable={true} />
-          </View>
-          <Pressable onPress={handleLetsPlay}>
-            <Text className="font-virgil text-3xl text-center pt-2">
-              Let's play!
+          <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil">
+            <Text className="font-virgil text-2xl text-center pb-2">
+              What's your name pal?
             </Text>
-          </Pressable>
-        </View>
-      </Modal>
+            <TextInput
+              className="font-virgil text-xl text-center"
+              keyboardAppearance="dark"
+              autoFocus={true}
+              cursorColor={`#000000`}
+              placeholder="player 1... "
+              placeholderTextColor={"grey"}
+              maxLength={12}
+              onChangeText={(text) =>
+                setPlayer1({ ...player1, playerName: text })
+              }
+            />
+            <Text className="font-virgil text-2xl text-center pb-2">
+              ... and your rival?
+            </Text>
+            <TextInput
+              className="font-virgil text-xl text-center pb-6"
+              keyboardAppearance="dark"
+              placeholder="player 2... "
+              placeholderTextColor={"grey"}
+              maxLength={12}
+              onChangeText={(text) =>
+                setPlayer2({ ...player2, playerName: text })
+              }
+            />
+            <View>
+              <Text className="font-virgil text-xl text-center">
+                Play to score: {sliderValue}
+              </Text>
+              <Slider
+                value={sliderValue}
+                onValueChange={(value) => setSliderValue(value)}
+                minimumValue={1000}
+                maximumValue={10000}
+                step={1000}
+                trackClickable={true}
+              />
+            </View>
+            <Pressable onPress={handleLetsPlay}>
+              <Text className="font-virgil text-3xl text-center pt-2">
+                Let's play!
+              </Text>
+            </Pressable>
+          </View>
+        </Modal>
     </View>
   );
 };
