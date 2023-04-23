@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StyleSheet,
 } from "react-native";
 import rollButton from "../../assets/buttons/roll-button.png";
 import fail from "../../assets/sounds/fail.wav";
@@ -83,27 +84,30 @@ const GameLogicScreen = ({
   };
 
   return (
-    <View className="flex">
-      <View className="">
+    <View className="flex-1 justify-evenly">
+      <View className="grow">
         <Text className="font-virgil text-2xl text-center">Live Dice</Text>
-        <FlatList
-          className="h-[160px] w-[300px] self-center"
-          numColumns={3}
-          data={liveDice}
-          renderItem={({ item }) => (
-            <View className="w-[100px] h-[80px] justify-center content-center items-center">
-              <TouchableOpacity
-                disabled={disabled}
-                onPress={() => dicePressedLive(item.key)}
-              >
-                <Image
-                  source={diceImages[item.value - 1]}
-                  className="w-[70px] h-[70px] m-1"
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+        <View className="grow items-center">
+          <FlatList
+            contentContainerStyle={styles.liveDice}
+            // className="border-2 w-[300px] h-[200px]"
+            numColumns={3}
+            data={liveDice}
+            renderItem={({ item }) => (
+              <View className="w-[100px] h-[100px] items-center justify-center">
+                <TouchableOpacity
+                  disabled={disabled}
+                  onPress={() => dicePressedLive(item.key)}
+                >
+                  <Image
+                    source={diceImages[item.value - 1]}
+                    className="w-[70px] h-[70px] m-1"
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+          />
+        </View>
         <Text className="font-virgil text-2xl text-center">Kept Dice</Text>
         <FlatList
           className="flex h-[55px] w-[330px] mb-2 self-center"
@@ -122,12 +126,19 @@ const GameLogicScreen = ({
         />
       </View>
 
-      <View className="w-38 mt-2 self-center">
+      <View className="grow-0 w-38 mt-2 self-center">
         <CustomButton imageSource={rollButton} onPress={clickRollDice} />
       </View>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  liveDice: {
+    width: 300,
+    height: 200
+
+  },
+});
 
 export default GameLogicScreen;
