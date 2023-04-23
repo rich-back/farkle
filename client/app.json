@@ -9,8 +9,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff",
-      
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,12 +18,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.backhouse.richard.farkle"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.backhouse.richard.farkle"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f0ca335d-7201-4ee9-aa1a-36fe32f920cf"
       }
     }
   }
