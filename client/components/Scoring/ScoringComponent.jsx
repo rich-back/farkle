@@ -140,28 +140,29 @@ const ScoringScreen = ({
   };
 
   return (
-    <View className="flex-1 flex-row justify-between items-center">
-      <View>
-        <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
-      </View>
-
-      <View>
-        <RulesButton
-          imageSource={rulesToggle}
-          onPress={clickScoreRulesButton}
-        />
-      </View>
-
-      {!hasSelectedDice ? (
+    <>
+      <View className="flex-row justify-between items-center mb-2">
         <View>
-          <CustomButton imageSource={scoreButton} onPress={clickCountScore} />
+          <CustomButton imageSource={endTurnButton} onPress={clickEndTurn} />
         </View>
-      ) : (
-        <View>
-          <CustomButton imageSource={scoreButton} onPress={null} />
-        </View>
-      )}
 
+        <View>
+          <RulesButton
+            imageSource={rulesToggle}
+            onPress={clickScoreRulesButton}
+          />
+        </View>
+
+        {!hasSelectedDice ? (
+          <View>
+            <CustomButton imageSource={scoreButton} onPress={clickCountScore} />
+          </View>
+        ) : (
+          <View>
+            <CustomButton imageSource={scoreButton} onPress={null} />
+          </View>
+        )}
+      </View>
       <Modal
         animationType="slide"
         presentationStyle="overFullScreen"
@@ -194,36 +195,50 @@ const ScoringScreen = ({
         visible={rollAgainModal}
       >
         <View className="flex-1 h-full w-full self-center justify-center items-center">
-          <Image source={rollAgain} className="w-[350px]" style={{resizeMode: 'contain'}}/>
+          <Image
+            source={rollAgain}
+            className="w-screen"
+            style={{ resizeMode: "contain" }}
+          />
         </View>
 
-        <View className="flex-1 h-full absolute self-center justify-center align-middle font-virgil gap-7 pr-4">
-          <Text className="font-virgil text-3xl text-center">
-            Would you like to roll again?
-          </Text>
-          <Pressable
-            onPress={() => {
-              setRollAgainModal(false);
-              clickRollAgain();
-            }}
-          >
-            <Text className="font-virgil text-3xl text-center">
-              Roll again!
+        <View className="flex-1 h-full absolute self-center justify-center mx-6 space-y-9">
+          <View className="space-y-2">
+            <Text className="font-virgil text-2xl text-center">
+              Nice one {currentPlayer.playerName}!
             </Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              setRollAgainModal(false);
-              clickEndTurn();
-            }}
-          >
-            <Text className="font-virgil text-3xl text-center">End Turn</Text>
-          </Pressable>
+            <Text className="font-virgil text-2xl text-center">
+              You scored with all 6 dice!
+            </Text>
+            <Text className="font-virgil text-2xl text-center">
+              Would you like to...
+            </Text>
+          </View>
+
+          <View className="space-y-7">
+            <Pressable
+              onPress={() => {
+                setRollAgainModal(false);
+                clickRollAgain();
+              }}
+            >
+              <Text className="font-virgil text-3xl text-center">
+                Roll again!
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                setRollAgainModal(false);
+                clickEndTurn();
+              }}
+            >
+              <Text className="font-virgil text-3xl text-center">End Turn</Text>
+            </Pressable>
+          </View>
         </View>
       </Modal>
-    </View>
+    </>
   );
 };
-
 
 export default ScoringScreen;
