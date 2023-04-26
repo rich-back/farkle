@@ -31,11 +31,13 @@ const Home = ({ navigation }) => {
     setPlayer1,
     setPlayer2,
     setCurrentPlayer,
+    sliderValue, 
+    setSliderValue
   } = useContext(GameTypeContext);
   const [gameModal, setGameModal] = useState(false);
 
   const [sound, setSound] = useState();
-  const [sliderValue, setSliderValue] = useState(2000);
+  
 
   const playSound = useCallback(async (soundItem) => {
     const { sound } = await Audio.Sound.createAsync(soundItem);

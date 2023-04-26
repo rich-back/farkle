@@ -7,6 +7,7 @@ const GameTypeProvider = ({ children }) => {
   const [player1, setPlayer1] = useState();
   const [player2, setPlayer2] = useState();
   const [currentPlayer, setCurrentPlayer] = useState(player1);
+  const [sliderValue, setSliderValue] = useState(2000);
   return (
     <GameTypeContext.Provider
       value={{
@@ -18,6 +19,8 @@ const GameTypeProvider = ({ children }) => {
         setPlayer2,
         currentPlayer,
         setCurrentPlayer,
+        sliderValue,
+        setSliderValue
       }}
     >
       {children}
