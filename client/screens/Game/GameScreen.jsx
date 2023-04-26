@@ -29,7 +29,11 @@ const Game = ({ navigation }) => {
     setPlayer2,
     currentPlayer,
     setCurrentPlayer,
-    sliderValue
+    sliderValue,
+    player1Wins,
+    player2Wins,
+    setPlayer1Wins,
+    setPlayer2Wins,
   } = useContext(GameTypeContext);
   const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
@@ -74,10 +78,15 @@ const Game = ({ navigation }) => {
   }, [navigation]);
 
   const handleEndGame = () => {
+    if (currentPlayer.playerName === player1.playerName) {
+      setPlayer1Wins(player1Wins + 1)
+    } else if (currentPlayer.playerName === player2.playerName) {
+      setPlayer2Wins(player2Wins + 1)
+    }
     setEndGameAlertVis(false);
-    setCurrentPlayer(player1);
     setPlayer1({ ...player1, score: sliderValue });
     setPlayer2({ ...player2, score: sliderValue });
+    setCurrentPlayer(player1);
   };
 
   return (
@@ -108,6 +117,15 @@ const Game = ({ navigation }) => {
                   </Text>
                 </View>
               )}
+
+              <View className="self-center sticky items-center">
+                <Text className="font-virgil text-lg">
+                  Wins
+                </Text>
+                <Text className="font-virgil text-2xl tracking-[4px]">
+                  {player1Wins}:{player2Wins}
+                </Text>
+              </View>
 
               {currentPlayer.playerName == player2.playerName ? (
                 <View>
