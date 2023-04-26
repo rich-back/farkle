@@ -176,10 +176,8 @@ const ScoringScreen = ({
             }}
           >
             <Image
+              className="flex-1 w-screen scale-90"
               style={{
-                flex: 1,
-                height: 400,
-                width: 350,
                 resizeMode: "contain",
               }}
               source={scoringModal}
