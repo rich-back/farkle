@@ -61,7 +61,7 @@ const ScoringScreen = ({
   }, [score, roundScore]);
 
   useEffect(() => {
-    if (bankedDice.length === 6) {
+    if (bankedDice.length === 6 && roundScore <= score) {
       setRollAgainModal(true);
     }
   }, [bankedDice]);
@@ -76,7 +76,7 @@ const ScoringScreen = ({
   }, [turnCounter]);
 
   const completeGame = () => {
-    if (roundScore >= currentPlayer.score) {
+    if (roundScore >= score) {
       playSound(win);
       setEndGameAlertVis(true);
       // clickEndTurn(); // * This cancels out winner sound effect
