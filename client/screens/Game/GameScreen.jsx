@@ -79,9 +79,9 @@ const Game = ({ navigation }) => {
 
   const handleEndGame = () => {
     if (currentPlayer.playerName === player1.playerName) {
-      setPlayer1Wins(player1Wins + 1)
+      setPlayer1Wins(player1Wins + 1);
     } else if (currentPlayer.playerName === player2.playerName) {
-      setPlayer2Wins(player2Wins + 1)
+      setPlayer2Wins(player2Wins + 1);
     }
     setEndGameAlertVis(false);
     setPlayer1({ ...player1, score: sliderValue });
@@ -119,9 +119,7 @@ const Game = ({ navigation }) => {
               )}
 
               <View className="self-center sticky items-center">
-                <Text className="font-virgil text-lg">
-                  Wins
-                </Text>
+                <Text className="font-virgil text-lg">Wins</Text>
                 <Text className="font-virgil text-2xl tracking-[4px]">
                   {player1Wins}:{player2Wins}
                 </Text>

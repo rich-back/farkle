@@ -53,6 +53,7 @@ const ScoringScreen = ({
     setCurrentPlayer,
     setPlayer1,
     setPlayer2,
+    sliderValue
   } = useContext(GameTypeContext);
   const score = currentPlayer.score;
 
@@ -68,7 +69,10 @@ const ScoringScreen = ({
 
   useEffect(() => {
     // ! Added this logic to cope with 2 players
-    if (currentPlayer.playerName === player1.playerName) {
+    if (turnCounter === 1) {
+      setCurrentPlayer(player1)
+    }
+    else if (currentPlayer.playerName === player1.playerName) {
       setCurrentPlayer(player2);
     } else {
       setCurrentPlayer(player1);
@@ -87,6 +91,7 @@ const ScoringScreen = ({
       setHasSelectedDice(true);
       setCounted(true);
       setEndable(false);
+      setPlayer1({ ...player1, score: sliderValue });
     }
   };
 

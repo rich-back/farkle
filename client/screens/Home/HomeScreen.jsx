@@ -71,7 +71,7 @@ const Home = ({ navigation }) => {
       setPlayer2({ ...player2, score: sliderValue });
       navigation.navigate("Game");
       setGameModal(false);
-      setCurrentPlayer(player2);
+      setCurrentPlayer(player1);
       playSound(crashSound);
     }
   };
