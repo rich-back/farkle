@@ -29,6 +29,7 @@ const Game = ({ navigation }) => {
     setPlayer2,
     currentPlayer,
     setCurrentPlayer,
+    sliderValue
   } = useContext(GameTypeContext);
   const [liveDice, setLiveDice] = useState(dice);
   const [keptDice, setKeptDice] = useState([]);
@@ -75,8 +76,8 @@ const Game = ({ navigation }) => {
   const handleEndGame = () => {
     setEndGameAlertVis(false);
     setCurrentPlayer(player1);
-    setPlayer1({ ...player1, score: player1.score });
-    setPlayer2({ ...player2, score: player2.score });
+    setPlayer1({ ...player1, score: sliderValue });
+    setPlayer2({ ...player2, score: sliderValue });
   };
 
   return (
