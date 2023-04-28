@@ -4,7 +4,7 @@
 
 Sketchy Farkle! is now available on the Google Play Store! Scan the QR code below...
 
-<img src=https://user-images.githubusercontent.com/114738026/234680324-a3b49f92-582a-4e01-bde4-4452607c59a2.png width=250 height=250>
+<img src=https://user-images.githubusercontent.com/114738026/234680324-a3b49f92-582a-4e01-bde4-4452607c59a2.png width=200 height=200>
 
 ...or follow this [link](https://play.google.com/store/apps/details?id=com.backhouse.richard.farkle)
 
